@@ -53,29 +53,16 @@ export const userLogIn = async (req, res) =>{
 
       user.generateToken((err,user)=>{
         if(err) return res.status(400).send(err);
-        res.cookie('auth',user.token).json({
+        res.cookie('auth',user.token,{
+          httpOnly: true,
+          secure: true,
+          maxAge: 86400
+        }).json({
             isAuth : true,
             id : user._id,
             email : user.email
         });
     });    
-
-      // const token = jwt.sign(
-      //   {
-      //     email: user.email,
-      //     id: user._id,
-      //     firstName: user.firstName,
-      //     lastName: user.lastName,
-      //   },
-      //   process.env.TOKEN_SECRET
-      // );
-      
-      // res.header("Authorization",token).json({
-      //   error: null,
-      //   data:{
-      //     token,
-      //   },
-      // });
     });
   });
 }
