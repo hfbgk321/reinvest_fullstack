@@ -40,7 +40,7 @@ const ControlledInputs = () => {
   const handleSubmit = (e) => { 
       console.log(person);
       e.preventDefault();
-      axios.post('temporarylinkherelol', {...person}).then(res=> {
+      axios.post('http://localhost:4000/api/user/signup', {...person}).then(res=> {
         console.log(res);
         console.log(res.data);
       }).catch((err) => {
