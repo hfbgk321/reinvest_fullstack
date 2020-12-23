@@ -1,0 +1,36 @@
+* {
+    background-color: #FDF8FF;
+    font-family: 'Merriweather';
+}
+
+.titleText {
+    font-size: 70px;
+    color: #CA2B69;
+    margin-left: 4%;
+    font-weight: bold;
+}
+
+.descText {
+    font-size: 24px;
+    margin-left: 4%;
+    color: black;
+}
+
+.buttonStart {
+    font-size: 25px;
+    background: #CA2B69;
+    color: white;
+    margin-left: 4%;
+    border-radius: 20px;
+    padding-left: 3%;
+    padding-right: 3%;
+    outline: none;
+    border: none;
+}
+.buttonStart:hover {
+    text-decoration: none;
+    color: white !important;
+}
+.background{
+    background-image: url(../images/unknown.png)
+}
