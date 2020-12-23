@@ -1,19 +1,21 @@
-import './App.css';
-import NavB from './components/Navbar';
-import {Route,Link,BrowserRouter as Router} from "react-router-dom";
-import signup from './components/Signup'
-import login from './components/Login'
-import HomePage from './components/homepage';
+import "./App.css";
+import { Route, Link, BrowserRouter as Router } from "react-router-dom";
+import signup from "./components/Signedout/Signup";
+import login from "./components/Signedout/Login";
+import HomePage from "./components/Signedout/homepage";
+import signedIn from "./components/SignedIn/signedIn";
+import PropInfo from "./components/formpages/propertyinfo";
 
 function App() {
   return (
     <>
       <Router>
-        <Route path="/" exact component = {HomePage}/>
-        <Route path="/login" component = {login}/>
-        <Route path="/signup" component = {signup}/>
+        <Route path="/" exact component={HomePage} />
+        <Route path="/login" component={login} />
+        <Route path="/signup" component={signup} />
+        <Route path="/signedIn" component={signedIn} />
+        <Route path="/propertyinfo" component={PropInfo} />
       </Router>
-      
     </>
   );
 }

@@ -2,8 +2,6 @@ import React from 'react'
 import {Nav,Navbar} from 'react-bootstrap'
 import {Container, Row, Col, Image} from 'react-bootstrap';
 import { BrowserRouter, Route, Switch, Link as Router } from 'react-router-dom';
-import image from '../images/unknown.png'
-import '../components/homepage.css'
 
  function NavB(){
     return (
