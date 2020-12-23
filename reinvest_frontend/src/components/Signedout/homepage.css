@@ -1,0 +1,33 @@
+* {
+  background-color: #fdf8ff;
+  font-family: "Merriweather";
+}
+
+.titleText {
+  font-size: 70px;
+  color: #ca2b69;
+  margin-left: 4%;
+  font-weight: bold;
+}
+
+.descText {
+  font-size: 24px;
+  margin-left: 4%;
+  color: black;
+}
+
+.buttonStart {
+  font-size: 25px;
+  background: #ca2b69;
+  color: white;
+  margin-left: 4%;
+  border-radius: 20px;
+  padding-left: 3%;
+  padding-right: 3%;
+  outline: none;
+  border: none;
+}
+.buttonStart:hover {
+  text-decoration: none;
+  color: white !important;
+}
