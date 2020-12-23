@@ -59,23 +59,6 @@ export const userLogIn = async (req, res) =>{
             email : user.email
         });
     });    
-
-      // const token = jwt.sign(
-      //   {
-      //     email: user.email,
-      //     id: user._id,
-      //     firstName: user.firstName,
-      //     lastName: user.lastName,
-      //   },
-      //   process.env.TOKEN_SECRET
-      // );
-      
-      // res.header("Authorization",token).json({
-      //   error: null,
-      //   data:{
-      //     token,
-      //   },
-      // });
     });
   });
 }
