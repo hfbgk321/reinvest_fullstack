@@ -20,6 +20,15 @@ export const getProperties = async (req,res) =>{
   })
 }
 
+export const fetchImage = (req,res) =>{
+  verifyToken(req,res,(token) =>{
+    res.json({img: {
+      data: fs.readFileSync(path.resolve(__dirname,'../uploads/'+req.file.filename)),
+      contentType: req.file.mimetype
+    }})
+  })
+}
+
 
 export const registerProperty = (req,res) =>{
   verifyToken(req,res, (token) => {
@@ -53,7 +62,6 @@ export const registerProperty = (req,res) =>{
       });
     })
   })
-  
 }
 
 

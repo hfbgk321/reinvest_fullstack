@@ -5,6 +5,7 @@ import login from "./components/Signedout/Login";
 import HomePage from "./components/Signedout/homepage";
 import signedIn from "./components/SignedIn/signedIn";
 import PropInfo from "./components/formpages/propertyinfo";
+import ImageComp from "./components/formpages/ImageComp";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/signup" component={signup} />
         <Route path="/signedIn" component={signedIn} />
         <Route path="/propertyinfo" component={PropInfo} />
+        <Route path="/imagetester" component={ImageComp}/>
       </Router>
     </>
   );
