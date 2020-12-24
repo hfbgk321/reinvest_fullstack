@@ -30,16 +30,18 @@ export const Routes = (app) => {
 
   app.route('/properties/:id').get(getPropertyById);
 
-  app.post('/properties',uploads.single('img'),registerProperty);
+  app.post('/properties',uploads.single('image'),registerProperty);
 
-  app.post('/img_fetch',uploads.single('img'),fetchImage);
+  app.post('/img_fetch',uploads.single('image'),fetchImage);
 
   app.route('/properties/:id').delete(deleteProperty);
 
   app.route('/properties/:id').put(updatePropertyInformation);
   
-  app.route('/api/user/signup').post(userSignUp);
-  app.route('/api/user/signin').post(userLogIn);
+  app.post('/api/user/signup',uploads.none(),userSignUp);
+  //app.route('/api/user/signup').post(userSignUp);
+  app.post('/api/user/signin',uploads.none(),userLogIn);
+  
   app.route('/api/user/signout').get(userLogOut);
   app.route('/api/user/delete').delete(deleteUser);
 }
