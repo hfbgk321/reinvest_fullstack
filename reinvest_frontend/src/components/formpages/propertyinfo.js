@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./formpages.css";
-
+import { Route, Link, BrowserRouter, Redirect } from "react-router-dom";
 
 function PIPage() {
   return (
@@ -16,6 +16,10 @@ function PIPage() {
           <NextButton />
         </section>
       </article>
+      <article>
+        <PurchasePage />
+      </article>
+      <Backbutton />
     </body>
   );
 }
@@ -68,8 +72,8 @@ const PropertyInformation = () => {
   );
 };
 
-function PurchasePage(){
-  return(
+function PurchasePage() {
+  return (
     <body>
       <article>
         <section class="formSection">
@@ -91,22 +95,25 @@ const PurchaseInformation = () => {
       <div class="formBox">
         <h1 class="formTitle">Purchase</h1>
         <form>
-          <div class="formInputNames">Purchase price</div>
-          $<input type="number" class="normalTextbox"></input>
-          <div class="formInputNames">Purchase closing costs</div>
-          $<input type="number" class="normalTextbox"></input>
+          <div class="formInputNames">Purchase price</div>$
+          <input type="number" class="normalTextbox"></input>
+          <div class="formInputNames">Purchase closing costs</div>$
+          <input type="number" class="normalTextbox"></input>
           <br></br>
-          <input type="checkbox" class="normalInput"></input> This is a rehab<br></br>
-          <div class="formInputNames">After repair value (ARV)</div>
-          $<input type="number" class="normalTextbox"></input>
+          <input type="checkbox" class="normalInput"></input> This is a rehab
           <br></br>
-          <div class="formInputNames">Repair costs</div>
-          $<input type="number" class="normalTextbox"></input>
+          <div class="formInputNames">After repair value (ARV)</div>$
+          <input type="number" class="normalTextbox"></input>
+          <br></br>
+          <div class="formInputNames">Repair costs</div>$
+          <input type="number" class="normalTextbox"></input>
         </form>
       </div>
     </div>
-  )
+  );
 };
+
+
 
 const HelpBox = () => {
   return (
@@ -126,7 +133,7 @@ const NextButton = () => {
   );
 };
 const FormNav = () => {
-  return(
+  return (
     <div>
       <button class="formNavButton">1</button>
       <button class="formNavButton">2</button>
@@ -134,9 +141,19 @@ const FormNav = () => {
       <button class="formNavButton">4</button>
       <button class="formNavButton">5</button>
     </div>
-  )
+  );
 };
 
+const Backbutton = () => {
+  return (
+    <div>
+      <Link to="/signedIn" className="buttonStart">
+        {" "}
+        Back{" "}
+      </Link>
+    </div>
+  );
+};
 export default PIPage;
 //   ReactDOM.render(
 //     // <React.StrictMode>
