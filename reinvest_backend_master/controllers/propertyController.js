@@ -20,6 +20,25 @@ export const getProperties = async (req,res) =>{
   })
 }
 
+export const fetchImage = (req,res) =>{
+  verifyToken(req,res,(token) =>{
+    res.json({img: {
+      data: fs.readFileSync(path.resolve(__dirname,'../uploads/'+req.file.filename)),
+      contentType: req.file.mimetype
+    }});
+    const directory = path.resolve(__dirname,'../uploads/');
+      fs.readdir(directory, (err, files) => {
+        if (err) throw err;
+      
+        for (const file of files) {
+          fs.unlink(path.join(directory, file), err => {
+            if (err) throw err;
+          });
+        }
+        console.log('Directory Cleared');
+      });
+  })
+}
 
 export const registerProperty = (req,res) =>{
   verifyToken(req,res, (token) => {
