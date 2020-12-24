@@ -19,5 +19,9 @@ export const propertySchema = new mongoose.Schema({
   ownerID:{
     type: String,
     required:true
+  },
+  img:{
+    data: Buffer,
+    contentType: String,
   }
 })
