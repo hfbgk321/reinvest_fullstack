@@ -21,7 +21,6 @@ export const getProperties = async (req,res) =>{
 }
 
 export const fetchImage = (req,res) =>{
-  verifyToken(req,res,(token) =>{
     res.json({img: {
       data: fs.readFileSync(path.resolve(__dirname,'../uploads/'+req.file.filename)),
       contentType: req.file.mimetype
@@ -37,7 +36,6 @@ export const fetchImage = (req,res) =>{
         }
         console.log('Directory Cleared');
       });
-  })
 }
 
 export const registerProperty = (req,res) =>{
