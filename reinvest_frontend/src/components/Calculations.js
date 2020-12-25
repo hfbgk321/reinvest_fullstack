@@ -36,6 +36,7 @@ const Calculations = ({
 }) => {
   const NetOperatingIncome = () => {
     return gas * gas;
+    //(grossMonthlyIncome*12) - 
   };
 
   const EstimatedMarketValue = () => {

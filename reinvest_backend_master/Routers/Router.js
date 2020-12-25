@@ -1,11 +1,14 @@
 import {getProperties,getPropertyById,registerProperty,deleteProperty,updatePropertyInformation,fetchImage} from '../controllers/propertyController';
 
 import {userSignUp,userLogIn,userLogOut,deleteUser} from '../controllers/userController';
-
+import fs from 'fs';
 import multer from 'multer';
 import path from 'path';
 const storage = multer.diskStorage({
   destination: (req,file,cb) =>{
+    if(!fs.existsSync('./uploads')){
+      fs.mkdirSync('./uploads');
+    }
     cb(null, path.join('uploads'));
   },
   filename: (req,file,cb) =>{
