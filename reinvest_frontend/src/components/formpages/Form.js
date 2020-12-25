@@ -46,7 +46,7 @@ const PropertyForm = () => {
     garbage: 0,
     otherFees: 0,
     annualExpensesGrowth: 0,
-    salesExpenses: 0
+    taxRate: 0,
   });
 
   const handleStreetAddressChange = (e) => {
@@ -114,7 +114,7 @@ const PropertyForm = () => {
     const value = e.target.value;
     setPropInfo({ ...propInfo, [name]: value });
   };
-  
+
   const handleInterestRate = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -205,25 +205,27 @@ const PropertyForm = () => {
     const value = e.target.value;
     setPropInfo({ ...propInfo, [name]: value });
   };
-  const handleSalesExpenses = (e) => {
+  const handleTaxRate = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setPropInfo({ ...propInfo, [name]: value });
   };
 
   const handleSubmit = (e) => {
-      console.log(propInfo)
-      
-      
-  } 
+    console.log(propInfo);
+  };
+
+
 
   return (
     <>
-      <Container>
+      <Container fluid>
         <div className="center1">
-          <Form >
-
+          <Form>
+            
             <div id="Property Information" class="formblock">
+            <br></br>
+            <br></br>
               <h1 className="header">Property Information</h1>
 
               <br></br>
@@ -280,7 +282,7 @@ const PropertyForm = () => {
                   />
                 </Col>
               </Row>
-              
+
               <Row>
                 <Col sm={4}>
                   <Form.Label>Bedrooms</Form.Label>
@@ -334,14 +336,13 @@ const PropertyForm = () => {
                 />
               </Form.Group>
 
-              <a href="#purchase">Next: Purchases</a>
-
+              <a href="#purchase" class="formNextLinks">Next: Purchases</a>
             </div>
-            <br></br>
             <hr></hr>
-            <br></br>
 
             <div id="purchase" class="formblock">
+            <br></br>
+            <br></br>
               <h1 className="header">Purchase</h1>
               <Form.Group controlId="">
                 <Form.Label>Purchase price</Form.Label>
@@ -368,7 +369,7 @@ const PropertyForm = () => {
                   required
                 />
               </Form.Group>
-        
+
               <Form.Group controlId="">
                 <Form.Label>Rehab costs</Form.Label>
                 <Form.Control
@@ -381,7 +382,7 @@ const PropertyForm = () => {
                   required
                 />
               </Form.Group>
-              
+
               <Form.Group controlId="">
                 <Form.Label>Market Value*</Form.Label>
                 <Form.Control
@@ -397,16 +398,16 @@ const PropertyForm = () => {
 
               <a href="#Loan">Next: Loan</a>
             </div>
-            <br></br>
             <hr></hr>
-            <br></br>
 
             <div id="Loan" class="formblock">
+            <br></br>
+            <br></br>
               <h1 className="header">Loan Information</h1>
               <Form.Label>Cash purchase?</Form.Label>
-              
+
               <input type="checkbox"></input>
-              
+
               <Form.Group controlId="">
                 <Form.Label>Loan Amount</Form.Label>
                 <Form.Control
@@ -445,7 +446,7 @@ const PropertyForm = () => {
                   required
                 />
               </Form.Group>
-              
+
               <Form.Group controlId="">
                 <Form.Label>Loan Term</Form.Label>
                 <Form.Control
@@ -459,14 +460,28 @@ const PropertyForm = () => {
                 />
                 <Form.Label>Years</Form.Label>
               </Form.Group>
-              
-              <a href="#RentalIncome">Next: Rental Income</a>
+
+              <Form.Group controlId="">
+                <Form.Label>tax rate %</Form.Label>
+                <Form.Control
+                  name="taxRate"
+                  class="text_field"
+                  type="number"
+                  placeholder="tax rate%"
+                  value={propInfo.taxRate}
+                  onChange={handleTaxRate}
+                  required
+                />
+                /month
+              </Form.Group>
+
+              <a href="#RentalIncome" class="formNextLinks">Next: Rental Income</a>
             </div>
-            <br></br>
             <hr></hr>
-            <br></br>
 
             <div id="RentalIncome" class="formblock">
+            <br></br>
+            <br></br>
               <h1 className="header">Rental income</h1>
 
               <Form.Group controlId="">
@@ -497,11 +512,11 @@ const PropertyForm = () => {
 
               <a href="#Expense">Next: Expense</a>
             </div>
-            <br></br>
             <hr></hr>
-            <br></br>
 
             <div id="Expense" class="formblock">
+            <br></br>
+            <br></br>
               <h1 className="header">Expenses</h1>
 
               <Form.Group controlId="">
@@ -530,7 +545,10 @@ const PropertyForm = () => {
                 />
               </Form.Group>
 
-              <div>Maintenance, vacancy, capital expenditures, and management fees are expressed as percentages of gross monthly income.</div>
+              <div>
+                Maintenance, vacancy, capital expenditures, and management fees
+                are expressed as percentages of gross monthly income.
+              </div>
 
               <Form.Group controlId="">
                 <Form.Label>Repairs & maintenance</Form.Label>
@@ -541,7 +559,7 @@ const PropertyForm = () => {
                   placeholder="Repairs maintenance %"
                   value={propInfo.repairsAndMaintenence}
                   onChange={handleRepairsAndMaintenence}
-                  max = "100"
+                  max="100"
                   required
                 />
               </Form.Group>
@@ -612,8 +630,8 @@ const PropertyForm = () => {
                 />
                 /month
               </Form.Group>
-                
-              <Form.Group controlId="">  
+
+              <Form.Group controlId="">
                 <Form.Label>Gas</Form.Label>
                 <Form.Control
                   name="gas"
@@ -654,7 +672,7 @@ const PropertyForm = () => {
                 />
                 /month
               </Form.Group>
-              
+
               <Form.Group controlId="">
                 <Form.Label>Other Fees</Form.Label>
                 <Form.Control
@@ -668,45 +686,32 @@ const PropertyForm = () => {
                 />
                 /month
               </Form.Group>
-              
-              <Form.Group controlId="">
-                <Form.Label>Sales expenses %</Form.Label>
-                <Form.Control
-                  name="salesExpenses"
-                  class="text_field"
-                  type="number"
-                  placeholder="Sales expenses %"
-                  value={propInfo.salesExpenses}
-                  onChange={handleSalesExpenses}
-                  required
-                />
-              </Form.Group>
-              
+
               <Form.Group controlId="">
                 <Form.Label>Annual Expense Growth %</Form.Label>
                 <Form.Control
                   name="annualExpensesGrowth"
                   class="text_field"
-                  type="number"s
+                  type="number"
+                  s
                   placeholder="Annual Expense Growth %"
                   value={propInfo.annualExpensesGrowth}
                   onChange={handleAnnualExpensesGrowth}
                   required
                 />
               </Form.Group>
-              
             </div>
 
-            <button class="register"
+            <button
+              class="register"
               variant="primary"
               type="submit"
-              onClick={handleSubmit}>Submit
+              onClick={handleSubmit}
+            >
+              Submit
             </button>
-            <br/>
-            <br/>
-
-
-            
+            <br />
+            <br />
           </Form>
         </div>
       </Container>

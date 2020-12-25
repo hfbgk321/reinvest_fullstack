@@ -1,106 +1,44 @@
-body {
-    height: 100%;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+
+
+
+
   
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-      monospace;
+  .form-sidebar-nav {
+    float: right;
+    border-style: solid;
+    top:0.25rem;
   }
-  
-  .piinput {
-    width: 100%;
-    height: 30px;
-    margin: 10px;
-    margin-right: 20px;
-    background-color: #d7d3d3;
-    border: none;
-    max-width: 650px;
+
+  .formpage-sidebar-container {
+    overflow: unset;
+    position: -webkit-sticky;
+    
+    
+    float: left;
+    width: 35%;
   }
-  textarea {
-    width: 50%;
-    height: 30%;
-    background-color: #d7d3d3;
-    border: none;
+
+  .formpage-form-container {
+    float: right;
+    width: 65%;
   }
-  
-  article {
-    font-size: 0; /*fix white space*/
-    width: 100%;
+
+  .buttonForUploadImage {
+    font-size: 100%;
+    background: #ca2b69;
+    color: white;
+    border-radius: 10%;
+    width: 70%;
   }
-  article > section {
-    font-size: 16px;
-    display: inline-block;
-    /* border: 1px outset black; */
-    box-sizing: border-box;
-    margin-right: 20px;
-  }
-  .formBoxbox {
-    border-radius: 5px;
-    background-color: #d7d3d3;
-    padding: 20px;
-  }
-  .formBox {
-    font-family: "Roboto";
-    border-radius: 5px;
-    background-color: #ffffff;
-    padding: 20px;
-    height: 90vh;
-  }
-  .formSection {
-    width: 80%;
-    height: 100%;
-  }
+
   .formNavButton {
-    background-color: aliceblue;
-    width: 43px;
-    height: 43px;
-    text-align: center;
-    font-size: 28px;
-    border-radius: 50%;
-    outline: none;
-  }
-  .formTitle {
-    font-size: 40px;
-    text-decoration: underline;
-  }
-  .formInputNames {
-    font-size: 20px;
-  }
-  
-  .nextButton {
-    width: 200px;
-    background-color: #ca2b69;
-    text-align: center;
-    font-size: 28px;
-    padding: 0;
-    border-radius: 10px;
-    outline: none;
-    margin-top: 30px;
-  }
-  
-  .helpBox {
-    border: 5px outset #ca2b69;
-    background-color: #ca2b69;
-    text-align: center;
-    font-size: 30;
-    border-radius: 10px;
-    width: 200px;
-    height: 250px;
-    margin-top: 15px;
-  }
-  
-  .normalTextbox {
     width: 100%;
-    height: 30px;
-    margin: 10px;
-    margin-right: 20px;
-    background-color: #d7d3d3;
-    border: none;
-    max-width: 150px;
   }
+
+.formNextLinks {
+  background-color: gray !important;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+}

@@ -46,11 +46,32 @@ const ControlledInputslogin = () => {
     setPerson({ ...person, password: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     console.log(person);
     e.preventDefault();
+
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json')
+    headers.append('Access-Control-Allow-Origin', 'http://localhost:4000/')
+    
+    
+
+    let response = await fetch('http://localhost:4000/api/user/signin', {
+      method: 'post',
+      credentials: 'include',
+      headers: headers,
+      body: {...person} 
+    });
+
+    let data = await response.json();
+    console.log(data);
+    
+    /*window.location = "http://localhost:3000/signedIn";
+
+
     axios
-      .post("http://localhost:4000/api/user/signin", { ...person })
+      .post("http://localhost:4000/api/user/signin", { ...person },{ withCredentials: true})
       .then((res) => {
         console.log(res);
         console.log(res.data);
@@ -58,7 +79,7 @@ const ControlledInputslogin = () => {
       })
       .catch((err) => {
         console.log(err + " not signed in hahahahahahahahahaah ");
-      });
+      });*/
   };
 
   return (

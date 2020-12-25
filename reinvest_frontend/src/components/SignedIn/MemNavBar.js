@@ -2,8 +2,22 @@ import React from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { BrowserRouter, Route, Switch, Link as Router } from "react-router-dom";
+import axios from 'axios'
 
 function MemNavB() {
+  const handleClick = (e) => {
+    axios
+      .get("http://localhost:4000/api/user/signout")
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        window.location = "http://localhost:3000/";
+      })
+      .catch((err) => {
+        console.log(err + " not signed out ");
+      });
+  }
+
   return (
     <>
       <div>
@@ -28,12 +42,7 @@ function MemNavB() {
               <Nav.Link eventKey={2} href="/signedIn" style={{ color: "#CA2B69" }}>
                 Notifications
               </Nav.Link>
-              <Nav.Link
-                style={{ background: "none" }}
-                eventKey={2}
-                href="/"
-                style={{ color: "#CA2B69" }}
-              >
+              <Nav.Link onClick={handleClick} eventKey={2} style={{ color: "#CA2B69" }}>
                 Sign Out
               </Nav.Link>
             </Nav>
