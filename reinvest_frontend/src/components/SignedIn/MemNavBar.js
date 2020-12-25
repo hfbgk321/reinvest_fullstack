@@ -7,7 +7,7 @@ import axios from 'axios'
 function MemNavB() {
   const handleClick = (e) => {
     axios
-      .get("http://localhost:4000/api/user/signout")
+      .get("http://localhost:4000/api/user/signout",{withCredentials:true})
       .then((res) => {
         console.log(res);
         console.log(res.data);

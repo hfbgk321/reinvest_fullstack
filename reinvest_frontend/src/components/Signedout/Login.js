@@ -20,66 +20,30 @@ import axios from "axios";
 // value, onChange
 
 const ControlledInputslogin = () => {
-  const [person, setPerson] = useState({ email: "", password: "" });
-
-  //   const handleFirstNameChange = (e) => {
-  //     const name = e.target.name;
-  //     const value = e.target.value;
-  //     setPerson({...person, firstName: value });
-  //   };
-
-  //   const handleLastNameChange = (e) => {
-  //     const name = e.target.name;
-  //     const value = e.target.value;
-  //     setPerson({...person, lastName: value });
-  //   };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
 
   const handleEmailChange = (e) => {
-    const name = e.target.value;
-    const value = e.target.value;
-    setPerson({ ...person, email: value });
+    console.log(e.target.value);
+    setEmail(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setPerson({ ...person, password: value });
+    console.log(e.target.value)
+    setPassword(e.target.value);
   };
 
   const handleSubmit = async (e) => {
-    console.log(person);
     e.preventDefault();
-
-    var headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Accept', 'application/json')
-    headers.append('Access-Control-Allow-Origin', 'http://localhost:4000/')
-    
-    
-
-    let response = await fetch('http://localhost:4000/api/user/signin', {
-      method: 'post',
-      credentials: 'include',
-      headers: headers,
-      body: {...person} 
-    });
-
-    let data = await response.json();
-    console.log(data);
-    
-    /*window.location = "http://localhost:3000/signedIn";
-
-
-    axios
-      .post("http://localhost:4000/api/user/signin", { ...person },{ withCredentials: true})
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-        window.location = "http://localhost:3000/signedIn";
-      })
-      .catch((err) => {
-        console.log(err + " not signed in hahahahahahahahahaah ");
-      });*/
+    //axios.defaults.withCredentials = true;
+    axios.post('http://localhost:4000/api/user/signin',
+    {email,password},{withCredentials:true}).then(res =>{
+      console.log(res);
+      window.location = 'http://localhost:3000/signedIn'
+    }).catch(err =>{
+      console.log(err);
+    })
   };
 
   return (
@@ -96,7 +60,7 @@ const ControlledInputslogin = () => {
                 class="text_field"
                 type="email"
                 placeholder="Enter your email"
-                value={person.email}
+                value={email}
                 onChange={handleEmailChange}
                 required
               />
@@ -108,7 +72,7 @@ const ControlledInputslogin = () => {
                 class="text_field"
                 type="password"
                 placeholder="Enter your password"
-                value={person.password}
+                value={password}
                 onChange={handlePasswordChange}
                 required
               />
