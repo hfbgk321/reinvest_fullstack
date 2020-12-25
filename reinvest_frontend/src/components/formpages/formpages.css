@@ -1,11 +1,12 @@
 
+body{
+  background: #f1f5f8;
+}
 
-
-
-  
   .form-sidebar-nav {
     float: right;
     border-style: solid;
+    border-color: thistle;
     top:0.25rem;
   }
 
@@ -25,10 +26,10 @@
 
   .buttonForUploadImage {
     font-size: 100%;
-    background: #ca2b69;
+    background: gray;
     color: white;
     border-radius: 10%;
-    width: 70%;
+    width: 100%;
   }
 
   .formNavButton {
@@ -36,9 +37,6 @@
     width: 100%;
   }
 
-  .formNextLinks1 {
-    text-align: left;
-  }
   .formNextLinks {
     background-color: gray !important;
     color: white;

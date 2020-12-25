@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './formpages.css';
 import StickyBox from "react-sticky-box"
 
+
 import {
     Container,
     Row,
@@ -44,7 +45,7 @@ const FormImage = () => {
   
     return (
       <div>
-        <img src ={file} width="80%" height="80%"/>
+        <img src ={file} width="100%" height="100%"/>
         <br/>
         <button onClick={handleClick} className="buttonForUploadImage">Upload Image</button>
         <input id='selectImage' type="file" onChange = {fileOnChange} accept = "image/png,image/jpg,image/jpeg" style={{display:'none'}}/>
@@ -92,7 +93,7 @@ function FormSideBar() {
     return ( 
         <>
         
-            <StickyBox offsetTop={100} offsetBottom={20} style={{border: "3px solid green"}}>
+            <StickyBox offsetTop={100} offsetBottom={20}>
             <div class = "form-sidebar-nav">
             
                 <FormImage/>

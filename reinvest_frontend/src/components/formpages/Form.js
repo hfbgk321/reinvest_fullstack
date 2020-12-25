@@ -29,7 +29,6 @@ const PropertyForm = () => {
     marketValue: 0,
     loanAmount: 0,
     interestRate: 0,
-    pointsCharged: 0,
     loanTerms: 0,
     grossMonthlyIncome: 0,
     annualIncomeGrowth: 0,
@@ -47,6 +46,20 @@ const PropertyForm = () => {
     otherFees: 0,
     annualExpensesGrowth: 0,
     taxRate: 0,
+    monthlyIncome: 0,
+    monthlyFixedMorgage: 0,
+    monthlyCashFlow: 0,
+    netOperatingIncome: 0,
+    cashOnCash: 0,
+    rentToCost: 0,
+    estimatedMarketValue: 0,
+    totalDebtService: 0,
+    debtTocoverage: 0,
+    onePercentRule: 0,
+    priceToRent: 0,
+    grossRentMultiplier: 0,
+    netIncomeAfterFinancing: 0,
+    roi: 0
   });
 
   const handleStreetAddressChange = (e) => {
@@ -116,11 +129,6 @@ const PropertyForm = () => {
   };
 
   const handleInterestRate = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setPropInfo({ ...propInfo, [name]: value });
-  };
-  const handlePointsCharged = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setPropInfo({ ...propInfo, [name]: value });
@@ -212,9 +220,109 @@ const PropertyForm = () => {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     console.log(propInfo);
-  };
+    const MonthlyIncome = () => {
+      setPropInfo({ ...propInfo, monthlyIncome: grossMonthlyIncome});
+      return propInfo.grossMonthlyIncome;
+    };
+    const MonthlyFixedMorgage = () => {
+      let n = propInfo.loanTerms * 12; //periods
+      let P = propInfo.loanAmount; //principle
+      let r = 12 * propInfo.interestRate; //monthlyInterest
+      let result = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+      setPropInfo({ ...propInfo, monthlyFixedMorgage: result});
+      return result;
+    };
+    const MonthlyCashFlow = () => {
+      let result = NetOperatingIncome() / 12 - MonthlyFixedMorgage();
+      setPropInfo({ ...propInfo, monthlyCashFlow: result});
+      return result;
+    };
+    const NetOperatingIncome = () => {
+      let result = (propInfo.grossMonthlyIncome -
+        propInfo.insurance / 12 -
+        propInfo.otherFees -
+        propInfo.hoaFees -
+        propInfo.propertyTaxes / 12 -
+        propInfo.managementFees -
+        propInfo.repairsAndMaintenence -
+        propInfo.capitalExpenditures -
+        propInfo.electricity -
+        propInfo.gas -
+        propInfo.garbage -
+        propInfo.waterAndSewer) *
+      12 *
+      (1 - propInfo.vacancy / 100);
+      setPropInfo({ ...propInfo, netOperatingIncome: result});
+      return result;
+    };
 
+    const CapitalizationRate = () => {
+      let result = NetOperatingIncome() / (propInfo.purchasePrice + propInfo.rehabCosts);
+      setPropInfo({ ...propInfo, capitalizationRate: result});
+      return result;
+    };
+
+    const CashOnCash = () => {
+      let result = (MonthlyCashFlow() * 12) / (propInfo.purchasePrice - 
+        propInfo.loanAmount + propInfo.rehabCosts + propInfo.purchaseClosingCosts);
+      setPropInfo({ ...propInfo, cashOnCash: result});
+      return result;
+    };
+
+    const RentToCost = () => {
+      let result = MonthlyCashFlow() / propInfo.purchasePrice;
+      setPropInfo({ ...propInfo, rentToCost: result});
+      return result;
+    };
+    const EstimatedMarketValue = () => {
+      let result = NetOperatingIncome() / CapitalizationRate();
+      setPropInfo({ ...propInfo, estimatedMarketValue: result});
+      return result;
+    };
+    const totalDebtService = () => {
+      let result = propInfo.interestRate * (1 - propInfo.taxRate) + propInfo.loanAmount;
+      setPropInfo({ ...propInfo, totalDebtService: result});
+      return result;
+    };
+    const debtToCoverage = () => {
+      let result = NetOperatingIncome() / totalDebtService();
+      setPropInfo({ ...propInfo, debtToCoverage: result});
+      return result;
+    };
+    const onePercentRule = () => {
+      let result = (propInfo.grossMonthlyIncome)/ (propInfo.purchasePrice + propInfo.rehabCosts);
+      setPropInfo({ ...propInfo, onePercentRule: result});
+      return result;
+    };
+
+    const priceToRent = () => {
+      let result = propInfo.purchasePrice / (propInfo.grossMonthlyIncome * 12);
+      setPropInfo({ ...propInfo, priceToRent: result});
+      return result;
+    };
+    const grossRentMultiplier = () => {
+      let result = propInfo.marketValue / (propInfo.grossMonthlyIncome * 12);
+      setPropInfo({ ...propInfo, grossRentMultiplier: result});
+      return result;
+    };
+
+    const NetIncomeAfterFinancing = () => {
+      let result = NetOperatingIncome() - MonthlyFixedMorgage();
+      setPropInfo({ ...propInfo, netIncomeAfterFinancing: result});
+      return result;
+    }
+    
+    const ROI = () => {
+      let totalInitalInvestment = propInfo.purchasePrice + propInfo.rehabCosts;
+      let newProfits = MonthlyCashFlow() * 12 * Math.abs(propInfo.annualIncomeGrowth-propInfo.annualExpensesGrowth)/100; 
+      let result = newProfits/totalInitalInvestment;
+      setPropInfo({ ...propInfo, roi: result});
+      return result;
+    } 
+    
+  };
 
 
   return (
@@ -430,19 +538,6 @@ const PropertyForm = () => {
                   placeholder="InterestRate  %"
                   value={propInfo.interestRate}
                   onChange={handleInterestRate}
-                  required
-                />
-              </Form.Group>
-
-              <Form.Group controlId="">
-                <Form.Label>Points Charged</Form.Label>
-                <Form.Control
-                  name="pointsCharged"
-                  class="text_field"
-                  type="number"
-                  placeholder="0"
-                  value={propInfo.pointsCharged}
-                  onChange={handlePointsCharged}
                   required
                 />
               </Form.Group>

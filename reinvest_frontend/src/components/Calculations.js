@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 //insurance and property tax
 
-const Calculations = ({
+const Calculations =  ({
   streetAddress,
   city,
   state,
@@ -16,7 +16,6 @@ const Calculations = ({
   marketValue,
   loanAmount,
   interestRate,
-  pointsCharged,
   loanTerms,
   grossMonthlyIncome,
   annualIncomeGrowth,
@@ -35,7 +34,7 @@ const Calculations = ({
   annualExpensesGrowth,
   taxRate
   }) => {
-    const MontlyIncome = () => {
+    const MonthlyIncome = () => {
       return grossMonthlyIncome;
     };
     const MonthlyFixedMorgage = () => {
@@ -60,6 +59,7 @@ const Calculations = ({
           capitalExpenditures -
           electricity -
           gas -
+          garbage -
           waterAndSewer) *
         12 *
         (1 - vacancy / 100)
@@ -83,9 +83,11 @@ const Calculations = ({
     const totalDebtService = () => {
       return interestRate * (1 - taxRate) + loanAmount;
     };
+
     const debtToCoverage = () => {
       return NetOperatingIncome() / totalDebtService();
     };
+
     const onePercentRule = () => {
       return (grossMonthlyIncome)/ (purchasePrice + rehabCosts);
     };
@@ -97,26 +99,34 @@ const Calculations = ({
       return marketValue / (grossMonthlyIncome * 12);
     };
 
-    // const equityBuildUpRate = () => {
-    //     let percent = loanAmount/purchasePrice;
-    // }
-
-    const Niaf = () => {
+    const NetIncomeAfterFinancing = () => {
         return NetOperatingIncome() - MonthlyFixedMorgage();
     }
     
     const ROI = () => {
         let totalInitalInvestment = purchasePrice + rehabCosts;
-        return MonthlyCashFlow() + annualIncomeGrowth + annualExpensesGrowth;
+        let newProfits = MonthlyCashFlow() * 12 * Math.abs(annualIncomeGrowth-annualExpensesGrowth)/100; 
+        return newProfits/totalInitalInvestment;
     } 
+    
+    const initialJson = {
+      monthlyIncome: MonthlyIncome(),
+      monthlyFixedMorgage: MonthlyFixedMorgage(),
+      monthlyCashFlow: MonthlyCashFlow(),
+      netOperatingIncome: NetOperatingIncome(),
+      cashOnCash: CashOnCash(),
+      rentToCost: RentToCost(),
+      estimatedMarketValue: EstimatedMarketValue(),
+      totalDebtService: totalDebtService(),
+      debtTocoverage: debtToCoverage(),
+      onePercentRule: onePercentRule(),
+      priceToRent: priceToRent(),
+      grossRentMultiplier: grossRentMultiplier(),
+      netIncomeAfterFinancing: NetIncomeAfterFinancing(),
+      roi: ROI(),
+    };
 
-    return 
-    <>
-      <h1>Monthly Income</h1>
-      <h1>Monthly Cash Flow</h1>
-      <h1>Cash on Cash </h1>
-      <h1>Monthly Income</h1>
-    </>;
-  };
+  }
+;
 
 export default Calculations;
