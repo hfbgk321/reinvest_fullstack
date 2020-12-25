@@ -16,6 +16,7 @@ export default function ImageComp2() {
     e.preventDefault();
     const formData = new FormData();
     formData.append("image", image.raw);
+    console.log(formData);
 
     await fetch("http://localhost:4000/img_fetch", {
       method: "POST",
