@@ -15,14 +15,13 @@ const storage = multer.diskStorage({
 
 var uploads = multer({
   storage:storage,
-  fileFilter: (req, file, cb) =>{
-    if(file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg"){
-      cb(null,true);
-    }else{
-      cb(null,false);
-      return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
-    }
-  }
+  // fileFilter: (req, file, cb) =>{
+  //   if(file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg"){
+  //     cb(null,true);
+  //   }else
+  //     cb(null,false);
+  //     return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
+  //   }
 });
 
 export const Routes = (app) => {
@@ -41,7 +40,7 @@ export const Routes = (app) => {
   app.post('/api/user/signup',uploads.none(),userSignUp);
   //app.route('/api/user/signup').post(userSignUp);
   app.post('/api/user/signin',uploads.none(),userLogIn);
-  
+
   app.route('/api/user/signout').get(userLogOut);
   app.route('/api/user/delete').delete(deleteUser);
 }

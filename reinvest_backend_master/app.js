@@ -12,7 +12,9 @@ const uri = process.env.ATLAS_URI;
 
 const app = express();
 var cookies = require("cookie-parser");
+
 app.use('/',express.static(__dirname));
+
 app.use(cookies());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 
 import fs from 'fs';
 import path from 'path';
+import multer from 'multer';
 
 
 
@@ -20,11 +21,17 @@ export const getProperties = async (req,res) =>{
   })
 }
 
-export const fetchImage = (req,res) =>{
-    res.json({img: {
+export const fetchImage = (req,res,err) =>{
+  
+  if(req.file.mimetype != "image/png" && req.file.mimetype != "image/jpg" && req.file.mimetype != "image/jpeg"){
+    return res.json({error: 'Only .png, .jpg and .jpeg format allowed!'})
+  }
+  
+  res.json({filename: {
       data: fs.readFileSync(path.resolve(__dirname,'../uploads/'+req.file.filename)),
       contentType: req.file.mimetype
     }});
+    
     const directory = path.resolve(__dirname,'../uploads/');
       fs.readdir(directory, (err, files) => {
         if (err) throw err;
@@ -36,10 +43,15 @@ export const fetchImage = (req,res) =>{
         }
         console.log('Directory Cleared');
       });
+    console.log(req.file);
 }
 
 export const registerProperty = (req,res) =>{
   verifyToken(req,res, (token) => {
+    if(req.file.mimetype != "image/png" && req.file.mimetype != "image/jpg" && req.file.mimetype != "image/jpeg"){
+      return res.json({error: 'Only .png, .jpg and .jpeg format allowed!'})
+    }
+    
     console.log(req.body);
     const newProperty = new Property({
       streetAddress: req.body.streetAddress,
