@@ -2,10 +2,11 @@ import React, { useState } from "react";
 
 export default function ImageComp2() {
   const [image,setImage] = useState({});
+  const [file,setFile] = useState(null);
 
   const fileOnChange = (event) =>{
     setImage(event.target.files[0]);
-
+    setFile(URL.createObjectURL(event.target.files[0]))
   }
 
   const sendImage = async (event) =>{
@@ -16,7 +17,7 @@ export default function ImageComp2() {
       method:"post",
       body: formData
     })
-    
+
       let data = await response.json();
       console.log(data);
     
@@ -25,8 +26,9 @@ export default function ImageComp2() {
 
   return (
     <div>
-      <input type="file" onChange = {fileOnChange}/>
+      <input type="file" onChange = {fileOnChange} accept = "image/png,image/jpg,image/jpeg"/>
       <button onClick ={sendImage}>Upload</button>
+      <img src ={file}/>
     </div>
   );
 }

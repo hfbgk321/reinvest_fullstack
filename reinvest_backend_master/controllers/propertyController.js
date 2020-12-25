@@ -24,6 +24,16 @@ export const getProperties = async (req,res) =>{
 export const fetchImage = (req,res,err) =>{
   
   if(req.file.mimetype != "image/png" && req.file.mimetype != "image/jpg" && req.file.mimetype != "image/jpeg"){
+    const directory = path.resolve(__dirname,'../uploads/');
+      fs.readdir(directory, (err, files) => {
+        if (err) throw err;
+      
+        for (const file of files) {
+          fs.unlink(path.join(directory, file), err => {
+            if (err) throw err;
+          });
+        }
+      });
     return res.json({error: 'Only .png, .jpg and .jpeg format allowed!'})
   }
   
@@ -49,9 +59,19 @@ export const fetchImage = (req,res,err) =>{
 export const registerProperty = (req,res) =>{
   verifyToken(req,res, (token) => {
     if(req.file.mimetype != "image/png" && req.file.mimetype != "image/jpg" && req.file.mimetype != "image/jpeg"){
+      const directory = path.resolve(__dirname,'../uploads/');
+      fs.readdir(directory, (err, files) => {
+        if (err) throw err;
+      
+        for (const file of files) {
+          fs.unlink(path.join(directory, file), err => {
+            if (err) throw err;
+          });
+        }
+      });
       return res.json({error: 'Only .png, .jpg and .jpeg format allowed!'})
     }
-    
+
     console.log(req.body);
     const newProperty = new Property({
       streetAddress: req.body.streetAddress,
