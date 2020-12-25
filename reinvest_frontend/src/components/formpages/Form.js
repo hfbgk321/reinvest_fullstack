@@ -8,7 +8,6 @@ import {
   FormGroup,
   Button,
 } from "react-bootstrap";
-import ImageForm from "./imageForm";
 import "./Form.css";
 import { Route, Link, BrowserRouter, Redirect } from "react-router-dom";
 
