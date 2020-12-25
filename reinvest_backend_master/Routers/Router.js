@@ -1,4 +1,4 @@
-import {getProperties,getPropertyById,registerProperty,deleteProperty,updatePropertyInformation,fetchImage} from '../controllers/propertyController';
+import {getProperties,getPropertyById,registerProperty,deleteProperty,updatePropertyInformation} from '../controllers/propertyController';
 
 import {userSignUp,userLogIn,userLogOut,deleteUser} from '../controllers/userController';
 import fs from 'fs';
@@ -33,8 +33,6 @@ export const Routes = (app) => {
   app.route('/properties/:id').get(getPropertyById);
 
   app.post('/properties',uploads.single('image'),registerProperty);
-
-  app.post('/img_fetch',uploads.single('image'),fetchImage);
 
   app.route('/properties/:id').delete(deleteProperty);
 

@@ -4,8 +4,6 @@ import mongoose from 'mongoose';
 
 import fs from 'fs';
 import path from 'path';
-import multer from 'multer';
-
 
 
 const Property = mongoose.model("Property",propertySchema);
@@ -21,43 +19,18 @@ export const getProperties = async (req,res) =>{
   })
 }
 
-export const fetchImage = (req,res,err) =>{
-  
-  if(req.file.mimetype != "image/png" && req.file.mimetype != "image/jpg" && req.file.mimetype != "image/jpeg"){
-    const directory = path.resolve(__dirname,'../uploads/');
-      fs.readdir(directory, (err, files) => {
-        if (err) throw err;
-      
-        for (const file of files) {
-          fs.unlink(path.join(directory, file), err => {
-            if (err) throw err;
-          });
-        }
-      });
-    return res.json({error: 'Only .png, .jpg and .jpeg format allowed!'})
-  }
-  
-  res.json({filename: {
-      data: fs.readFileSync(path.resolve(__dirname,'../uploads/'+req.file.filename)),
-      contentType: req.file.mimetype
-    }});
-    
-    const directory = path.resolve(__dirname,'../uploads/');
-      fs.readdir(directory, (err, files) => {
-        if (err) throw err;
-      
-        for (const file of files) {
-          fs.unlink(path.join(directory, file), err => {
-            if (err) throw err;
-          });
-        }
-        console.log('Directory Cleared');
-      });
-    console.log(req.file);
-}
-
 export const registerProperty = (req,res) =>{
   verifyToken(req,res, (token) => {
+    console.log(req.body);
+    if(req.file == undefined) {
+      Property.create(req.body,(err,property)=>{
+        if(err){
+          res.json({message: err})
+        }
+        res.json(property);
+      })
+    };
+    
     if(req.file.mimetype != "image/png" && req.file.mimetype != "image/jpg" && req.file.mimetype != "image/jpeg"){
       const directory = path.resolve(__dirname,'../uploads/');
       fs.readdir(directory, (err, files) => {
@@ -72,17 +45,14 @@ export const registerProperty = (req,res) =>{
       return res.json({error: 'Only .png, .jpg and .jpeg format allowed!'})
     }
 
-    console.log(req.body);
+    
     const newProperty = new Property({
-      streetAddress: req.body.streetAddress,
-      city: req.body.city,
-      state: req.body.state,
-      zipCode: req.body.zipCode,
-      ownerID: token,
       img:{
         data: fs.readFileSync(path.resolve(__dirname,'../uploads/'+req.file.filename)),
         contentType: req.file.mimetype
-      }
+      },
+      ownerID: token,
+      ...req.body      
     });
     
     Property.create(newProperty,(err,property) =>{
