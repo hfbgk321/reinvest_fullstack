@@ -396,7 +396,7 @@ const PropertyForm = () => {
                 />
               </Form.Group>
 
-              <a href="#Loan">Next: Loan</a>
+              <a href="#Loan" class="formNextLinks">Next: Loan</a>
             </div>
             <hr></hr>
 
@@ -510,7 +510,7 @@ const PropertyForm = () => {
                 />
               </Form.Group>
 
-              <a href="#Expense">Next: Expense</a>
+              <a href="#Expense" class="formNextLinks">Next: Expense</a>
             </div>
             <hr></hr>
 
