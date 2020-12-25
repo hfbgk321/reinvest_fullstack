@@ -28,7 +28,7 @@ export default function ImageComp2() {
     <div>
       <input type="file" onChange = {fileOnChange} accept = "image/png,image/jpg,image/jpeg"/>
       <button onClick ={sendImage}>Upload</button>
-      <img src ={file}/>
+      <img src ={file} alt="dummy" width="300" height="300"/>
     </div>
   );
 }

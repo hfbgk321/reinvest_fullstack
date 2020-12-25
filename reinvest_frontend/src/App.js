@@ -4,7 +4,6 @@ import signup from "./components/Signedout/Signup";
 import login from "./components/Signedout/Login";
 import HomePage from "./components/Signedout/homepage";
 import signedIn from "./components/SignedIn/signedIn";
-import PropInfo from "./components/formpages/propertyinfo";
 import ImageComp2 from "./components/formpages/ImageComp2";
 import formpage from "./components/formpages/Formpage";
 

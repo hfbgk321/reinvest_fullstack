@@ -1,4 +1,5 @@
 import React, { Component, useState } from "react";
+import Calculations from '../Calculations'
 // import { useWindowScroll} from "react-use";
 import {
   Container,
@@ -212,6 +213,8 @@ const PropertyForm = () => {
 
   const handleSubmit = (e) => {
       console.log(propInfo)
+      
+      
   } 
 
   return (

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 // import './formpages.css';
 import Form from "./Form";
 import MemNavB from '../SignedIn/MemNavBar'
+import FormSideBar from './FormSideBar'
 
 function Formpage() {
     return ( 
