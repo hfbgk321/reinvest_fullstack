@@ -32,14 +32,18 @@
   }
 
   .formNavButton {
+    text-align: left;
     width: 100%;
   }
 
-.formNextLinks {
-  background-color: gray !important;
-  color: white;
-  padding: 1em 1.5em;
-  text-decoration: none;
-  text-transform: uppercase;
-  float: right;
-}
+  .formNextLinks1 {
+    text-align: left;
+  }
+  .formNextLinks {
+    background-color: gray !important;
+    color: white;
+    padding: 1em 1.5em;
+    text-decoration: none;
+    text-transform: uppercase;
+    float: right;
+  }

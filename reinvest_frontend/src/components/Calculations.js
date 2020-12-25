@@ -97,20 +97,26 @@ const Calculations = ({
       return marketValue / (grossMonthlyIncome * 12);
     };
 
-    const equityBuildUpRate = () => {
-        let percent = loanAmount/purchasePrice;
-    }
+    // const equityBuildUpRate = () => {
+    //     let percent = loanAmount/purchasePrice;
+    // }
 
     const Niaf = () => {
         return NetOperatingIncome() - MonthlyFixedMorgage();
     }
     
-    // const ROI = () => {
-    //     let totalInitalInvestment = purchasePrice + rehabCosts;
-    //     return MonthlyCashFlow() + annualIncomeGrowth + annualExpensesGrowth;
-    // } 
+    const ROI = () => {
+        let totalInitalInvestment = purchasePrice + rehabCosts;
+        return MonthlyCashFlow() + annualIncomeGrowth + annualExpensesGrowth;
+    } 
 
-    return <></>;
+    return 
+    <>
+      <h1>Monthly Income</h1>
+      <h1>Monthly Cash Flow</h1>
+      <h1>Cash on Cash </h1>
+      <h1>Monthly Income</h1>
+    </>;
   };
 
 export default Calculations;
