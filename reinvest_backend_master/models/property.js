@@ -131,5 +131,61 @@ export const propertySchema = new mongoose.Schema({
   taxRate:{
     type: Number,
     required: true
-  }
+  },
+  monthlyIncome:{
+    type: Number,
+    required: true
+  },
+  monthlyFixedMorgage:{
+    type: Number,
+    required: true
+  },
+  monthlyCashFlow:{
+    type: Number,
+    required: true
+  },
+  netOperatingIncome:{
+    type: Number,
+    required: true
+  },
+  cashOnCash:{
+    type: Number,
+    required: true
+  },
+  rentToCost:{
+    type: Number,
+    required: true
+  },
+  estimatedMarketValue:{
+    type: Number,
+    required: true
+  },
+  totalDebtService:{
+    type: Number,
+    required: true
+  },
+  debtTocoverage:{
+    type: Number,
+    required: true
+  },
+  onePercentRule:{
+    type: Boolean,
+    required: true
+  },
+  priceToRent:{
+    type: Number,
+    required: true
+  },
+  grossRentMultiplier:{
+    type: Number,
+    required: true
+  },
+  netIncomeAfterFinancing:{
+    type: Number,
+    required: true
+  },
+  roi:{
+    type: Number,
+    required: true
+  },
 })
