@@ -37,6 +37,8 @@ export const userSignUp = async (req,res) =>{
 
 
 export const userLogIn = async (req, res) =>{
+  
+  //res.setHeader('Access-Control-Allow-Credentials', true);
   if(req.cookies.auth != null) return res.send({message: 'You are already logged in. Please Log out before signing in again.'})
   const {error} = loginValidation(req.body);
 

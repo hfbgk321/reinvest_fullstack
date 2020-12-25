@@ -34,9 +34,13 @@ mongoose
   });
 
 
-
+  var corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200,
+    credentials:true // some legacy browsers (IE11, various SmartTVs) choke on 204 
+  }
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(function (req, res, next) {
 
   // Website you wish to allow to connect
@@ -55,6 +59,7 @@ app.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });
+
 Routes(app);
 
 app.listen(port, () => {
