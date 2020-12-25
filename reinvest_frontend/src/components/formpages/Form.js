@@ -221,9 +221,8 @@ const PropertyForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(propInfo);
     const MonthlyIncome = () => {
-      setPropInfo({ ...propInfo, monthlyIncome: grossMonthlyIncome});
+      setPropInfo({ ...propInfo, monthlyIncome: propInfo.grossMonthlyIncome});
       return propInfo.grossMonthlyIncome;
     };
     const MonthlyFixedMorgage = () => {
@@ -321,7 +320,7 @@ const PropertyForm = () => {
       setPropInfo({ ...propInfo, roi: result});
       return result;
     } 
-    
+    console.log(propInfo);
   };
 
 
