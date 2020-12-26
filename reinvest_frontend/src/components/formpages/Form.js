@@ -360,6 +360,7 @@ const PropertyForm = () => {
     axios.post('http://localhost:4000/properties',
     {...propInfo},{withCredentials:true}).then(res =>{
       console.log(res);
+      
     }).catch(err =>{
       console.log(err);
     })
