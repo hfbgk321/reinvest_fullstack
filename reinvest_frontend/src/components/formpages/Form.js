@@ -13,9 +13,12 @@ import {
 } from "react-bootstrap";
 import "./Form.css";
 import { Route, Link, BrowserRouter, Redirect } from "react-router-dom";
+import Cookies from 'js-cookie';
+import axios from 'axios';
 
 const PropertyForm = () => {
   const [propInfo, setPropInfo] = useState({
+    auth: Cookies.get('auth'),
     streetAddress: "",
     city: "",
     state: "",
@@ -51,11 +54,12 @@ const PropertyForm = () => {
     monthlyFixedMorgage: 0,
     monthlyCashFlow: 0,
     netOperatingIncome: 0,
+    capitalizationRate: 0,
     cashOnCash: 0,
     rentToCost: 0,
     estimatedMarketValue: 0,
     totalDebtService: 0,
-    debtTocoverage: 0,
+    debtToCoverage: 0,
     onePercentRule: 0,
     priceToRent: 0,
     grossRentMultiplier: 0,
@@ -86,17 +90,17 @@ const PropertyForm = () => {
   };
   const handleBedroomsChange = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleBathroomsChange = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleSqFtChange = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleYearBuilt = (e) => {
@@ -106,212 +110,216 @@ const PropertyForm = () => {
   };
   const handlePurchasePrice = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handlePurchaseClosingCosts = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleRehabCosts = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handlePropertyGrowthValue = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleLoanAmount = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
-
   const handleInterestRate = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleLoanTerms = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleGrossMonthlyIncome = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleAnnualIncomeGrowth = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handlePropertyTaxes = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleInsurance = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleRepairsAndMaintenence = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleVacancy = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleCapitalExpenditures = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleManagementFees = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleElectricity = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleGas = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleWaterAndSewer = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleHoaFees = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleGarbage = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleOtherFees = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleAnnualExpensesGrowth = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
   const handleTaxRate = (e) => {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = parseFloat(e.target.value);
     setPropInfo({ ...propInfo, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const MonthlyIncome = () => {
-      setPropInfo({ ...propInfo, monthlyIncome: propInfo.grossMonthlyIncome});
+      propInfo.monthlyIncome = propInfo.grossMonthlyIncome;
       return propInfo.grossMonthlyIncome;
     };
     const MonthlyFixedMorgage = () => {
       let n = propInfo.loanTerms * 12; //periods
       let P = propInfo.loanAmount; //principle
-      let r = 12 * propInfo.interestRate; //monthlyInterest
+      let r = propInfo.interestRate/100; //monthlyInterest
       let result = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-      setPropInfo({ ...propInfo, monthlyFixedMorgage: result});
+      console.log(n + " " + P + " " + r + " " + (Math.pow(1+r, n) - 1));
+      propInfo.monthlyFixedMorgage = result;
       return result;
+      
     };
     const MonthlyCashFlow = () => {
-      let result = NetOperatingIncome() / 12 - MonthlyFixedMorgage();
-      setPropInfo({ ...propInfo, monthlyCashFlow: result});
+      let result = (NetOperatingIncome() / 12) - MonthlyFixedMorgage();
+      propInfo.monthlyCashFlow = result;
       return result;
     };
     const NetOperatingIncome = () => {
       let result = (propInfo.grossMonthlyIncome -
-        propInfo.insurance / 12 -
+        (propInfo.insurance / 12) -
         propInfo.otherFees -
         propInfo.hoaFees -
-        propInfo.propertyTaxes / 12 -
-        propInfo.managementFees -
-        propInfo.repairsAndMaintenence -
-        propInfo.capitalExpenditures -
+        (propInfo.propertyTaxes / 12) -
+        (propInfo.grossMonthlyIncome*(propInfo.managementFees/100)) -
+        (propInfo.grossMonthlyIncome*(propInfo.repairsAndMaintenence/100)) -
+        (propInfo.grossMonthlyIncome*(propInfo.capitalExpenditures/100)) -
         propInfo.electricity -
         propInfo.gas -
         propInfo.garbage -
-        propInfo.waterAndSewer) *
+        propInfo.waterAndSewer) * 
       12 *
-      (1 - propInfo.vacancy / 100);
-      setPropInfo({ ...propInfo, netOperatingIncome: result});
+      (1 - (propInfo.vacancy / 100));
+
+      propInfo.netOperatingIncome = result;
       return result;
     };
 
     const CapitalizationRate = () => {
-      let result = NetOperatingIncome() / (propInfo.purchasePrice + propInfo.rehabCosts);
-      setPropInfo({ ...propInfo, capitalizationRate: result});
+      let result =  propInfo.netOperatingIncome / (propInfo.purchasePrice + propInfo.rehabCosts);
+      console.log(propInfo.purchasePrice + propInfo.rehabCosts);
+      console.log(propInfo.netOperatingIncome);
+      propInfo.capitalizationRate = result;
       return result;
     };
 
     const CashOnCash = () => {
       let result = (MonthlyCashFlow() * 12) / (propInfo.purchasePrice - 
         propInfo.loanAmount + propInfo.rehabCosts + propInfo.purchaseClosingCosts);
-      setPropInfo({ ...propInfo, cashOnCash: result});
+      propInfo.cashOnCash = result;
       return result;
     };
 
     const RentToCost = () => {
       let result = MonthlyCashFlow() / propInfo.purchasePrice;
-      setPropInfo({ ...propInfo, rentToCost: result});
+      propInfo.rentToCost = result;
       return result;
     };
     const EstimatedMarketValue = () => {
       let result = NetOperatingIncome() / CapitalizationRate();
-      setPropInfo({ ...propInfo, estimatedMarketValue: result});
+      propInfo.estimatedMarketValue = result;
       return result;
     };
     const totalDebtService = () => {
       let result = propInfo.interestRate * (1 - propInfo.taxRate) + propInfo.loanAmount;
-      setPropInfo({ ...propInfo, totalDebtService: result});
+      propInfo.totalDebtService = result;
       return result;
     };
     const debtToCoverage = () => {
       let result = NetOperatingIncome() / totalDebtService();
-      setPropInfo({ ...propInfo, debtToCoverage: result});
+      propInfo.debtToCoverage = result;
       return result;
     };
     const onePercentRule = () => {
       let result = (propInfo.grossMonthlyIncome)/ (propInfo.purchasePrice + propInfo.rehabCosts);
-      setPropInfo({ ...propInfo, onePercentRule: result});
+      propInfo.onePercentRule = result;
       return result;
     };
 
     const priceToRent = () => {
       let result = propInfo.purchasePrice / (propInfo.grossMonthlyIncome * 12);
-      setPropInfo({ ...propInfo, priceToRent: result});
+      propInfo.priceToRent = result;
       return result;
     };
     const grossRentMultiplier = () => {
       let result = propInfo.marketValue / (propInfo.grossMonthlyIncome * 12);
-      setPropInfo({ ...propInfo, grossRentMultiplier: result});
+      propInfo.grossRentMultiplier = result;
       return result;
     };
 
     const NetIncomeAfterFinancing = () => {
       let result = NetOperatingIncome() - MonthlyFixedMorgage();
-      setPropInfo({ ...propInfo, netIncomeAfterFinancing: result});
+      propInfo.netIncomeAfterFinancing = result;
       return result;
     }
     
@@ -319,10 +327,35 @@ const PropertyForm = () => {
       let totalInitalInvestment = propInfo.purchasePrice + propInfo.rehabCosts;
       let newProfits = MonthlyCashFlow() * 12 * Math.abs(propInfo.annualIncomeGrowth-propInfo.annualExpensesGrowth)/100; 
       let result = newProfits/totalInitalInvestment;
-      setPropInfo({ ...propInfo, roi: result});
+      propInfo.roi = result;
       return result;
     } 
+
+    MonthlyIncome();
+    MonthlyFixedMorgage();
+    MonthlyCashFlow();
+    NetOperatingIncome();
+    CapitalizationRate();
+    CashOnCash();
+    RentToCost();
+    EstimatedMarketValue();
+    totalDebtService();
+    debtToCoverage();
+    onePercentRule();
+    priceToRent();
+    grossRentMultiplier();
+    NetIncomeAfterFinancing();
+    ROI();
+
     console.log(propInfo);
+
+    axios.post('http://localhost:4000/properties',
+    {propInfo},{withCredentials:true}).then(res =>{
+      console.log(res);
+    }).catch(err =>{
+      console.log(err);
+    })
+
   };
 
 
@@ -546,11 +579,11 @@ const PropertyForm = () => {
               <Form.Group controlId="">
                 <Form.Label>Loan Term</Form.Label>
                 <Form.Control
-                  name="loanTerm"
+                  name="loanTerms"
                   class="text_field"
                   type="number"
                   placeholder="0"
-                  value={propInfo.loanTerm}
+                  value={propInfo.loanTerms}
                   onChange={handleLoanTerms}
                   required
                 />
