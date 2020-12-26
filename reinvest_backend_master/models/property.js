@@ -164,7 +164,7 @@ export const propertySchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  debtTocoverage:{
+  debtToCoverage:{
     type: Number,
     required: true
   },

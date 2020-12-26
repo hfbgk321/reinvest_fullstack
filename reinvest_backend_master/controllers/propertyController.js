@@ -26,7 +26,10 @@ export const registerProperty = (req,res) =>{
     delete req.body.auth;
     if(req.file == undefined) {
       console.log('cREATING..');
-      Property.create(req.body,(err,property)=>{
+      Property.create({
+        ownerID: token,
+        ...req.body
+      },(err,property)=>{
         if(err){
           console.log(err);
           return res.json({message: err})
