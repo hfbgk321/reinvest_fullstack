@@ -1,6 +1,7 @@
 import React, { Component, useState } from "react";
 import Calculations from '../Calculations'
 // import { useWindowScroll} from "react-use";
+import Cookies from 'js-cookie';
 import {
   Container,
   Row,
@@ -59,7 +60,8 @@ const PropertyForm = () => {
     priceToRent: 0,
     grossRentMultiplier: 0,
     netIncomeAfterFinancing: 0,
-    roi: 0
+    roi: 0,
+    auth: Cookies.get('auth')
   });
 
   const handleStreetAddressChange = (e) => {
