@@ -13,7 +13,6 @@ import {
 } from "react-bootstrap";
 import "./Form.css";
 import { Route, Link, BrowserRouter, Redirect } from "react-router-dom";
-import Cookies from 'js-cookie';
 import axios from 'axios';
 
 const PropertyForm = () => {
@@ -350,7 +349,7 @@ const PropertyForm = () => {
     console.log(propInfo);
 
     axios.post('http://localhost:4000/properties',
-    {propInfo},{withCredentials:true}).then(res =>{
+    {...propInfo},{withCredentials:true}).then(res =>{
       console.log(res);
     }).catch(err =>{
       console.log(err);
@@ -382,7 +381,7 @@ const PropertyForm = () => {
                   placeholder="Street address"
                   value={propInfo.streetAddress}
                   onChange={handleStreetAddressChange}
-                  required
+                
                 />
               </Form.Group>
 
