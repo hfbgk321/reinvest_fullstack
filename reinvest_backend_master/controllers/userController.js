@@ -60,6 +60,7 @@ export const userLogIn = async (req, res) =>{
             id : user._id,
             email : user.email
         });
+        return res.status(200).send(user);
     });    
     });
   });
@@ -95,5 +96,14 @@ export const deleteUser = (req,res) =>{
         });
       });
     })
+  })
+}
+
+export const checkLoggedIn = (req,res) =>{
+  verifyToken(req,res,(Token) =>{
+    if(Token == req.body.auth){
+      return res.status(200).json({message: 'Token is valid'});
+    }
+    return res.status(401).json({message: 'Token is not valid'});
   })
 }

@@ -1,6 +1,6 @@
 import {getProperties,getPropertyById,registerProperty,deleteProperty,updatePropertyInformation} from '../controllers/propertyController';
 
-import {userSignUp,userLogIn,userLogOut,deleteUser} from '../controllers/userController';
+import {userSignUp,userLogIn,userLogOut,deleteUser,checkLoggedIn} from '../controllers/userController';
 import fs from 'fs';
 import multer from 'multer';
 import path from 'path';
@@ -44,4 +44,5 @@ export const Routes = (app) => {
 
   app.route('/api/user/signout').get(userLogOut);
   app.route('/api/user/delete').delete(deleteUser);
+  app.route('/api/user/checkLoggedIn').post(checkLoggedIn);
 }
