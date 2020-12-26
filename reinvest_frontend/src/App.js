@@ -6,6 +6,7 @@ import HomePage from "./components/Signedout/homepage";
 import signedIn from "./components/SignedIn/signedIn";
 import formpage from "./components/formpages/Formpage";
 import FinalAnalytics from "./components/formpages/FinalAnalytics"
+import Form from './components/formpages/Form'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/signedIn" component={signedIn} />
         <Route path="/propertyinfo" component={formpage} />
         <Route path="/finalanalytics" component={FinalAnalytics} />
+        <Route path="/Form" component={Form} />
       </Router>
     </>
   );
