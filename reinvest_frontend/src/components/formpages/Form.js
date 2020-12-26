@@ -231,15 +231,15 @@ const PropertyForm = () => {
     const MonthlyFixedMorgage = () => {
       let n = propInfo.loanTerms * 12; //periods
       let P = propInfo.loanAmount; //principle
-      let r = propInfo.interestRate/100; //monthlyInterest
-      let result = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-      console.log(n + " " + P + " " + r + " " + (Math.pow(1+r, n) - 1));
+      let r = propInfo.interestRate / (12 * 100); //monthlyInterest
+      let result = (P * (r * Math.pow(1 + r, n))) / (Math.pow(1 + r, n) - 1);
+      if (isNaN(result)) result = 0;
       propInfo.monthlyFixedMorgage = result;
       return result;
-      
     };
     const MonthlyCashFlow = () => {
-      let result = (NetOperatingIncome() / 12) - MonthlyFixedMorgage();
+      let result = NetOperatingIncome() / 12 - MonthlyFixedMorgage();
+      if (isNaN(result)) result = 0;
       propInfo.monthlyCashFlow = result;
       return result;
     };
@@ -258,65 +258,73 @@ const PropertyForm = () => {
         propInfo.waterAndSewer) * 
       12 *
       (1 - (propInfo.vacancy / 100));
-
+      if (isNaN(result)) result = 0;
       propInfo.netOperatingIncome = result;
       return result;
     };
 
     const CapitalizationRate = () => {
-      let result =  propInfo.netOperatingIncome / (propInfo.purchasePrice + propInfo.rehabCosts);
-      console.log(propInfo.purchasePrice + propInfo.rehabCosts);
-      console.log(propInfo.netOperatingIncome);
+      let result =  (propInfo.netOperatingIncome / (propInfo.purchasePrice + propInfo.rehabCosts))*100;
+      if (isNaN(result)) result = 0;
       propInfo.capitalizationRate = result;
       return result;
     };
 
     const CashOnCash = () => {
-      let result = (MonthlyCashFlow() * 12) / (propInfo.purchasePrice - 
-        propInfo.loanAmount + propInfo.rehabCosts + propInfo.purchaseClosingCosts);
+      let result = ((MonthlyCashFlow() * 12) / (propInfo.purchasePrice - 
+        propInfo.loanAmount + propInfo.rehabCosts + propInfo.purchaseClosingCosts))*100;
+      if (isNaN(result)) result = 0;
       propInfo.cashOnCash = result;
       return result;
     };
 
     const RentToCost = () => {
       let result = MonthlyCashFlow() / propInfo.purchasePrice;
+      if (isNaN(result)) result = 0;
       propInfo.rentToCost = result;
       return result;
     };
     const EstimatedMarketValue = () => {
       let result = NetOperatingIncome() / CapitalizationRate();
+      if (isNaN(result)) result = 0;
       propInfo.estimatedMarketValue = result;
       return result;
     };
     const totalDebtService = () => {
       let result = propInfo.interestRate * (1 - propInfo.taxRate) + propInfo.loanAmount;
+      if (isNaN(result)) result = 0;
       propInfo.totalDebtService = result;
       return result;
     };
     const debtToCoverage = () => {
       let result = NetOperatingIncome() / totalDebtService();
+      if (isNaN(result)) result = 0;
       propInfo.debtToCoverage = result;
       return result;
     };
     const onePercentRule = () => {
       let result = (propInfo.grossMonthlyIncome)/ (propInfo.purchasePrice + propInfo.rehabCosts);
+      if (isNaN(result)) result = 0;
       propInfo.onePercentRule = result;
       return result;
     };
 
     const priceToRent = () => {
       let result = propInfo.purchasePrice / (propInfo.grossMonthlyIncome * 12);
+      if (isNaN(result)) result = 0;
       propInfo.priceToRent = result;
       return result;
     };
     const grossRentMultiplier = () => {
       let result = propInfo.marketValue / (propInfo.grossMonthlyIncome * 12);
+      if (isNaN(result)) result = 0;
       propInfo.grossRentMultiplier = result;
       return result;
     };
 
     const NetIncomeAfterFinancing = () => {
       let result = NetOperatingIncome() - MonthlyFixedMorgage();
+      if (isNaN(result)) result = 0;
       propInfo.netIncomeAfterFinancing = result;
       return result;
     }
@@ -325,6 +333,7 @@ const PropertyForm = () => {
       let totalInitalInvestment = propInfo.purchasePrice + propInfo.rehabCosts;
       let newProfits = MonthlyCashFlow() * 12 * Math.abs(propInfo.annualIncomeGrowth-propInfo.annualExpensesGrowth)/100; 
       let result = newProfits/totalInitalInvestment;
+      if (isNaN(result)) result = 0;
       propInfo.roi = result;
       return result;
     } 

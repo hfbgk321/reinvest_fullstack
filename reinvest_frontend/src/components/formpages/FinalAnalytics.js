@@ -60,14 +60,47 @@ const buttonGroup = (props) => {
       </>
     );
   }
+
+const topAddressAndPicture = () => {
+  return (
+    <>
+      <Col sm={5}>
+        975 SPONGEBOB AVENUE
+        {/*<Image src={}></Image>*/}
+      </Col>
+    </>
+  )
+}
   
 function FinalAnalytics() {
   return (
     <>
       <div class="fixed-top">
         <MemNavB />
-        <Slide1></Slide1>
       </div>
+      <Container fluid>
+        <Row>
+
+        </Row>
+        <Row>
+
+        </Row>
+        <Row>
+
+        </Row>
+        <Row>
+          
+        </Row>
+        <Row>
+          
+        </Row>
+        <Row>
+          
+        </Row>
+        <Row>
+          
+        </Row>
+      </Container>
     </>
   );
 }

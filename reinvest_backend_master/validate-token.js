@@ -19,7 +19,7 @@ export const verifyToken = (req,res,next) =>{
   // }catch(err){
   //   res.status(400).json({error:"Token is not valid"});
   // }
-  let token = req.body.auth;
+  let token = req.body.propInfo.auth;
   console.log(token);
     User.findByToken(token,(err,user)=>{
         if(err) throw err;
