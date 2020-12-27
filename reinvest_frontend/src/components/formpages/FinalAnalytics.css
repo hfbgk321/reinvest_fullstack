@@ -1,8 +1,12 @@
 .buttonHeader {
-color:grey;
-padding:10px;
+  color: grey;
+  padding: 10px;
+  font-size: 10px;
 }
-.buttonValue{
-    color:purple;
-    padding:10px;
+.buttonValue {
+  color: purple;
+  padding: 10px;
+}
+.center {
+  margin: auto !important;
 }
