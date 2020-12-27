@@ -13,19 +13,16 @@ export const verifyToken = (req,res,next) =>{
   //console.log(token);
     User.findByToken(token,(err,user)=>{
         if(err) throw err;
-<<<<<<< HEAD
-        if(!user) return res.status(400).json({message: 'Invalid User'});
-=======
         if(!user) return res.status(400).json({
             message: "Invalid User"
         });
 
-        //res.json({isValid:true});
->>>>>>> f83fd6eeb528fa604e0707bd9ed6675288f94091
-
         req.token= token;
         req.user=user;
-        let data = jwt.decode(req.token);
+        let data = {
+            ownerID: jwt.decode(req.token),
+            token: token
+        }
         console.log(data);
         next(data);
     })
