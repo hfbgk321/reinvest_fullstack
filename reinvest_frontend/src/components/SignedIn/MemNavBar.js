@@ -1,4 +1,4 @@
-/*import React from "react";
+import React from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { BrowserRouter, Route, Switch, Link as Router } from "react-router-dom";
@@ -19,7 +19,6 @@ function MemNavB() {
         console.log(err + " not signed out ");
       });
   }
-
   return (
     <>
       <div>
@@ -55,4 +54,4 @@ function MemNavB() {
   );
 }
 
-export default MemNavB;*/
+export default MemNavB;

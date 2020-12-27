@@ -16,6 +16,7 @@ import {Line} from "react-chartjs-2";
 import Chart from "./LineChart";
 import MonthlyExpensesPie from "./PieChart";
 import DonutChart from "./DonutChart";
+import axios from 'axios';
 
 
 
@@ -40,7 +41,11 @@ import DonutChart from "./DonutChart";
 
 
 const getJSONStuff = () => {
-  const jsonData = {};
+  axios.get('http://localhost:4000/properties/:id', {withCredentials:true}).then(res => {
+    return res;
+  }).catch(err => {
+    console.log(err);
+  })
 }
 
 
@@ -247,6 +252,9 @@ const buttonGroup = (props) => {
   }
   
 function FinalAnalytics() {
+  const jsonData = getJSONStuff();
+  console.log(jsonData);
+
   return (
     <>
     <div>
