@@ -5,7 +5,7 @@ import Cookie from 'js-cookie';
 import {loadingPage} from './loading';
 
 
-export const PrivateRoute = ({ component: Component, ...rest }) => { 
+export const PrivateRoute = ({ component: Component, ...rest }) => {
 
   const handleAuthVerification = async () => {
     let cookieTester = Cookie.get('auth');
@@ -27,7 +27,6 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
       setRoute(<Redirect to = '/login'/>);
     },1000)
   },isLog)
-  
 
   return (
     <Route {...rest} render={(props) => (
