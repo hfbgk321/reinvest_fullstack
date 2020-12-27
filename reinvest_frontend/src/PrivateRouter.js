@@ -3,12 +3,9 @@ import {Route, Redirect} from 'react-router-dom'
 import axios from 'axios';
 import Cookie from 'js-cookie';
 import {loadingPage} from './loading';
-import {Ring} from 'react-awesome-spinners';
 
 
-export const PrivateRoute = ({ component: Component, ...rest }) => {
-
-  
+export const PrivateRoute = ({ component: Component, ...rest }) => { 
 
   const handleAuthVerification = async () => {
     let cookieTester = Cookie.get('auth');
