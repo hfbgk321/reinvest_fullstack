@@ -15,6 +15,7 @@ import unknown from "../../images/unknown.png";
 import {Line} from "react-chartjs-2";
 import Chart from "./LineChart";
 import MonthlyExpensesPie from "./PieChart";
+import DonutChart from "./DonutChart";
 
 
 
@@ -53,7 +54,7 @@ const buttonGroup = (props) => {
   const Slide1 = (props) => {
     //const [address,imageSrc,title,value] = props;
     return (
-      <div>
+      <Col>
         {/* <h1>{address}</h1> */}
         <h1>975 SPONGEBOB AVENUE</h1>
         <Row>
@@ -87,7 +88,7 @@ const buttonGroup = (props) => {
           </Col>
           <Col sm={3}>{buttonGroup({ title: "COC", value: "24.1 %" })}</Col>
         </Row>
-      </div>
+      </Col>
     );
   }
 
@@ -101,22 +102,16 @@ const buttonGroup = (props) => {
         </Row>
         <Row>
           <Col sm={4}>
-            <img
-              src={unknown} height="500px" width="500px"
-              alt="975 SPONGEBOB AVENUE"
-            ></img>
+            <h1>Rental Income</h1>
+            <DonutChart/>
           </Col>
           <Col sm={4}>
-            <img
-                src={unknown} height="500px" width="500px"
-                alt="975 SPONGEBOB AVENUE"
-              ></img>
+            <h1>Expenses</h1>
+            <DonutChart/>
           </Col>
           <Col sm={4}>
-            <img
-                src={unknown} height="500px" width="500px"
-                alt="975 SPONGEBOB AVENUE"
-              ></img>
+            <h1>Loan details</h1>
+            <DonutChart/>
           </Col>
         </Row>
       </div>
@@ -170,9 +165,9 @@ const buttonGroup = (props) => {
             <MonthlyExpensesPie/>
           </Col>
 
-          <Col>
+          <Col >
           <Row>
-              <Col>
+              <Col md="auto">
               <Row>
                 <Col >
                   <Row>Total Expense </Row>
@@ -193,7 +188,7 @@ const buttonGroup = (props) => {
                 </Row>
               </Col>
 
-              <Col>
+              <Col md="auto">
                 <Row>
                 <Col>
                 <Row>Fixed Expense </Row>
@@ -214,7 +209,8 @@ const buttonGroup = (props) => {
                 </Row>
               </Col>
 
-              <Col>
+              <Col md="auto">
+                <Row>
                 <Col>
                   <Row>Variable Expense </Row>
                   <Row>vacancy</Row>
@@ -229,6 +225,7 @@ const buttonGroup = (props) => {
                   <Row>$0</Row>
                   <Row>$184</Row>
                 </Col>
+                </Row>
               </Col>
               </Row>
           </Col>
@@ -253,9 +250,10 @@ function FinalAnalytics() {
         <MemNavB />
       </div>
     </div>
+    <div>
       <Container fluid>
         <Row>
-          <Col sm={3}></Col>
+          <Col sm={2}></Col>
           <Slide1/>
         </Row>
 
@@ -264,7 +262,7 @@ function FinalAnalytics() {
         <br></br>
 
         <Row>
-          <Col sm={3}></Col>
+          <Col sm={2}></Col>
           <Slide2/>
         </Row>
 
@@ -282,11 +280,16 @@ function FinalAnalytics() {
         <br></br>
 
         <Row>
-          <Col sm={3}></Col>
+          <Col sm={2}></Col>
           <Slide4/>
         </Row>
 
+        <br></br>
+        <hr/>
+        <br></br>
+
       </Container>
+      </div>
     </>
   );
 }
