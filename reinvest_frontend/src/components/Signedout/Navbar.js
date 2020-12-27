@@ -18,9 +18,6 @@ import { BrowserRouter, Route, Switch, Link as Router } from 'react-router-dom';
             <Nav.Link eventKey={2} href="/login" style={{color: "#CA2B69"}}>
                       Properties
             </Nav.Link>
-            <Nav.Link eventKey={2} href="/login" style={{color: "#CA2B69"}}>
-                 Notifications
-            </Nav.Link>
             <Nav.Link style={{background:"none"}} eventKey={2} href="/login" style={{color: "#CA2B69"}}>
                  Login In
             </Nav.Link>

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./formpages.css";
 import Form from "./Form";
-import MemNavB from "../SignedIn/MemNavBar";
+import Navb from "../Signedout/Navbar"; //importing from navbar.js?
 import FormSideBar from "./FormSideBar";
 import {
   Container,
@@ -18,7 +18,7 @@ function Formpage() {
     <>
       <div>
         <div class="fixed-top">
-          <MemNavB />
+          <Navb />
         </div>
       </div>
       <br />

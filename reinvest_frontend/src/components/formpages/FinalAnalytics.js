@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./formpages.css";
-import MemNavB from "../SignedIn/MemNavBar";
+import Navb from "../Signedout/Navbar"; //importing from navbar.js?
 import {
   Container,
   Row,
@@ -39,6 +39,10 @@ import DonutChart from "./DonutChart";
 //CHarts
 
 
+const getJSONStuff = () => {
+  const jsonData = {};
+}
+
 
 
 const buttonGroup = (props) => {
@@ -64,7 +68,7 @@ const buttonGroup = (props) => {
             <img
               class ="center"
               // src={unknown} 
-              src = "https://cdn.mos.cms.futurecdn.net/Y9uRKS5aGVrgriQMVwnWxT.jpg"
+              src = "https://ca-times.brightspotcdn.com/dims4/default/4687cfb/2147483647/strip/true/crop/2000x1125+0+0/resize/1486x836!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F4d%2Ff8%2F0a8a32e3c033cc1bec95dce5ca7b%2Fla-fi-hp-hotprop-pictures-20190119-001"
               width="70%"
               margin= "auto"
               alt="975 SPONGEBOB AVENUE"
@@ -247,7 +251,7 @@ function FinalAnalytics() {
     <>
     <div>
       <div class="fixed-top">
-        <MemNavB />
+        <Navb />
       </div>
     </div>
     <div>

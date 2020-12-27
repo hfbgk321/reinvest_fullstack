@@ -4,12 +4,12 @@ import { properties } from "./properties";
 import Property from "./Property";
 import "./signedIn.css";
 import { Link } from "react-router-dom";
-import MemNavB from "./MemNavBar.js";
+import Navb from "../Signedout/Navbar"; //importing from navbar.js?
 
 function PropertyList() {
   return (
     <>
-      <MemNavB />
+      <Navb />
       <section className="booklist">
         {properties.map((property) => {
           return <Property key={property.id} {...property}></Property>;
