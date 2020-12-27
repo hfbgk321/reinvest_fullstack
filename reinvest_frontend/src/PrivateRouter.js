@@ -2,6 +2,8 @@ import {useState,useEffect} from 'react';
 import {Route, Redirect} from 'react-router-dom'
 import axios from 'axios';
 import Cookie from 'js-cookie';
+import {loadingPage} from './loading';
+import {Ring} from 'react-awesome-spinners';
 
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -19,8 +21,8 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
       }
     })
   }
-  const [isLog, setLog] = useState(<h1>Loading...</h1>);
-  const [route, setRoute] = useState(null);
+  const [isLog, setLog] = useState(false);
+  const [route, setRoute] = useState(loadingPage);
   useEffect(()=>{
     handleAuthVerification();
     console.log(isLog);

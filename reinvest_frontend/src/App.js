@@ -11,6 +11,7 @@ import FinalAnalytics from "./components/formpages/FinalAnalytics"
 import Form from './components/formpages/Form';
 import {useState, useEffect} from 'react';
 import {PrivateRoute} from './PrivateRouter';
+import {loadingPage} from './loading';
 
 
 
@@ -24,10 +25,14 @@ function App() {
         <Route path="/login" component={login} />
         <Route path="/signup" component={signup} />
         {/* <Route path="/signedIn" component={signedIn} />  */}
-        <Route path="/propertyinfo" component={formpage} /> 
-        <Route path="/finalanalytics" component={FinalAnalytics} />
-        <Route path="/Form" component={Form} />
+        {/* <Route path="/propertyinfo" component={formpage} />  */}
+        <PrivateRoute path = "/propertyinfo" component ={formpage}/>
+        {/* <Route path="/finalanalytics" component={FinalAnalytics} /> */}
+        <PrivateRoute path = "/finalanalytics" component ={FinalAnalytics}/>
+        {/* <Route path="/Form" component={Form} /> */}
+        <PrivateRoute path ="/Form" component ={Form}/>
         <PrivateRoute path = "/signedIn" component = {signedIn}/>
+        {/* <Route path = "/load" component ={loadingPage}/> */}
       </Router>
     </>
   );
