@@ -14,7 +14,11 @@
     "js-cookie": "^2.2.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
+<<<<<<< HEAD
     "react-chartjs-2": "^2.11.1",
+=======
+    "react-delay-render": "^0.1.2",
+>>>>>>> 97f5d411bab49562b069ec1cc0332bd8de5f007f
     "react-dom": "^17.0.1",
     "react-hook-form": "^6.13.1",
     "react-router-dom": "^5.2.0",

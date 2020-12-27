@@ -29,9 +29,9 @@ export const userSignUp = async (req,res) =>{
     lastName: req.body.lastName
   }).save((err,response) =>{
     if(err){
-      res.status(400).send(err);
+      return res.status(400).send(err);
     }
-    res.status(200).send(response);
+    return res.status(200).send(response);
   });
 }
 
@@ -39,13 +39,16 @@ export const userSignUp = async (req,res) =>{
 export const userLogIn = async (req, res) =>{
   
   //res.setHeader('Access-Control-Allow-Credentials', true);
-  if(req.cookies.auth != null) return res.send({message: 'You are already logged in. Please Log out before signing in again.'})
+  if(req.cookies.auth != null) 
+    return res.send({message: 'You are already logged in. Please Log out before signing in again.'})
   const {error} = loginValidation(req.body);
 
   if(error) return res.status(400).json({error: error.details[0].message});
 
   User.findOne({'email':req.body.email},(err, user) =>{
-    if(!user) res.json({message: 'Login failed, user not found'});
+    if(!user) return res.status(400).json({
+      message: err
+    });
 
     user.comparePassword(req.body.password,(err,isMatch) =>{
       if(err) throw err;
@@ -55,44 +58,44 @@ export const userLogIn = async (req, res) =>{
 
       user.generateToken((err,user)=>{
         if(err) return res.status(400).send(err);
-        res.cookie('auth',user.token).json({
+        return res.status(200).cookie('auth',user.token).json({
             isAuth : true,
             id : user._id,
             email : user.email
         });
-        return res.status(200).send(user);
     });    
     });
   });
 }
 
 export const userLogOut = (req,res) =>{
-  if(req.cookies.auth == null) return res.status(400).send({message: 'You have already logged out. Please login'});
-  User.findByToken(req.cookies.auth,(err,user) =>{
-    if(err) throw err
-    user.deleteToken(req.cookies.token,(err,user)=>{
-      if(err) return res.status(400).send(err);
-      res.clearCookie('auth');
-      res.sendStatus(200);
-  });
+  verifyToken(req,res,(data) => {
+    User.findByToken(data.token,(err,user) =>{
+      if(err) throw err
+      user.deleteToken(data.token,(err,user)=>{
+        if(err) return res.status(400).send(err);
+        return res.status(200).clearCookie('auth').json({
+          message: "Signed Out"
+        });
+    });
+    })
   })
 }
 
 export const deleteUser = (req,res) =>{
-  verifyToken(req,res,(Token) =>{
-    Property.deleteMany({ownerID : Token}).then(function(){
+  verifyToken(req,res,(data) =>{
+    Property.deleteMany({ownerID : data.ownerID}).then(function(){
       console.log('Data Deleted');
     }).catch(function(err){
       console.log(err);
     });
-    User.findByToken(req.cookies.auth,(err,user) =>{
+    User.findByToken(req.body.auth,(err,user) =>{
       if(err) throw err
-      user.deleteToken(req.cookies.token,async (err,user)=>{
+      user.deleteToken(req.body.auth,async (err,user)=>{
         if(err) return res.status(400).send(err);
-        User.findOneAndDelete(Token,(err,data) =>{
+        User.findOneAndDelete(data.token,(err,data) =>{
           if(err) return res.status(400).send(err);
-          res.clearCookie('auth');
-          res.sendStatus(200);
+          return res.status(200).clearCookie('auth').json({message: 'Account deleted'});
         });
       });
     })
@@ -100,10 +103,13 @@ export const deleteUser = (req,res) =>{
 }
 
 export const checkLoggedIn = (req,res) =>{
-  verifyToken(req,res,(Token) =>{
-    if(Token == req.body.auth){
+  verifyToken(req,res,(data) =>{
+    //console.log(Token);
+    if(data.token == req.body.auth){
+      console.log('Howdy');
       return res.status(200).json({message: 'Token is valid'});
     }
+    console.log('no');
     return res.status(401).json({message: 'Token is not valid'});
   })
 }

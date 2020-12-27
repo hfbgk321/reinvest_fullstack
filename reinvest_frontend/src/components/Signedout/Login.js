@@ -22,6 +22,7 @@ import axios from "axios";
 const ControlledInputslogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loggedIn,setLoggedIn] = useState(false);
   
 
   const handleEmailChange = (e) => {
@@ -36,17 +37,21 @@ const ControlledInputslogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //axios.defaults.withCredentials = true;
     axios.post('http://localhost:4000/api/user/signin',
     {email,password},{withCredentials:true}).then(res =>{
       console.log(res);
-      window.location = 'http://localhost:3000/signedIn'
+      if (res.status == 200){
+          window.location = "http://localhost:3000/signedin"
+      } else {
+        console.log("Fuck off");
+      }
     }).catch(err =>{
       console.log(err);
     })
   };
 
   return (
+    
     <>
       <Navb />
 

@@ -10,8 +10,8 @@ import { Console } from 'console';
 const Property = mongoose.model("Property",propertySchema);
 
 export const getProperties = async (req,res) =>{
-  verifyToken(req,res, (token) =>{
-    Property.find({ownerID:token},async (err,properties) =>{
+  verifyToken(req,res, (data) =>{
+    Property.find({ownerID:data.token},async (err,properties) =>{
       if(err){
         res.send({message:err});
       }
@@ -21,13 +21,13 @@ export const getProperties = async (req,res) =>{
 }
 
 export const registerProperty = (req,res) =>{
-  verifyToken(req,res, (token) => {
+  verifyToken(req,res, (data) => {
     console.log(req.file == undefined);
     delete req.body.auth;
     if(req.file == undefined) {
       console.log('cREATING..');
       Property.create({
-        ownerID: token,
+        ownerID: data.token,
         ...req.body
       },(err,property)=>{
         if(err){
@@ -56,7 +56,7 @@ export const registerProperty = (req,res) =>{
           data: fs.readFileSync(path.resolve(__dirname,'../uploads/'+req.file.filename)),
           contentType: req.file.mimetype
         },
-        ownerID: token,
+        ownerID: data.token,
         ...req.body      
       });
       
@@ -82,8 +82,8 @@ export const registerProperty = (req,res) =>{
 
 
 export const getPropertyById = async (req,res) =>{
-  verifyToken(req,res, (token)=>{
-    Property.find({ownerId: token,id:req.params.id},(err, property) =>{
+  verifyToken(req,res, (data)=>{
+    Property.find({ownerId: data.token,id:req.params.id},(err, property) =>{
       if(err){
         res.send({message: err});
       }
@@ -94,7 +94,7 @@ export const getPropertyById = async (req,res) =>{
 }
 
 export const deleteProperty = async (req,res) =>{
-  verifyToken(req,res, (token) =>{
+  verifyToken(req,res, (data) =>{
     Property.findOneAndDelete(req.params.id,{useFindAndModify:false} ,(err,property) =>{
       if(err){
         res.send({message: err});
@@ -106,7 +106,7 @@ export const deleteProperty = async (req,res) =>{
 }
 
 export const updatePropertyInformation = async (req, res) =>{
-  verifyToken(req,res, (token) =>{
+  verifyToken(req,res, (data) =>{
     Property.findByIdAndUpdate(req.params.id,{$set: req.body},{new: true,useFindAndModify:false},(err,property) =>{
       if(err){
         res.send('Error: '+err);
