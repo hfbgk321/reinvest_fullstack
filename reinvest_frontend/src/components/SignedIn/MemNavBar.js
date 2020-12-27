@@ -3,15 +3,17 @@ import { Nav, Navbar } from "react-bootstrap";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { BrowserRouter, Route, Switch, Link as Router } from "react-router-dom";
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 function MemNavB() {
   const handleClick = (e) => {
     axios
-      .get("http://localhost:4000/api/user/signout",{withCredentials:true})
+      .post("http://localhost:4000/api/user/signout",{auth: Cookies.get('auth')},{withCredentials:true})
       .then((res) => {
         console.log(res);
         console.log(res.data);
-        window.location = "http://localhost:3000/";
+        if (res.status == 200) window.location = "http://localhost:3000/";
+        else console.log("Sign Out Failed");
       })
       .catch((err) => {
         console.log(err + " not signed out ");

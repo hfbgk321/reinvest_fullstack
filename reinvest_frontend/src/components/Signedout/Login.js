@@ -40,7 +40,11 @@ const ControlledInputslogin = () => {
     axios.post('http://localhost:4000/api/user/signin',
     {email,password},{withCredentials:true}).then(res =>{
       console.log(res);
-      window.location = 'http://localhost:3000/signedIn'
+      if (res.status == 200){
+          window.location = 'http://localhost:3000/signedIn';
+      } else {
+        console.log("Fuck off");
+      }
     }).catch(err =>{
       console.log(err);
     })

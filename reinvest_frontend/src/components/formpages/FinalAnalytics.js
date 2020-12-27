@@ -61,26 +61,38 @@ const buttonGroup = (props) => {
     );
   }
 
-const topAddressAndPicture = () => {
-  return (
-    <>
-      <Col sm={5}>
-        975 SPONGEBOB AVENUE
-        {/*<Image src={}></Image>*/}
-      </Col>
-    </>
-  )
-}
+  const Slide2 = (props) => {
+    const [address,imageSrc,title,value] = props;
+    return (
+      <>
+        <h1>{address}</h1>
+        <Row>
+          <Col sm={4}></Col>
+          <Col sm={8}>
+            <img src={imageSrc} alt={address}></img>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm={4}>{buttonGroup(title, value)};</Col>
+          <Col sm={4}>{buttonGroup(title, value)};</Col>
+          <Col sm={4}>{buttonGroup(title, value)}</Col>
+          <Col sm={4}>{buttonGroup(title, value)}</Col>
+        </Row>
+      </>
+    );
+  }
+
+
   
 function FinalAnalytics() {
   return (
     <>
       <div class="fixed-top">
         <MemNavB />
-      </div>
+      </div>        
       <Container fluid>
         <Row>
-
+          <Slide1/>
         </Row>
         <Row>
 

@@ -45,7 +45,13 @@ export const userLogIn = async (req, res) =>{
   if(error) return res.status(400).json({error: error.details[0].message});
 
   User.findOne({'email':req.body.email},(err, user) =>{
+<<<<<<< HEAD
     if(!user) return res.status(400).json({message: err});
+=======
+    if(!user) return res.status(400).json({
+      message: err
+    });
+>>>>>>> f83fd6eeb528fa604e0707bd9ed6675288f94091
 
     user.comparePassword(req.body.password,(err,isMatch) =>{
       if(err) throw err;
@@ -67,6 +73,7 @@ export const userLogIn = async (req, res) =>{
 }
 
 export const userLogOut = (req,res) =>{
+<<<<<<< HEAD
 
   verifyToken(req, res, (token) => {
     User.findByToken(token,(err,user) =>{
@@ -75,6 +82,17 @@ export const userLogOut = (req,res) =>{
         if(err) return res.status(400).send(err);
         res.clearCookie('auth');
         return res.status(200).json({message: 'Successfully signed out'});
+=======
+  verifyToken(req,res,(token) => {
+    User.findByToken(req.cookies.auth,(err,user) =>{
+      if(err) throw err
+      user.deleteToken(token,(err,user)=>{
+        if(err) return res.status(400).send(err);
+        res.clearCookie('auth');
+        return res.status(200).json({
+          message: "Signed Out"
+        });
+>>>>>>> f83fd6eeb528fa604e0707bd9ed6675288f94091
     });
     })
   })
