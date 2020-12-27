@@ -38,7 +38,7 @@ function Homepage() {
         <br />
         <br />
         <Row>
-          <Link to="/login" className="buttonStart">
+          <Link to="/signedin" className="buttonStart">
             Start Here
           </Link>
         </Row>

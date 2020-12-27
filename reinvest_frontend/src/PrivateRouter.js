@@ -30,7 +30,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
 
   return (
     <Route {...rest} render={(props) => (
-      isLog == true ? <Component {...props} />
+      isLog == true ? <Component {...props} auth = {isLog}/>
             : route
         )} 
     />

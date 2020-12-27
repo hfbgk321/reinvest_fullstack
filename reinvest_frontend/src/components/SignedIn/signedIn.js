@@ -6,10 +6,10 @@ import "./signedIn.css";
 import { Link } from "react-router-dom";
 import Navb from "../SignedIn/MemNavBar"; //importing from navbar.js?
 
-function PropertyList() {
+function PropertyList(props) {
   return (
     <>
-      <Navb />
+      <Navb auth ={props.auth}/>
       <section className="booklist">
         {properties.map((property) => {
           return <Property key={property.id} {...property}></Property>;
