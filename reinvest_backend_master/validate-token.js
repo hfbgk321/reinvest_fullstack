@@ -13,11 +13,7 @@ export const verifyToken = (req,res,next) =>{
   //console.log(token);
     User.findByToken(token,(err,user)=>{
         if(err) throw err;
-        if(!user) return res.json({
-            isValid :false
-        });
-
-        //res.json({isValid:true});
+        if(!user) return res.status(400).json({message: 'Invalid User'});
 
         req.token= token;
         req.user=user;

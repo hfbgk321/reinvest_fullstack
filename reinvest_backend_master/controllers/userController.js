@@ -45,7 +45,7 @@ export const userLogIn = async (req, res) =>{
   if(error) return res.status(400).json({error: error.details[0].message});
 
   User.findOne({'email':req.body.email},(err, user) =>{
-    if(!user) res.json({message: 'Login failed, user not found'});
+    if(!user) return res.status(400).json({message: err});
 
     user.comparePassword(req.body.password,(err,isMatch) =>{
       if(err) throw err;
@@ -67,14 +67,16 @@ export const userLogIn = async (req, res) =>{
 }
 
 export const userLogOut = (req,res) =>{
-  if(req.cookies.auth == null) return res.status(400).send({message: 'You have already logged out. Please login'});
-  User.findByToken(req.cookies.auth,(err,user) =>{
-    if(err) throw err
-    user.deleteToken(req.cookies.token,(err,user)=>{
-      if(err) return res.status(400).send(err);
-      res.clearCookie('auth');
-      res.sendStatus(200);
-  });
+
+  verifyToken(req, res, (token) => {
+    User.findByToken(token,(err,user) =>{
+      if(err) throw err
+      user.deleteToken(req.cookies.token,(err,user)=>{
+        if(err) return res.status(400).send(err);
+        res.clearCookie('auth');
+        return res.status(200).json({message: 'Successfully signed out'});
+    });
+    })
   })
 }
 
