@@ -3,7 +3,6 @@ import {Route, Redirect} from 'react-router-dom'
 import axios from 'axios';
 import Cookie from 'js-cookie';
 import {loadingPage} from './loading';
-import {Ring} from 'react-awesome-spinners';
 
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
