@@ -8,8 +8,6 @@ import {Ring} from 'react-awesome-spinners';
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
 
-  
-
   const handleAuthVerification = async () => {
     let cookieTester = Cookie.get('auth');
     if(cookieTester == null) return false;
@@ -30,7 +28,6 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
       setRoute(<Redirect to = '/login'/>);
     },1000)
   },isLog)
-  
 
   return (
     <Route {...rest} render={(props) => (

@@ -235,12 +235,14 @@ const PropertyForm = () => {
       let r = propInfo.interestRate / (12 * 100); //monthlyInterest
       let result = (P * (r * Math.pow(1 + r, n))) / (Math.pow(1 + r, n) - 1);
       if (isNaN(result)) result = 0;
+      result = parseFloat(result.toFixed(2));
       propInfo.monthlyFixedMorgage = result;
       return result;
     };
     const MonthlyCashFlow = () => {
       let result = NetOperatingIncome() / 12 - MonthlyFixedMorgage();
       if (isNaN(result)) result = 0;
+      result = parseFloat(result.toFixed(2));
       propInfo.monthlyCashFlow = result;
       return result;
     };
@@ -260,6 +262,7 @@ const PropertyForm = () => {
       12 *
       (1 - (propInfo.vacancy / 100));
       if (isNaN(result)) result = 0;
+      result = parseFloat(result.toFixed(2));
       propInfo.netOperatingIncome = result;
       return result;
     };
@@ -267,6 +270,7 @@ const PropertyForm = () => {
     const CapitalizationRate = () => {
       let result =  (propInfo.netOperatingIncome / (propInfo.purchasePrice + propInfo.rehabCosts))*100;
       if (isNaN(result)) result = 0;
+      result = parseFloat(result.toFixed(2));
       propInfo.capitalizationRate = result;
       return result;
     };
@@ -275,6 +279,7 @@ const PropertyForm = () => {
       let result = ((MonthlyCashFlow() * 12) / (propInfo.purchasePrice - 
         propInfo.loanAmount + propInfo.rehabCosts + propInfo.purchaseClosingCosts))*100;
       if (isNaN(result)) result = 0;
+      result = parseFloat(result.toFixed(2));
       propInfo.cashOnCash = result;
       return result;
     };
@@ -282,30 +287,35 @@ const PropertyForm = () => {
     const RentToCost = () => {
       let result = MonthlyCashFlow() / propInfo.purchasePrice;
       if (isNaN(result)) result = 0;
+      result = parseFloat(result.toFixed(2));
       propInfo.rentToCost = result;
       return result;
     };
     const EstimatedMarketValue = () => {
       let result = NetOperatingIncome() / CapitalizationRate();
       if (isNaN(result)) result = 0;
+      result = parseFloat(result.toFixed(2));
       propInfo.estimatedMarketValue = result;
       return result;
     };
     const totalDebtService = () => {
       let result = propInfo.interestRate * (1 - propInfo.taxRate) + propInfo.loanAmount;
       if (isNaN(result)) result = 0;
+      result = parseFloat(result.toFixed(2));
       propInfo.totalDebtService = result;
       return result;
     };
     const debtToCoverage = () => {
       let result = NetOperatingIncome() / totalDebtService();
       if (isNaN(result)) result = 0;
+      result = parseFloat(result.toFixed(2));
       propInfo.debtToCoverage = result;
       return result;
     };
     const onePercentRule = () => {
       let result = (propInfo.grossMonthlyIncome)/ (propInfo.purchasePrice + propInfo.rehabCosts);
       if (isNaN(result)) result = 0;
+      result = parseFloat(result.toFixed(2));
       propInfo.onePercentRule = result;
       return result;
     };
@@ -313,12 +323,14 @@ const PropertyForm = () => {
     const priceToRent = () => {
       let result = propInfo.purchasePrice / (propInfo.grossMonthlyIncome * 12);
       if (isNaN(result)) result = 0;
+      result = parseFloat(result.toFixed(2));
       propInfo.priceToRent = result;
       return result;
     };
     const grossRentMultiplier = () => {
       let result = propInfo.marketValue / (propInfo.grossMonthlyIncome * 12);
       if (isNaN(result)) result = 0;
+      result = parseFloat(result.toFixed(2));
       propInfo.grossRentMultiplier = result;
       return result;
     };
@@ -326,6 +338,7 @@ const PropertyForm = () => {
     const NetIncomeAfterFinancing = () => {
       let result = NetOperatingIncome() - MonthlyFixedMorgage();
       if (isNaN(result)) result = 0;
+      result = parseFloat(result.toFixed(2));
       propInfo.netIncomeAfterFinancing = result;
       return result;
     }
@@ -335,6 +348,7 @@ const PropertyForm = () => {
       let newProfits = MonthlyCashFlow() * 12 * Math.abs(propInfo.annualIncomeGrowth-propInfo.annualExpensesGrowth)/100; 
       let result = newProfits/totalInitalInvestment;
       if (isNaN(result)) result = 0;
+      result = parseFloat(result.toFixed(2));
       propInfo.roi = result;
       return result;
     } 
