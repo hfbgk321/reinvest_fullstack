@@ -42,7 +42,7 @@ export const Routes = (app) => {
   //app.route('/api/user/signup').post(userSignUp);
   app.post('/api/user/signin',uploads.none(),userLogIn);
 
-  app.route('/api/user/signout').get(userLogOut);
+  app.route('/api/user/signout').post(userLogOut);
   app.route('/api/user/delete').delete(deleteUser);
   app.route('/api/user/checkLoggedIn').post(checkLoggedIn);
 }

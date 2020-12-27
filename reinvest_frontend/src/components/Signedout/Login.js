@@ -41,11 +41,10 @@ const ControlledInputslogin = () => {
     {email,password},{withCredentials:true}).then(res =>{
       console.log(res);
       if (res.status == 200){
-        window.location = 'http://localhost:3000/signedIn';
+          window.location = 'http://localhost:3000/signedIn';
       } else {
         console.log("Fuck off");
       }
-    }).catch(err =>{
     }).catch(err =>{
       console.log(err);
     })
