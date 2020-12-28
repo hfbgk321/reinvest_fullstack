@@ -5,10 +5,11 @@ import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 import "./homepage.css";
 import Navb from "./Navbar.js"; //importing from navbar.js?
 
-function Homepage() {
+
+function Homepage(props) {
   return (
     <>
-      <Navb />
+      <Navb auth = {props.auth}/>
       <Container fluid>
         <br />
         <br />
@@ -37,7 +38,7 @@ function Homepage() {
         <br />
         <br />
         <Row>
-          <Link to="/login" className="buttonStart">
+          <Link to="/signedin" className="buttonStart">
             Start Here
           </Link>
         </Row>

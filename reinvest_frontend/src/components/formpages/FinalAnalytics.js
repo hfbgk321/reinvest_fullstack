@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./formpages.css";
-import MemNavB from "../SignedIn/MemNavBar";
+import Navb from "../Signedout/Navbar"; //importing from navbar.js?
 import {
   Container,
   Row,
@@ -11,10 +11,14 @@ import {
   Button,
 } from "react-bootstrap";
 import unknown from "../../images/unknown.png";
-//import '/FinalAnalytsics.css';
+import './FinalAnalytics.css';
 import {Line} from "react-chartjs-2";
 import Chart from "./LineChart";
 import MonthlyExpensesPie from "./PieChart";
+import DonutChart from "./DonutChart";
+import axios from 'axios';
+import Cookies from 'js-cookie';
+
 
 
 
@@ -38,14 +42,30 @@ import MonthlyExpensesPie from "./PieChart";
 //CHarts
 
 
+const getJSONStuff = async () => {
+  const temp = await axios.get('http://localhost:4000/properties', {id: Cookies.get('auth')},
+  {withCredentials:true}).then(res => {
+    console.log(res);
+    return true;
+  }).catch(err => {
+    console.log(err);
+    return false;
+  });
+}
+
 
 
 const buttonGroup = (props) => {
       const {title,value} = props;
       return (
         <>
-          <h1 className='buttonHeader'>{title}</h1>
-          <h1 className='buttonValue'>{value}</h1>
+          <div className="box">
+            
+            <h1 className='buttonHeader'>{title}</h1>
+            <h1 className='buttonValue'>{value}</h1>
+          </div>
+          
+          
         </>
       );
   }
@@ -53,74 +73,73 @@ const buttonGroup = (props) => {
   const Slide1 = (props) => {
     //const [address,imageSrc,title,value] = props;
     return (
-      <div>
+      <Col>
         {/* <h1>{address}</h1> */}
-        <h1>975 SPONGEBOB AVENUE</h1>
+        <br></br>
+        <br></br>
+        <h1 class="heading">975 SPONGEBOB AVENUE</h1>
         <Row>
-          <Col sm = {1}></Col>
           <Col>
             {/* <img src={imageSrc} alt={address}></img> */}
             <img
-              class ="center"
-              // src={unknown} 
-              src = "https://cdn.mos.cms.futurecdn.net/Y9uRKS5aGVrgriQMVwnWxT.jpg"
+              class="center"
+              // src={unknown}
+              src="https://ca-times.brightspotcdn.com/dims4/default/4687cfb/2147483647/strip/true/crop/2000x1125+0+0/resize/1486x836!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F4d%2Ff8%2F0a8a32e3c033cc1bec95dce5ca7b%2Fla-fi-hp-hotprop-pictures-20190119-001"
               width="70%"
-              margin= "auto"
+              margin="auto"
               alt="975 SPONGEBOB AVENUE"
             ></img>
           </Col>
-          <Col sm = {1}></Col>
         </Row>
         <Row>
           {/* <Col sm={4}>{buttonGroup(title, value)};</Col>
           <Col sm={4}>{buttonGroup(title, value)};</Col>
           <Col sm={4}>{buttonGroup(title, value)}</Col>
           <Col sm={4}>{buttonGroup(title, value)}</Col> */}
-          <Col sm={3}>
-            {buttonGroup({ title: "CASH NEEDED", value: "$30,000" })}
-          </Col>
-          <Col sm={3}>
-            {buttonGroup({ title: "CASH FLOW", value: "$696 / mo" })}
-          </Col>
-          <Col sm={3}>
-            {buttonGroup({ title: "CAP RATE", value: "10.1 %" })}
-          </Col>
-          <Col sm={3}>{buttonGroup({ title: "COC", value: "24.1 %" })}</Col>
+          <Col>{buttonGroup({ title: "CASH NEEDED", value: "$30,000" })}</Col>
+          <Col>{buttonGroup({ title: "CASH FLOW", value: "$696 / mo" })}</Col>
+          <Col>{buttonGroup({ title: "CAP RATE", value: "10.1 %" })}</Col>
+          <Col>{buttonGroup({ title: "COC", value: "24.1 %" })}</Col>
         </Row>
-      </div>
+      </Col>
     );
   }
 
+  // const Slide2 = (props) => {
+  //   //const [address,imageSrc,title,value] = props;
+  //   return (
+  //     <div>
+  //       <Row>
+  //         <Col sm={1}></Col>
+  //         <h1>Purchase and Rehab</h1>
+  //       </Row>
+  //       <Row>
+  //         <Col sm={4}>
+  //           <h1>Rental Income</h1>
+  //           <DonutChart/>
+  //         </Col>
+  //         <Col sm={4}>
+  //           <h1>Expenses</h1>
+  //           <DonutChart/>
+  //         </Col>
+  //         <Col sm={4}>
+  //           <h1>Loan details</h1>
+  //           <DonutChart/>
+  //         </Col>
+  //       </Row>
+  //     </div>
+  //   );
+  // }
+
   const Slide2 = (props) => {
-    //const [address,imageSrc,title,value] = props;
-    return (
-      <div>
-        <Row>
-          <Col sm={1}></Col>
-          <h1>Purchase and Rehab</h1>
-        </Row>
-        <Row>
-          <Col sm={4}>
-            <img
-              src={unknown} height="500px" width="500px"
-              alt="975 SPONGEBOB AVENUE"
-            ></img>
-          </Col>
-          <Col sm={4}>
-            <img
-                src={unknown} height="500px" width="500px"
-                alt="975 SPONGEBOB AVENUE"
-              ></img>
-          </Col>
-          <Col sm={4}>
-            <img
-                src={unknown} height="500px" width="500px"
-                alt="975 SPONGEBOB AVENUE"
-              ></img>
-          </Col>
-        </Row>
-      </div>
-    );
+      return ( 
+        <> 
+       <Container fluid className="containerRehab">
+            <h1>Test</h1>
+       </Container>
+
+       </>
+      )
   }
 
   const Slide3 = (props) => {
@@ -170,9 +189,9 @@ const buttonGroup = (props) => {
             <MonthlyExpensesPie/>
           </Col>
 
-          <Col>
+          <Col >
           <Row>
-              <Col>
+              <Col md="auto">
               <Row>
                 <Col >
                   <Row>Total Expense </Row>
@@ -193,7 +212,7 @@ const buttonGroup = (props) => {
                 </Row>
               </Col>
 
-              <Col>
+              <Col md="auto">
                 <Row>
                 <Col>
                 <Row>Fixed Expense </Row>
@@ -214,7 +233,8 @@ const buttonGroup = (props) => {
                 </Row>
               </Col>
 
-              <Col>
+              <Col md="auto">
+                <Row>
                 <Col>
                   <Row>Variable Expense </Row>
                   <Row>vacancy</Row>
@@ -229,6 +249,7 @@ const buttonGroup = (props) => {
                   <Row>$0</Row>
                   <Row>$184</Row>
                 </Col>
+                </Row>
               </Col>
               </Row>
           </Col>
@@ -246,16 +267,19 @@ const buttonGroup = (props) => {
   }
   
 function FinalAnalytics() {
+  const jsonData = getJSONStuff();
+  console.log(jsonData);
+
   return (
     <>
     <div>
       <div class="fixed-top">
-        <MemNavB />
+        <Navb />
       </div>
     </div>
+    <div>
       <Container fluid>
         <Row>
-          <Col sm={3}></Col>
           <Slide1/>
         </Row>
 
@@ -264,7 +288,6 @@ function FinalAnalytics() {
         <br></br>
 
         <Row>
-          <Col sm={3}></Col>
           <Slide2/>
         </Row>
 
@@ -273,7 +296,6 @@ function FinalAnalytics() {
         <br></br>
           
         <Row>
-          <Col sm={3}></Col>
           <Slide3/>
         </Row>
 
@@ -282,11 +304,15 @@ function FinalAnalytics() {
         <br></br>
 
         <Row>
-          <Col sm={3}></Col>
           <Slide4/>
         </Row>
 
+        <br></br>
+        <hr/>
+        <br></br>
+
       </Container>
+      </div>
     </>
   );
 }

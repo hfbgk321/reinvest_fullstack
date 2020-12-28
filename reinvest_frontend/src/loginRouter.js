@@ -4,8 +4,10 @@ import axios from 'axios';
 import Cookie from 'js-cookie';
 import {loadingPage} from './loading';
 
+import login from './components/Signedout/Login';
 
-export const PrivateRoute = ({ component: Component, ...rest }) => {
+
+export const LoginRoute = ({ component: Component, ...rest }) => {
 
   const handleAuthVerification = async () => {
     let cookieTester = Cookie.get('auth');
@@ -24,13 +26,13 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
     handleAuthVerification();
     console.log(isLog);
     setTimeout(()=>{
-      setRoute(<Redirect to = '/login'/>);
+      setRoute(<Route to = '/login' component = {login}/>);
     },1000)
   },isLog)
 
   return (
     <Route {...rest} render={(props) => (
-      isLog == true ? <Component {...props} auth = {isLog}/>
+      isLog == true ? <Redirect to = '/signedin'/>
             : route
         )} 
     />

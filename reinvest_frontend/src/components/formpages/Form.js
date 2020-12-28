@@ -1,5 +1,4 @@
 import React, { Component, useState } from "react";
-import Calculations from '../Calculations'
 // import { useWindowScroll} from "react-use";
 import Cookies from 'js-cookie';
 import {
