@@ -11,7 +11,7 @@ const Property = mongoose.model("Property",propertySchema);
 
 export const getProperties = async (req,res) =>{
   verifyToken(req,res, (data) =>{
-    Property.find({ownerID:data.token},async (err,properties) =>{
+    Property.find({ownerID:data.ownerID},async (err,properties) =>{
       if(err){
         res.send({message:err});
       }
@@ -23,7 +23,6 @@ export const getProperties = async (req,res) =>{
 export const registerProperty = (req,res) =>{
   verifyToken(req,res, (data) => {
     console.log(req.file == undefined);
-    delete req.body.auth;
     if(req.file == undefined) {
       console.log('cREATING..');
       Property.create({
@@ -83,7 +82,7 @@ export const registerProperty = (req,res) =>{
 
 export const getPropertyById = async (req,res) =>{
   verifyToken(req,res, (data)=>{
-    Property.find({ownerId: data.token,id:req.params.id},(err, property) =>{
+    Property.find({ownerID: data.ownerID,id:req.params.id},(err, property) =>{
       if(err){
         res.send({message: err});
       }

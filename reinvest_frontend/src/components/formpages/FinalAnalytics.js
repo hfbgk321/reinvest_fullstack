@@ -42,16 +42,7 @@ import Cookies from 'js-cookie';
 //CHarts
 
 
-const getJSONStuff = async () => {
-  const temp = await axios.get('http://localhost:4000/properties', {id: Cookies.get('auth')},
-  {withCredentials:true}).then(res => {
-    console.log(res);
-    return true;
-  }).catch(err => {
-    console.log(err);
-    return false;
-  });
-}
+
 
 
 
@@ -266,9 +257,14 @@ const buttonGroup = (props) => {
     );
   }
   
-function FinalAnalytics() {
-  const jsonData = getJSONStuff();
-  console.log(jsonData);
+function FinalAnalytics(props) {
+  
+  const getJSONStuff = () => {
+    console.log(localStorage.getItem('id'));
+    axios.get('http://localhost:4000/api/user/')
+  }
+
+  getJSONStuff();
 
   return (
     <>

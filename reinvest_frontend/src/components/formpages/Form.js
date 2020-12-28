@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState,useEffect } from "react";
 // import { useWindowScroll} from "react-use";
 import Cookies from 'js-cookie';
 import {
@@ -14,8 +14,12 @@ import "./Form.css";
 import { Route, Link, BrowserRouter, Redirect } from "react-router-dom";
 import axios from 'axios';
 
+import FinalAnalytics from './FinalAnalytics';
+
 const PropertyForm = () => {
-  const [propId, setPropId] = useState();
+  const [idFound, setIdFound] = useState(false);
+  const [id,setId] = useState();
+  const [route,setRoute] = useState();
   const [propInfo, setPropInfo] = useState({
     auth: Cookies.get('auth'),
     streetAddress: "",
@@ -377,13 +381,21 @@ const PropertyForm = () => {
     {...propInfo},{withCredentials:true}).then(res =>{
       console.log(res.data);
       console.log(res.data._id);
-      setPropId(res.data._id);
-      
+      setId(res.data._id);
+      setIdFound(true);
+
     }).catch(err =>{
       console.log(err);
     })
+  }
+  
 
-  };
+  if(idFound){
+    localStorage.setItem("id",id);
+    return (
+      <Redirect to = '/finalanalytics'/>
+    )
+  }
 
 
   return (
