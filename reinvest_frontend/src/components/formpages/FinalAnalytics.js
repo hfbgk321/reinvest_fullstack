@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import ReactDOM from "react-dom";
 import "./formpages.css";
 import Navb from "../Signedout/Navbar"; //importing from navbar.js?
@@ -255,20 +255,23 @@ const buttonGroup = (props) => {
   }
   
 function FinalAnalytics(props) {
+  const [data, setData] = useState();
   const getJSONStuff = () => {
     let propertyInfoId = localStorage.getItem('propertyInfoId');
     console.log(propertyInfoId);
     axios.post('http://localhost:4000/properties/' + propertyInfoId,{auth: Cookies.get('auth')},
     {withCredentials:true}).then(res => {
-      console.log(res);
-      localStorage.removeItem('propertyInfoId');
-      return true;
+      return (res.data);
     }).catch(err => {
       console.log(err);
-      return false;
     });
   }
-  const jsonData = getJSONStuff();
+  useEffect(async()=>{
+    let hello = await getJSONStuff();
+    setData(hello);
+  },data)
+
+  console.log(data);
 
   return (
     <>
