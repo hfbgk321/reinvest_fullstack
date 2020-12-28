@@ -13,12 +13,12 @@ import {
   Button,
 } from "react-bootstrap";
 
-function Formpage() {
+function Formpage(props) {
   return (
     <>
       <div>
         <div class="fixed-top">
-          <Navb />
+          <Navb auth = {props.auth}/>
         </div>
       </div>
       <br />

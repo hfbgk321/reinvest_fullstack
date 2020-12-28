@@ -15,6 +15,7 @@ import { Route, Link, BrowserRouter, Redirect } from "react-router-dom";
 import axios from 'axios';
 
 const PropertyForm = () => {
+  const [propId, setPropId] = useState();
   const [propInfo, setPropInfo] = useState({
     auth: Cookies.get('auth'),
     streetAddress: "",
@@ -58,7 +59,7 @@ const PropertyForm = () => {
     estimatedMarketValue: 0,
     totalDebtService: 0,
     debtToCoverage: 0,
-    onePercentRule: 0,
+    onePercentRule: false,
     priceToRent: 0,
     grossRentMultiplier: 0,
     netIncomeAfterFinancing: 0,
@@ -315,6 +316,8 @@ const PropertyForm = () => {
       let result = (propInfo.grossMonthlyIncome)/ (propInfo.purchasePrice + propInfo.rehabCosts);
       if (isNaN(result)) result = 0;
       result = parseFloat(result.toFixed(2));
+      if (result >= 0.01) result = true;
+      else result = false;
       propInfo.onePercentRule = result;
       return result;
     };
@@ -372,7 +375,9 @@ const PropertyForm = () => {
 
     axios.post('http://localhost:4000/properties',
     {...propInfo},{withCredentials:true}).then(res =>{
-      console.log(res);
+      console.log(res.data);
+      console.log(res.data._id);
+      setPropId(res.data._id);
       
     }).catch(err =>{
       console.log(err);
