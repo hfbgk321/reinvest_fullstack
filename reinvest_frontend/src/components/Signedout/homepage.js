@@ -6,7 +6,6 @@ import "./homepage.css";
 import Navb from "./Navbar.js"; //importing from navbar.js?
 import Footer from './Footer';
 import img9 from "../../images/img-9.jpg";
-import imgP from "../../images/imagePage.jpg";
 
 
 

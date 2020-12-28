@@ -10,7 +10,6 @@ import {
   FormGroup,
   Button,
 } from "react-bootstrap";
-import unknown from "../../images/unknown.png";
 import './FinalAnalytics.css';
 import {Line} from "react-chartjs-2";
 import Chart from "./LineChart";
