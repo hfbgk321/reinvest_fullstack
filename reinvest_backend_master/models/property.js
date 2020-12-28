@@ -188,4 +188,12 @@ export const propertySchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  totalExpenses:{
+    type: Number,
+    required: true
+  },
+  capitalizationRate:{
+    type: Number,
+    required: true
+  }
 })

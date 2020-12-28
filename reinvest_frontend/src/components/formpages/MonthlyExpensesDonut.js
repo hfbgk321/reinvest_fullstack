@@ -29,12 +29,12 @@ import {Doughnut} from 'react-chartjs-2';
 //     }
 // }
 
-function DonutChartdata() {
+function DonutChartdata(props) {
     return{
-        labels: ['Mortgage', "Taxes","Insurance","Variable expense","Fixed expenses"],
+        labels: ['Expenses'],
             datasets: [{
-                data: ['1540', '329', '75', '295', '0'],
-                backgroundColor: ['#ca2b69', '#453f78', '#759aab', '#faf2a1', '#ffa69e']
+                data: [props.data.totalExpenses],
+                backgroundColor: ['#85BDBF']
             }]
     }
 }
@@ -50,22 +50,24 @@ const styles = {
     }
   }
 
-class DonutChartExample extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-          data: DonutChartdata()
-        }
-    }
-    render(){
+function MonthlyExpenseDonut(props) {
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //       data: DonutChartdata(props)
+    //     }
+    // }
         return(
             <div style={styles.graphContainer}>
-                <Doughnut data={this.state.data}
+                
+                <Doughnut data={DonutChartdata(props)}
                  options={options}
                 width="600" height="250"/>
+                <div>
+                    ${props.data.totalExpenses} / Month
+                </div>
             </div>  
         )
-    }
 }
 
-export default DonutChartExample
+export default MonthlyExpenseDonut

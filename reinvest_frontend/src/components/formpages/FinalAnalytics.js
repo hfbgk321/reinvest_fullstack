@@ -14,7 +14,8 @@ import './FinalAnalytics.css';
 import {Line} from "react-chartjs-2";
 import Chart from "./LineChart";
 import MonthlyExpensesPie from "./PieChart";
-import DonutChart from "./DonutChart";
+import RentalIncomeDonut from "./RentalIncomeDonut";
+import MonthlyExpensesDonut from "./MonthlyExpensesDonut";
 import axios from 'axios';
 import Cookies, { set } from 'js-cookie';
 
@@ -90,7 +91,7 @@ const buttonGroup = (props) => {
           <Col>{buttonGroup({ title: "CASH NEEDED", value:"$"+ (props.data.purchasePrice - props.data.loanAmount)})}</Col>
           <Col>{buttonGroup({ title: "CASH FLOW", value: "$"+(props.data.monthlyCashFlow)+"/ mo" })}</Col>
           <Col>{buttonGroup({ title: "CAP RATE", value: props.data.capitalizationRate +" %" })}</Col>
-          <Col>{buttonGroup({ title: "COC", value: props.data.capitalizationRate+" %" })}</Col>
+          <Col>{buttonGroup({ title: "COC", value: props.data.cashOnCash+" %" })}</Col>
         </Row>
       </Col>
     );
@@ -107,15 +108,15 @@ const buttonGroup = (props) => {
         <Row>
           <Col sm={4}>
             <h1>Rental Income</h1>
-            <DonutChart/>
+            <RentalIncomeDonut data = {props.data} />
           </Col>
           <Col sm={4}>
             <h1>Expenses</h1>
-            <DonutChart/>
+            <MonthlyExpensesDonut data = {props.data}/>
           </Col>
           <Col sm={4}>
             <h1>Loan details</h1>
-            <DonutChart/>
+            <MonthlyExpensesDonut data = {props.data}/>
           </Col>
         </Row>
       </div>
@@ -147,10 +148,10 @@ const buttonGroup = (props) => {
           </Col>
 
           <Col>
-            <Row><Col sm={1}></Col>Monthly Cash Flow: $500</Row>
+            <Row><Col sm={1}></Col>Monthly Cash Flow: {props.data.monthlyCashFlow}</Row>
             <Row>
-              <Col sm={4}>Income: <br></br> $1000</Col>
-              <Col sm={4}>Expenses: <br></br> $500</Col>
+              <Col sm={4}>Income: <br></br> {props.data.netOperatingIncome}</Col>
+              <Col sm={4}>Expenses: <br></br> {props.data.totalExpenses}</Col>
               <Col sm={4}>CoC Roi: <br></br> 5.05%</Col>
             </Row>
           </Col>
