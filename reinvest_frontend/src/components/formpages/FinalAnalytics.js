@@ -60,6 +60,10 @@ const buttonGroup = (props) => {
 
   const Slide1 = (props) => {
     //const [address,imageSrc,title,value] = props;
+
+    const buffer = props.data.img.data.data;
+    const b64 = new Buffer.from(buffer).toString('base64');
+    const mimeType = props.data.img.contentType;
     return (
       <Col>
         {/* <h1>{address}</h1> */}
@@ -72,7 +76,7 @@ const buttonGroup = (props) => {
             <img
               class="center"
               // src={unknown}
-              src="https://ca-times.brightspotcdn.com/dims4/default/4687cfb/2147483647/strip/true/crop/2000x1125+0+0/resize/1486x836!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F4d%2Ff8%2F0a8a32e3c033cc1bec95dce5ca7b%2Fla-fi-hp-hotprop-pictures-20190119-001"
+              src={`data:${mimeType};base64,${b64}`}
               width="70%"
               margin="auto"
               alt="975 SPONGEBOB AVENUE"

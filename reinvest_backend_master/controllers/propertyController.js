@@ -24,7 +24,7 @@ export const registerProperty = (req,res) =>{
   verifyToken(req,res, (data) => {
     console.log(req.file == undefined);
     if(req.file == undefined) {
-      console.log('cREATING..');
+      console.log('cREATING.. undefined');
       Property.create({
         ownerID: data.ownerID,
         ...req.body
