@@ -17,6 +17,8 @@ import axios from 'axios';
 import FinalAnalytics from './FinalAnalytics';
 
 const PropertyForm = () => {
+  const [image,setImage] = useState({});
+  const [file,setFile] = useState(null);
   const [propInfo, setPropInfo] = useState({
     auth: Cookies.get('auth'),
     streetAddress: "",
@@ -65,7 +67,6 @@ const PropertyForm = () => {
     grossRentMultiplier: 0,
     netIncomeAfterFinancing: 0,
     roi: 0,
-    auth: Cookies.get('auth')
   });
 
   const handleStreetAddressChange = (e) => {
@@ -224,6 +225,28 @@ const PropertyForm = () => {
     setPropInfo({ ...propInfo, [name]: value });
   };
 
+
+  const handleImageClick = (e) => {
+    document.getElementById("selectImage").click();
+  }
+  const fileOnChange = (event) =>{
+    setImage(event.target.files[0]);
+    setFile(URL.createObjectURL(event.target.files[0]));
+  }
+  /*const sendImage = async (event) =>{
+      let formData = new FormData();
+      formData.append("image",image);
+  
+      let response = await fetch('http://localhost:4000/img_fetch',{
+        method:"post",
+        body: formData
+      })
+  
+        let data = await response.json();
+        console.log(data);
+      
+    }*/
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const MonthlyIncome = () => {
@@ -374,12 +397,15 @@ const PropertyForm = () => {
 
     console.log(propInfo);
 
+    let formData = new FormData();
+    formData.append("image",image);
+
     axios.post('http://localhost:4000/properties',
-    {...propInfo},{withCredentials:true}).then(res =>{
+    {"image": formData, ...propInfo},{withCredentials:true}).then(res =>{
       console.log(res.data);
       console.log(res.data._id);
       localStorage.setItem('propertyInfoId', res.data._id);
-      window.location = "http://localhost:3000/finalanalytics";
+      //window.location = "http://localhost:3000/finalanalytics";
     }).catch(err =>{
       console.log(JSON.stringify(err));
     })
@@ -392,6 +418,15 @@ const PropertyForm = () => {
       <Container fluid>
         <div className="center1">
           <Form>
+            <Form.Group controlId="">
+            <div>
+        <img src ={file} width="100%" height="100%"/>
+        <br/>
+        <button onClick={handleImageClick} className="buttonForUploadImage">Upload Image</button>
+        <input id='selectImage' type="file" onChange = {fileOnChange} accept = "image/png,image/jpg,image/jpeg" style={{display:'none'}}/>
+        {/*<button onClick ={sendImage}>Upload</button>*/}
+      </div>
+            </Form.Group>
             
             <div id="Property Information" class="formblock">
             <br></br>
