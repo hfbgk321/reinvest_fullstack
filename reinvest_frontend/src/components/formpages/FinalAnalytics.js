@@ -258,7 +258,11 @@ function FinalAnalytics(props) {
   const getJSONStuff = () => {
     let propertyInfoId = localStorage.getItem('propertyInfoId');
     console.log(propertyInfoId);
+<<<<<<< HEAD
     axios.post('http://localhost:4000/properties/' + propertyInfoId,
+=======
+    axios.post('http://localhost:4000/properties/' + propertyInfoId,{auth: Cookies.get('auth')},
+>>>>>>> 7ef43e6d7e13647e7f3bbc74f489c64aac551274
     {withCredentials:true}).then(res => {
       console.log('hello');
       localStorage.removeItem('propertyInfoId');
