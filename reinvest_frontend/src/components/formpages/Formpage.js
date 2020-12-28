@@ -18,7 +18,7 @@ function Formpage(props) {
     <>
       <div>
         <div class="fixed-top">
-          <Navb auth = {props.auth}/>
+          <Navb auth = {props.auth} />
         </div>
       </div>
       <br />
