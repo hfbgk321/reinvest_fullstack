@@ -19,7 +19,6 @@ function MemNavB() {
         console.log(err + " not signed out ");
       });
   }
-
   return (
     <>
       <div>
