@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import ReactDOM from "react-dom";
 import "./formpages.css";
 import Navb from "../Signedout/Navbar"; //importing from navbar.js?
@@ -16,7 +16,7 @@ import Chart from "./LineChart";
 import MonthlyExpensesPie from "./PieChart";
 import DonutChart from "./DonutChart";
 import axios from 'axios';
-import Cookies from 'js-cookie';
+import Cookies, { set } from 'js-cookie';
 
 
 
@@ -39,20 +39,6 @@ import Cookies from 'js-cookie';
 // }
 
 //CHarts
-
-
-
-
-const getJSONStuff = async () => {
-  const temp = await axios.get('http://localhost:4000/properties', {id: Cookies.get('auth')},
-  {withCredentials:true}).then(res => {
-    console.log(res);
-    return true;
-  }).catch(err => {
-    console.log(err);
-    return false;
-  });
-}
 
 
 
@@ -310,14 +296,31 @@ const buttonGroup = (props) => {
   }
   
 function FinalAnalytics(props) {
-  const jsonData = getJSONStuff();
-  console.log(jsonData);
+  const [data, setData] = useState({});
+  const getJSONStuff = () => {
+    let propertyInfoId = localStorage.getItem('propertyInfoId');
+    console.log(propertyInfoId);
+    axios.post('http://localhost:4000/properties/' + propertyInfoId,{auth: Cookies.get('auth')},
+    {withCredentials:true}).then(res => {
+      setData(res.data);
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+
+  useEffect(async()=>{
+    let hello = await getJSONStuff();
+    console.log(data);
+  },data)
+
+  console.log(data);
+
 
   return (
     <>
     <div>
       <div class="fixed-top">
-        <Navb auth = {props.auth} />
+        <Navb auth = {props.auth}/>
       </div>
     </div>
     <div>
@@ -349,6 +352,18 @@ function FinalAnalytics(props) {
         <Row>
           <Slide4/>
         </Row>
+
+        <br></br>
+        <hr/>
+        <br></br>
+
+        <br></br>
+        <hr/>
+        <br></br>
+
+        <br></br>
+        <hr/>
+        <br></br>
 
         <br></br>
         <hr/>

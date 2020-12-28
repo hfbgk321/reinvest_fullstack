@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState,useEffect } from "react";
 // import { useWindowScroll} from "react-use";
 import Cookies from 'js-cookie';
 import {
@@ -13,6 +13,8 @@ import {
 import "./Form.css";
 import { Route, Link, BrowserRouter, Redirect } from "react-router-dom";
 import axios from 'axios';
+
+import FinalAnalytics from './FinalAnalytics';
 
 const PropertyForm = () => {
   const [propInfo, setPropInfo] = useState({
@@ -58,7 +60,7 @@ const PropertyForm = () => {
     estimatedMarketValue: 0,
     totalDebtService: 0,
     debtToCoverage: 0,
-    onePercentRule: 0,
+    onePercentRule: false,
     priceToRent: 0,
     grossRentMultiplier: 0,
     netIncomeAfterFinancing: 0,
@@ -315,6 +317,8 @@ const PropertyForm = () => {
       let result = (propInfo.grossMonthlyIncome)/ (propInfo.purchasePrice + propInfo.rehabCosts);
       if (isNaN(result)) result = 0;
       result = parseFloat(result.toFixed(2));
+      if (result >= 0.01) result = true;
+      else result = false;
       propInfo.onePercentRule = result;
       return result;
     };
@@ -372,13 +376,15 @@ const PropertyForm = () => {
 
     axios.post('http://localhost:4000/properties',
     {...propInfo},{withCredentials:true}).then(res =>{
-      console.log(res);
-      
+      console.log(res.data);
+      console.log(res.data._id);
+      localStorage.setItem('propertyInfoId', res.data._id);
+      window.location = "http://localhost:3000/finalanalytics";
     }).catch(err =>{
-      console.log(err);
+      console.log(JSON.stringify(err));
     })
+  }
 
-  };
 
 
   return (
