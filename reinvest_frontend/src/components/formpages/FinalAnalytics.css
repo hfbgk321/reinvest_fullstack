@@ -1,12 +1,36 @@
 .buttonHeader {
   color: grey;
-  padding: 10px;
+  padding: 5px;
   font-size: 10px;
+  font-weight: bold;
+  background-color: #fff;
 }
 .buttonValue {
   color: purple;
-  padding: 10px;
+  padding: 5px;
+  font-size: 20px;
+  background-color: #fff;
 }
 .center {
-  margin: auto !important;
+  padding:0;
+  margin: auto;
+  display:block;
+  text-align: center;
+}
+.box {
+  padding: 3%;
+  border: 1px solid #bfbfbf;
+  border-radius: 2.5%;
+  background-color: #fff;
+  margin-top: 10%;
+  
+}
+.heading{
+  text-align: center;
+  margin-top: 2%;
+  color: purple; 
+  margin-bottom: 2%; 
+}
+.containerRehab{
+  background-color: #fff;
 }

@@ -4,7 +4,7 @@ import { properties } from "./properties";
 import Property from "./Property";
 import "./signedIn.css";
 import { Link } from "react-router-dom";
-import Navb from "../SignedIn/MemNavBar"; //importing from navbar.js?
+import Navb from "../Signedout/Navbar"; //importing from navbar.js?
 
 function PropertyList(props) {
   return (
