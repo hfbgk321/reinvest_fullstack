@@ -64,7 +64,7 @@ const buttonGroup = (props) => {
         {/* <h1>{address}</h1> */}
         <br></br>
         <br></br>
-        <h1 class="heading">975 SPONGEBOB AVENUE</h1>
+        <h1 class="heading">{props.data.streetAddress}</h1>
         <Row>
           <Col>
             {/* <img src={imageSrc} alt={address}></img> */}
@@ -83,10 +83,10 @@ const buttonGroup = (props) => {
           <Col sm={4}>{buttonGroup(title, value)};</Col>
           <Col sm={4}>{buttonGroup(title, value)}</Col>
           <Col sm={4}>{buttonGroup(title, value)}</Col> */}
-          <Col>{buttonGroup({ title: "CASH NEEDED", value: "$30,000" })}</Col>
-          <Col>{buttonGroup({ title: "CASH FLOW", value: "$696 / mo" })}</Col>
-          <Col>{buttonGroup({ title: "CAP RATE", value: "10.1 %" })}</Col>
-          <Col>{buttonGroup({ title: "COC", value: "24.1 %" })}</Col>
+          <Col>{buttonGroup({ title: "CASH NEEDED", value:"$"+ (props.data.purchasePrice - props.data.loanAmount)})}</Col>
+          <Col>{buttonGroup({ title: "CASH FLOW", value: "$"+(props.data.monthlyCashFlow)+"/ mo" })}</Col>
+          <Col>{buttonGroup({ title: "CAP RATE", value: props.data.capitalizationRate +" %" })}</Col>
+          <Col>{buttonGroup({ title: "COC", value: props.data.capitalizationRate+" %" })}</Col>
         </Row>
       </Col>
     );
@@ -326,7 +326,7 @@ function FinalAnalytics(props) {
     <div>
       <Container fluid>
         <Row>
-          <Slide1/>
+          <Slide1 data = {data}/>
         </Row>
 
         <br></br>
@@ -334,7 +334,7 @@ function FinalAnalytics(props) {
         <br></br>
 
         <Row>
-          <Slide2/>
+          <Slide2 data = {data}/>
         </Row>
 
         <br></br>
@@ -342,7 +342,7 @@ function FinalAnalytics(props) {
         <br></br>
           
         <Row>
-          <Slide3/>
+          <Slide3 data = {data}/>
         </Row>
 
         <br></br>
@@ -350,8 +350,48 @@ function FinalAnalytics(props) {
         <br></br>
 
         <Row>
-          <Slide4/>
+          <Slide4 data = {data}/>
         </Row>
+
+        <br></br>
+        <hr/>
+        <br></br>
+
+        <br></br>
+        <hr/>
+        <br></br>
+
+        <br></br>
+        <hr/>
+        <br></br>
+
+        <br></br>
+        <hr/>
+        <br></br>
+
+        <br></br>
+        <hr/>
+        <br></br>
+
+        <br></br>
+        <hr/>
+        <br></br>
+
+        <br></br>
+        <hr/>
+        <br></br>
+
+        <br></br>
+        <hr/>
+        <br></br>
+
+        <br></br>
+        <hr/>
+        <br></br>
+
+        <br></br>
+        <hr/>
+        <br></br>
 
         <br></br>
         <hr/>
