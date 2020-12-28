@@ -17,12 +17,6 @@ import axios from 'axios';
 import FinalAnalytics from './FinalAnalytics';
 
 const PropertyForm = () => {
-<<<<<<< HEAD
-  const [idFound, setIdFound] = useState(false);
-  const [id,setId] = useState();
-  const [route,setRoute] = useState();
-=======
->>>>>>> b200ef7d7f1f941caee1069e377b9779d9260a8e
   const [propInfo, setPropInfo] = useState({
     auth: Cookies.get('auth'),
     streetAddress: "",
@@ -391,14 +385,6 @@ const PropertyForm = () => {
     })
   }
   
-
-  if(idFound){
-    localStorage.setItem("id",id);
-    return (
-      <Redirect to = '/finalanalytics'/>
-    )
-  }
-
 
   return (
     <>
