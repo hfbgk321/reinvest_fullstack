@@ -12,7 +12,10 @@ import Form from './components/formpages/Form';
 import {useState, useEffect} from 'react';
 import {PrivateRoute} from './PrivateRouter';
 import {loadingPage} from './loading';
+import {LoginRoute} from './loginRouter'
 
+import {SignUpRoute} from './signUpRouter'
+import {HomePageRoute} from './HomePageRoute'
 
 
 
@@ -21,9 +24,13 @@ function App() {
   return (
     <>
       <Router>
-        <Route path="/" exact component={HomePage} />
-        <Route path="/login" component={login} />
-        <Route path="/signup" component={signup} />
+
+        <HomePageRoute path="/" component={HomePage}/>
+        {/* <Route path="/" exact component={HomePage} /> */}
+        <LoginRoute path = '/login' component = {login}/>
+        <SignUpRoute path = '/signup' component = {signup}/> 
+        
+        {/* <Route path="/signup" component={signup} /> */}
         {/* <Route path="/signedIn" component={signedIn} />  */}
         {/* <Route path="/propertyinfo" component={formpage} />  */}
         <PrivateRoute path = "/propertyinfo" component ={formpage}/>
