@@ -27,7 +27,7 @@ export const registerProperty = (req,res) =>{
     if(req.file == undefined) {
       console.log('cREATING..');
       Property.create({
-        ownerID: data.token,
+        ownerID: data.ownerID,
         ...req.body
       },(err,property)=>{
         if(err){
@@ -56,7 +56,7 @@ export const registerProperty = (req,res) =>{
           data: fs.readFileSync(path.resolve(__dirname,'../uploads/'+req.file.filename)),
           contentType: req.file.mimetype
         },
-        ownerID: data.token,
+        ownerID: data.ownerID,
         ...req.body      
       });
       
