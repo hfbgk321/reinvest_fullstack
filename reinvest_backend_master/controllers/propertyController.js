@@ -82,11 +82,15 @@ export const registerProperty = (req,res) =>{
 
 export const getPropertyById = async (req,res) =>{
   verifyToken(req,res, (data)=>{
-    Property.find({ownerID: data.ownerID,id:req.params.id},(err, property) =>{
+    console.log(data.ownerID);
+    console.log(req.params.id);
+    Property.findById(req.params.id,(err, property) =>{
       if(err){
-        res.send({message: err});
+        console.log(err);
+        return res.status(400).json({message: err});
       }
-      res.json(property);
+      console.log('good')
+      return res.json(property);
     })
   })
   

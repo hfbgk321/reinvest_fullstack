@@ -258,7 +258,7 @@ function FinalAnalytics(props) {
   const getJSONStuff = () => {
     let propertyInfoId = localStorage.getItem('propertyInfoId');
     console.log(propertyInfoId);
-    axios.post('http://localhost:4000/properties/' + propertyInfoId, {auth: Cookies.get('auth')},
+    axios.get('http://localhost:4000/properties/' + propertyInfoId,
     {withCredentials:true}).then(res => {
       console.log(res);
       localStorage.removeItem('propertyInfoId');
@@ -274,7 +274,7 @@ function FinalAnalytics(props) {
     <>
     <div>
       <div class="fixed-top">
-        <Navb auth ={props.auth} />
+        <Navb auth = {props.auth}/>
       </div>
     </div>
     <div>
