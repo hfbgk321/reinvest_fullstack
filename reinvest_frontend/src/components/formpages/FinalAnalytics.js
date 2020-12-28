@@ -42,6 +42,8 @@ import Cookies from 'js-cookie';
 //CHarts
 
 
+
+
 const getJSONStuff = async () => {
   const temp = await axios.get('http://localhost:4000/properties', {id: Cookies.get('auth')},
   {withCredentials:true}).then(res => {
@@ -105,42 +107,42 @@ const buttonGroup = (props) => {
     );
   }
 
-  // const Slide2 = (props) => {
-  //   //const [address,imageSrc,title,value] = props;
-  //   return (
-  //     <div>
-  //       <Row>
-  //         <Col sm={1}></Col>
-  //         <h1>Purchase and Rehab</h1>
-  //       </Row>
-  //       <Row>
-  //         <Col sm={4}>
-  //           <h1>Rental Income</h1>
-  //           <DonutChart/>
-  //         </Col>
-  //         <Col sm={4}>
-  //           <h1>Expenses</h1>
-  //           <DonutChart/>
-  //         </Col>
-  //         <Col sm={4}>
-  //           <h1>Loan details</h1>
-  //           <DonutChart/>
-  //         </Col>
-  //       </Row>
-  //     </div>
-  //   );
-  // }
-
   const Slide2 = (props) => {
-      return ( 
-        <> 
-       <Container fluid className="containerRehab">
-            <h1>Test</h1>
-       </Container>
-
-       </>
-      )
+    //const [address,imageSrc,title,value] = props;
+    return (
+      <div>
+        <Row>
+          <Col sm={1}></Col>
+          <h1>Purchase and Rehab</h1>
+        </Row>
+        <Row>
+          <Col sm={4}>
+            <h1>Rental Income</h1>
+            <DonutChart/>
+          </Col>
+          <Col sm={4}>
+            <h1>Expenses</h1>
+            <DonutChart/>
+          </Col>
+          <Col sm={4}>
+            <h1>Loan details</h1>
+            <DonutChart/>
+          </Col>
+        </Row>
+      </div>
+    );
   }
+
+  // const Slide2 = (props) => {
+  //     return ( 
+  //       <> 
+  //      <Container fluid className="containerRehab">
+  //           <h1>Test</h1>
+  //      </Container>
+
+  //      </>
+  //     )
+  // }
 
   const Slide3 = (props) => {
     //const [address,imageSrc,title,value] = props;
@@ -176,10 +178,25 @@ const buttonGroup = (props) => {
     );
   }
 
+  const line = (props) => {
+    const {title,value} = props;
+    return(
+      <div>
+        <Row>
+          <Col md="auto">
+            {title}
+          </Col>
+          <Col>
+            {value}
+          </Col>
+        </Row>
+      </div>
+    )
+  }
   const Slide4 = (props) => {
     //const [address,imageSrc,title,value] = props;
     return (
-      <div>
+      <>
         <Row>
           <Col sm={1}></Col>
           <h1>Monthly Expenses Breakdown</h1>
@@ -189,11 +206,40 @@ const buttonGroup = (props) => {
             <MonthlyExpensesPie/>
           </Col>
 
-          <Col >
+            {/* <Col xs={5} class="box">
+              {line({ title: "Total Expense", value: "$2239" })}
+              {line({ title: "Mortgage", value: "$1,540" })}
+              {line({ title: "Taxes", value: "$329" })}
+              {line({ title: "Insurance", value: "$75" })}
+              {line({ title: "Variable expenses", value: "$295" })}
+              {line({ title: "Fixed expenses", value: "$0" })}
+            </Col>
+
+            <Col xs={5} class="box">
+              {line({ title: "Total Expense", value: "$2239" })}
+              {line({ title: "Mortgage", value: "$1,540" })}
+              {line({ title: "Taxes", value: "$329" })}
+              {line({ title: "Insurance", value: "$75" })}
+              {line({ title: "Variable expenses", value: "$295" })}
+              {line({ title: "Fixed expenses", value: "$0" })}
+            </Col>
+
+            <Col xs={5} class="box">
+              {line({ title: "Total Expense", value: "$2239" })}
+              {line({ title: "Mortgage", value: "$1,540" })}
+              {line({ title: "Taxes", value: "$329" })}
+              {line({ title: "Insurance", value: "$75" })}
+              {line({ title: "Variable expenses", value: "$295" })}
+              {line({ title: "Fixed expenses", value: "$0" })}
+            </Col> */}
+
+
+
+          <Container fluid>
           <Row>
-              <Col md="auto">
+              <Col>
               <Row>
-                <Col >
+                <Col md = 'auto'>
                   <Row>Total Expense </Row>
                   <Row>Mortgage</Row> 
                   <Row>Taxes</Row>
@@ -202,7 +248,7 @@ const buttonGroup = (props) => {
                   <Row>Fixed expenses</Row>
                 </Col>
                 <Col>
-                  <Row><h3>$2239</h3> </Row>
+                  <Row>$2239 </Row>
                   <Row>$1,540</Row>
                   <Row>$329</Row>
                   <Row>$75</Row>
@@ -212,9 +258,9 @@ const buttonGroup = (props) => {
                 </Row>
               </Col>
 
-              <Col md="auto">
+              <Col>
                 <Row>
-                <Col>
+                <Col md="auto">
                 <Row>Fixed Expense </Row>
                 <Row>Electricity</Row>
                 <Row>Gas</Row>
@@ -223,7 +269,7 @@ const buttonGroup = (props) => {
                 <Row>Garbage</Row>
                 </Col>
                 <Col>
-                  <Row><h3>$0</h3> </Row>
+                  <Row>$0</Row>
                   <Row>$0</Row>
                   <Row>$0</Row>
                   <Row>$0</Row>
@@ -233,9 +279,9 @@ const buttonGroup = (props) => {
                 </Row>
               </Col>
 
-              <Col md="auto">
+              <Col>
                 <Row>
-                <Col>
+                <Col md="auto">
                   <Row>Variable Expense </Row>
                   <Row>vacancy</Row>
                   <Row>Maintenance</Row>
@@ -243,7 +289,7 @@ const buttonGroup = (props) => {
                   <Row>Management fee</Row>
                 </Col>
                 <Col>
-                  <Row><h3>$295</h3> </Row>
+                  <Row>$295 </Row>
                   <Row>$55</Row>
                   <Row>$55</Row>
                   <Row>$0</Row>
@@ -252,21 +298,19 @@ const buttonGroup = (props) => {
                 </Row>
               </Col>
               </Row>
-          </Col>
+              </Container>
         </Row>
-        <br></br>
-        <br></br>
         <Row>
           <Col sm={3}></Col>
           <Col sm={3}>5 Year Annualized Return <br></br> 9.58%</Col>
           <Col sm={3}>Mortgage Payment <br></br> $1028 /mo</Col>
           <Col sm={3}></Col>
         </Row>
-      </div>
+      </>
     );
   }
   
-function FinalAnalytics() {
+function FinalAnalytics(props) {
   const jsonData = getJSONStuff();
   console.log(jsonData);
 
@@ -274,7 +318,7 @@ function FinalAnalytics() {
     <>
     <div>
       <div class="fixed-top">
-        <Navb />
+        <Navb auth = {props.auth} />
       </div>
     </div>
     <div>

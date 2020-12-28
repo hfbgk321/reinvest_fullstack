@@ -12,9 +12,9 @@
   background-color: #fff;
 }
 .center {
-  padding:0;
+  padding: 0;
   margin: auto;
-  display:block;
+  display: block;
   text-align: center;
 }
 .box {
@@ -23,14 +23,13 @@
   border-radius: 2.5%;
   background-color: #fff;
   margin-top: 10%;
-  
 }
-.heading{
+.heading {
   text-align: center;
   margin-top: 2%;
-  color: purple; 
-  margin-bottom: 2%; 
+  color: purple;
+  margin-bottom: 2%;
 }
-.containerRehab{
+.containerRehab {
   background-color: #fff;
 }

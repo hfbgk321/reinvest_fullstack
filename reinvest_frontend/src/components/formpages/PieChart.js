@@ -8,7 +8,7 @@ class PieChart extends Component {
             labels: ['Mortgage', "Taxes","Insurance","Variable expense","Fixed expenses"],
             datasets: [{
                 data: ['1540', '329', '75', '295', '0'],
-                backgroundColor: ['red', 'blue', 'green', 'yellow', 'pink']
+                backgroundColor: ['#ca2b69', '#453f78', '#759aab', '#faf2a1', '#ffa69e']
             }]
         }
     }
