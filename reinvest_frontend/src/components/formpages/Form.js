@@ -65,7 +65,7 @@ const PropertyForm = () => {
     grossRentMultiplier: 0,
     netIncomeAfterFinancing: 0,
     roi: 0,
-    auth: Cookies.get('auth')
+    totalExpenses: 0,
   });
 
   const handleStreetAddressChange = (e) => {
@@ -356,6 +356,24 @@ const PropertyForm = () => {
       return result;
     } 
 
+    const totalExpenses = () => {
+      let result = ((propInfo.insurance / 12) +
+        propInfo.otherFees +
+        propInfo.hoaFees +
+        (propInfo.propertyTaxes / 12) +
+        (propInfo.grossMonthlyIncome*(propInfo.managementFees/100)) +
+        (propInfo.grossMonthlyIncome*(propInfo.repairsAndMaintenence/100)) +
+        (propInfo.grossMonthlyIncome*(propInfo.capitalExpenditures/100)) +
+        propInfo.electricity +
+        propInfo.gas +
+        propInfo.garbage +
+        propInfo.waterAndSewer)
+        if (isNaN(result)) result = 0;
+        result = parseFloat(result.toFixed(2));
+        propInfo.totalExpenses = result;
+      return result;
+    } 
+
     MonthlyIncome();
     MonthlyFixedMorgage();
     MonthlyCashFlow();
@@ -371,6 +389,7 @@ const PropertyForm = () => {
     grossRentMultiplier();
     NetIncomeAfterFinancing();
     ROI();
+    totalExpenses();
 
     console.log(propInfo);
 
