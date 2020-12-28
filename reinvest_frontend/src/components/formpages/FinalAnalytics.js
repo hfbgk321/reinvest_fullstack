@@ -42,18 +42,6 @@ import Cookies from 'js-cookie';
 //CHarts
 
 
-const getJSONStuff = async () => {
-  const temp = await axios.get('http://localhost:4000/properties', {id: Cookies.get('auth')},
-  {withCredentials:true}).then(res => {
-    console.log(res);
-    return true;
-  }).catch(err => {
-    console.log(err);
-    return false;
-  });
-}
-
-
 
 const buttonGroup = (props) => {
       const {title,value} = props;
@@ -267,8 +255,19 @@ const buttonGroup = (props) => {
   }
   
 function FinalAnalytics() {
+  const getJSONStuff = () => {
+    let propertyInfoId = localStorage.getItem('propertyInfoId');
+    localStorage.removeItem('propertyInfoId');
+    axios.get('http://localhost:4000/properties/' + propertyInfoId,
+    {withCredentials:true}).then(res => {
+      console.log(res);
+      return true;
+    }).catch(err => {
+      console.log(err);
+      return false;
+    });
+  }
   const jsonData = getJSONStuff();
-  console.log(jsonData);
 
   return (
     <>

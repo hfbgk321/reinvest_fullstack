@@ -15,7 +15,6 @@ import { Route, Link, BrowserRouter, Redirect } from "react-router-dom";
 import axios from 'axios';
 
 const PropertyForm = () => {
-  const [propId, setPropId] = useState();
   const [propInfo, setPropInfo] = useState({
     auth: Cookies.get('auth'),
     streetAddress: "",
@@ -377,8 +376,8 @@ const PropertyForm = () => {
     {...propInfo},{withCredentials:true}).then(res =>{
       console.log(res.data);
       console.log(res.data._id);
-      setPropId(res.data._id);
-      
+      localStorage.setItem('propertyInfoId', res.data._id);
+      window.location.href = "http://localhost:3000/finalanalytics";
     }).catch(err =>{
       console.log(err);
     })
