@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import ReactDOM from "react-dom";
 import "./formpages.css";
 import Navb from "../Signedout/Navbar"; //importing from navbar.js?
@@ -17,7 +17,7 @@ import Chart from "./LineChart";
 import MonthlyExpensesPie from "./PieChart";
 import DonutChart from "./DonutChart";
 import axios from 'axios';
-import Cookies from 'js-cookie';
+import Cookies, { set } from 'js-cookie';
 
 
 
@@ -255,24 +255,25 @@ const buttonGroup = (props) => {
   }
   
 function FinalAnalytics(props) {
+  const [data, setData] = useState({});
   const getJSONStuff = () => {
     let propertyInfoId = localStorage.getItem('propertyInfoId');
     console.log(propertyInfoId);
-<<<<<<< HEAD
-    axios.post('http://localhost:4000/properties/' + propertyInfoId,
-=======
     axios.post('http://localhost:4000/properties/' + propertyInfoId,{auth: Cookies.get('auth')},
->>>>>>> 7ef43e6d7e13647e7f3bbc74f489c64aac551274
     {withCredentials:true}).then(res => {
-      console.log('hello');
-      localStorage.removeItem('propertyInfoId');
-      return true;
+      setData(res.data);
     }).catch(err => {
       console.log(err);
-      return false;
     });
   }
-  const jsonData = getJSONStuff();
+
+  useEffect(async()=>{
+    let hello = await getJSONStuff();
+    console.log(data);
+  },data)
+
+  console.log(data);
+
 
   return (
     <>

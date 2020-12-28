@@ -379,14 +379,7 @@ const PropertyForm = () => {
       console.log(res.data);
       console.log(res.data._id);
       localStorage.setItem('propertyInfoId', res.data._id);
-<<<<<<< HEAD
-      setTimeout(() =>{
-        window.location = "http://localhost:3000/finalanalytics";
-      },1000);
-      
-=======
       window.location = "http://localhost:3000/finalanalytics";
->>>>>>> 7ef43e6d7e13647e7f3bbc74f489c64aac551274
     }).catch(err =>{
       console.log(JSON.stringify(err));
     })
