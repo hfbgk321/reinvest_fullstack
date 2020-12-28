@@ -42,9 +42,12 @@ import Cookies from 'js-cookie';
 //CHarts
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> b200ef7d7f1f941caee1069e377b9779d9260a8e
 
 const buttonGroup = (props) => {
       const {title,value} = props;
@@ -257,6 +260,7 @@ const buttonGroup = (props) => {
     );
   }
   
+<<<<<<< HEAD
 function FinalAnalytics(props) {
   
   const getJSONStuff = () => {
@@ -265,6 +269,22 @@ function FinalAnalytics(props) {
   }
 
   getJSONStuff();
+=======
+function FinalAnalytics() {
+  const getJSONStuff = () => {
+    let propertyInfoId = localStorage.getItem('propertyInfoId');
+    localStorage.removeItem('propertyInfoId');
+    axios.get('http://localhost:4000/properties/' + propertyInfoId,
+    {withCredentials:true}).then(res => {
+      console.log(res);
+      return true;
+    }).catch(err => {
+      console.log(err);
+      return false;
+    });
+  }
+  const jsonData = getJSONStuff();
+>>>>>>> b200ef7d7f1f941caee1069e377b9779d9260a8e
 
   return (
     <>
