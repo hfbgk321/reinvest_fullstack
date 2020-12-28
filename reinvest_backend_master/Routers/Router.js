@@ -30,7 +30,7 @@ var uploads = multer({
 export const Routes = (app) => {
   app.route('/properties').get(getProperties);
 
-  app.route('/properties/:id').get(getPropertyById);
+  app.route('/properties/:id').post(getPropertyById);
 
   app.post('/properties',uploads.single('image'),registerProperty);
 

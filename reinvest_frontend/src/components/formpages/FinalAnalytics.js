@@ -42,12 +42,6 @@ import Cookies from 'js-cookie';
 //CHarts
 
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> b200ef7d7f1f941caee1069e377b9779d9260a8e
 
 const buttonGroup = (props) => {
       const {title,value} = props;
@@ -260,23 +254,14 @@ const buttonGroup = (props) => {
     );
   }
   
-<<<<<<< HEAD
 function FinalAnalytics(props) {
-  
-  const getJSONStuff = () => {
-    console.log(localStorage.getItem('id'));
-    axios.get('http://localhost:4000/api/user/')
-  }
-
-  getJSONStuff();
-=======
-function FinalAnalytics() {
   const getJSONStuff = () => {
     let propertyInfoId = localStorage.getItem('propertyInfoId');
-    localStorage.removeItem('propertyInfoId');
+    console.log(propertyInfoId);
     axios.get('http://localhost:4000/properties/' + propertyInfoId,
     {withCredentials:true}).then(res => {
       console.log(res);
+      localStorage.removeItem('propertyInfoId');
       return true;
     }).catch(err => {
       console.log(err);
@@ -284,13 +269,12 @@ function FinalAnalytics() {
     });
   }
   const jsonData = getJSONStuff();
->>>>>>> b200ef7d7f1f941caee1069e377b9779d9260a8e
 
   return (
     <>
     <div>
       <div class="fixed-top">
-        <Navb />
+        <Navb auth = {props.auth}/>
       </div>
     </div>
     <div>
