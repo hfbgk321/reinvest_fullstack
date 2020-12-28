@@ -6,10 +6,10 @@ import "./homepage.css";
 import Navb from "./Navbar.js"; //importing from navbar.js?
 
 
-function Homepage() {
+function Homepage(props) {
   return (
     <>
-      <Navb />
+      <Navb auth = {props.auth}/>
       <Container fluid>
         <br />
         <br />
