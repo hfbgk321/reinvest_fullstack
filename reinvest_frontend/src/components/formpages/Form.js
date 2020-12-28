@@ -379,7 +379,10 @@ const PropertyForm = () => {
       console.log(res.data);
       console.log(res.data._id);
       localStorage.setItem('propertyInfoId', res.data._id);
-      window.location.href = "http://localhost:3000/finalanalytics";
+      setTimeout(() =>{
+        window.location = "http://localhost:3000/finalanalytics";
+      },1000);
+      
     }).catch(err =>{
       console.log(err);
     })
