@@ -1,4 +1,4 @@
-import {getProperties,getPropertyById,registerProperty,deleteProperty,updatePropertyInformation} from '../controllers/propertyController';
+import {getProperties,getPropertyById,registerProperty,deleteProperty,updatePropertyInformation,getPropertiesByQuery} from '../controllers/propertyController';
 
 import {userSignUp,userLogIn,userLogOut,deleteUser,checkLoggedIn} from '../controllers/userController';
 import fs from 'fs';
@@ -28,7 +28,8 @@ var uploads = multer({
 });
 
 export const Routes = (app) => {
-  app.route('/properties').get(getProperties);
+  app.route('/properties/all').post(getProperties);
+  app.route('/properties/query').post(getPropertiesByQuery);
 
   app.route('/properties/:id').post(getPropertyById);
 
