@@ -21,6 +21,7 @@ import axios from 'axios';
 import Cookies, { set } from 'js-cookie';
 
 import {loadingPage} from '../../loading';
+import StockHouseImage from '../../images/stockHouse.jpg';
 
 
 
@@ -62,6 +63,41 @@ const buttonGroup = (props) => {
 
   const Slide1 = (props) => {
     //const [address,imageSrc,title,value] = props;
+    if (props.data.img == undefined){
+      return (
+        <Col>
+        {/* <h1>{address}</h1> */}
+        <br></br>
+        <br></br>
+        <h1 class="heading">{props.data.streetAddress}</h1>
+        <Row>
+          <Col>
+            {/* <img src={imageSrc} alt={address}></img> */}
+            <img
+              class="center"
+              // src={unknown}
+              src={StockHouseImage}
+              width="20%"
+              margin="auto"
+              alt="975 SPONGEBOB AVENUE"
+            ></img>
+          </Col>
+        </Row>
+        <div class="center">
+        <Row>
+          {/* <Col sm={4}>{buttonGroup(title, value)};</Col>
+          <Col sm={4}>{buttonGroup(title, value)};</Col>
+          <Col sm={4}>{buttonGroup(title, value)}</Col>
+          <Col sm={4}>{buttonGroup(title, value)}</Col> */}
+          <Col>{buttonGroup({ title: "CASH NEEDED", value:"$"+ (props.data.purchasePrice - props.data.loanAmount)})}</Col>
+          <Col>{buttonGroup({ title: "CASH FLOW", value: "$"+(props.data.monthlyCashFlow)+"/ mo" })}</Col>
+          <Col>{buttonGroup({ title: "CAP RATE", value: props.data.capitalizationRate +" %" })}</Col>
+          <Col>{buttonGroup({ title: "COC", value: props.data.cashOnCash+" %" })}</Col>
+        </Row>
+        </div>
+      </Col>
+    );
+  } else {
 
     const buffer = props.data.img.data.data;
     const b64 = new Buffer.from(buffer).toString('base64');
@@ -100,6 +136,7 @@ const buttonGroup = (props) => {
       </Col>
     );
   }
+}
 
   const Slide2 = (props) => {
     //const [address,imageSrc,title,value] = props;
