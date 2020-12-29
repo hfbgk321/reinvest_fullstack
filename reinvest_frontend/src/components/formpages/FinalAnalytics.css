@@ -23,8 +23,16 @@
   border: 1px solid #bfbfbf;
   border-radius: 2.5%;
   background-color: #fff;
+  min-width: 150px;
   margin: 3%;
-  min-width: 120px;
+}
+.box3 {
+  padding: 3%;
+  border: 1px solid #bfbfbf;
+  border-radius: 2.5%;
+  background-color: #fff;
+  min-width: 150px;
+  margin: auto;
 }
 .box1 {
   padding: 5% !important;
@@ -46,4 +54,17 @@
 }
 .containerRehab {
   background-color: #fff;
+}
+.column {
+  width: fit-content;
+  margin: auto;
+  padding-right: 5%;
+}
+.center_default {
+  padding: 0;
+  margin: auto;
+  display: block;
+  text-align: center;
+  min-width: 500px;
+  height: 400px;
 }

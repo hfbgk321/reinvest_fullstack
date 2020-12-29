@@ -74,7 +74,7 @@ const buttonGroup = (props) => {
           <Col>
             {/* <img src={imageSrc} alt={address}></img> */}
             <img
-              class="center"
+              class="center_default"
               // src={unknown}
               src={StockHouseImage}
               width="20%"
@@ -184,30 +184,26 @@ const buttonGroup = (props) => {
           <h1>Cash Flow</h1>
         </Row>
         <Row>
-          <Col md="auto">
+          
+          <Col>
             <Chart/>
           </Col>
 
-          <Col>
+          <div class="Col center">
             <Row>
-              <div class="Col box">Cash Flow: ${props.data.monthlyCashFlow} /Month</div>
-            
-              <div class="Col box">CoC Roi: <br></br> {props.data.cashOnCash}%</div>
+              <div class="Col box3">Cash Flow: <br></br> ${props.data.monthlyCashFlow} /Month</div>
+              <div class="Col box3">CoC Roi: <br></br> {props.data.cashOnCash}%</div>
+              <div class="Col box3">Monthly Income: <br></br> ${props.data.monthlyIncome}/Month</div>
             </Row>
             <Row>
-              <div class="Col box">Monthly Income: <br></br> ${props.data.monthlyIncome}/Month</div>
-              <div class="Col box">Expenses: <br></br> ${props.data.totalExpenses}/Month</div>
+              <div class="Col box3">Expenses: <br></br> ${props.data.totalExpenses}/Month</div>
+              <div class="Col box3">5 Year Annualized Return <br></br> 9.58%</div>
+              <div class="Col box3">Mortgage Payment <br></br> ${props.data.monthlyFixedMorgage} /mo</div>
             </Row>
-          </Col>
+          </div>
         </Row>
         <br></br>
         <br></br>
-        <Row>
-          <Col sm={3}></Col>
-          <div class="Col box">5 Year Annualized Return <br></br> 9.58%</div>
-          <div class="Col box">Mortgage Payment <br></br> ${props.data.monthlyFixedMorgage} /mo</div>
-          <Col sm={3}></Col>
-        </Row>
       </div>
     );
   }
@@ -287,15 +283,15 @@ const buttonGroup = (props) => {
             <Row>
               <div class="Col box1">
                 <Row>
-                <Col md = 'auto'>
+                <div class="column">
                   <Row>Total Expense </Row>
                   <Row>Mortgage</Row> 
                   <Row>Taxes</Row>
                   <Row>Insurance</Row>
                   <Row>Fixed expenses</Row>
                   <Row>Variable expenses</Row>
-                </Col>
-                <Col>
+                </div>
+                <div class="column">
                   <Row> ${props.data.totalExpenses} </Row>
                   <Row> ${props.data.monthlyFixedMorgage}</Row>
                   <Row> ${parseFloat((props.data.propertyTaxes / 12).toFixed(2))}</Row>
@@ -305,47 +301,47 @@ const buttonGroup = (props) => {
                           (props.data.grossMonthlyIncome*(props.data.repairsAndMaintenence/100)) +
                           (props.data.grossMonthlyIncome*(props.data.capitalExpenditures/100)) + 
                           (props.data.grossMonthlyIncome*(props.data.vacancy/100))} </Row>
-                </Col>
+                </div>
                 </Row>
               </div>
 
               <div class="Col box1">
                 <Row>
-                <Col md="auto">
+                <div class="column">
                 <Row>Fixed Expense </Row>
                 <Row>Electricity</Row>
                 <Row>Gas</Row>
                 <Row>Water & Sewer</Row>
                 <Row>HOA fees</Row>
                 <Row>Garbage</Row>
-                </Col>
-                <Col>
+                </div>
+                <div class="column">
                   <Row> ${fixedExpense()}</Row>
                   <Row> ${props.data.electricity}</Row>
                   <Row> ${props.data.gas}</Row>
                   <Row> ${props.data.waterAndSewer}</Row>
                   <Row> ${props.data.hoaFees}</Row>
                   <Row> ${props.data.garbage}</Row>
-                </Col>
+                </div>
                 </Row>
               </div>
 
               <div class="Col box1">
                 <Row>
-                <Col md="auto" >
+                <div class="column">
                   <Row>Variable Expense </Row>
                   <Row>Vacancy</Row>
                   <Row>Maintenance</Row>
                   <Row>CapEx</Row>
                   <Row>Management fee</Row>
-                </Col>
-                <Col>
+                </div>
+                <div class="column">
                   <Row> ${variableExpense()} </Row>
                   <Row> ${(props.data.grossMonthlyIncome*(props.data.vacancy/100))}</Row>
                   <Row> ${(props.data.grossMonthlyIncome*(props.data.repairsAndMaintenence/100))}</Row>
                   <Row> ${(props.data.grossMonthlyIncome*(props.data.capitalExpenditures/100))}</Row>
                   <Row> ${(props.data.grossMonthlyIncome*(props.data.managementFees/100))}</Row>
-                </Col>
+                </div>
                 </Row>
               </div>
 
