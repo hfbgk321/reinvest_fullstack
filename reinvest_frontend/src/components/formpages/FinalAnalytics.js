@@ -16,6 +16,7 @@ import Chart from "./LineChart";
 import MonthlyExpensesPie from "./PieChart";
 import RentalIncomeDonut from "./RentalIncomeDonut";
 import MonthlyExpensesDonut from "./MonthlyExpensesDonut";
+import LoanDetailsDonut from "./LoanDetailsDonut";
 import axios from 'axios';
 import Cookies, { set } from 'js-cookie';
 
@@ -61,9 +62,9 @@ const buttonGroup = (props) => {
   const Slide1 = (props) => {
     //const [address,imageSrc,title,value] = props;
 
-    const buffer = props.data.img.data.data;
-    const b64 = new Buffer.from(buffer).toString('base64');
-    const mimeType = props.data.img.contentType;
+    // const buffer = props.data.img.data.data;
+    // const b64 = new Buffer.from(buffer).toString('base64');
+    // const mimeType = props.data.img.contentType;
     return (
       <Col>
         {/* <h1>{address}</h1> */}
@@ -73,14 +74,14 @@ const buttonGroup = (props) => {
         <Row>
           <Col>
             {/* <img src={imageSrc} alt={address}></img> */}
-            <img
+            {/* <img
               class="center"
               // src={unknown}
               src={`data:${mimeType};base64,${b64}`}
               width="70%"
               margin="auto"
               alt="975 SPONGEBOB AVENUE"
-            ></img>
+            ></img> */}
           </Col>
         </Row>
         <Row>
@@ -116,7 +117,7 @@ const buttonGroup = (props) => {
           </Col>
           <Col sm={4}>
             <h1>Loan details</h1>
-            <MonthlyExpensesDonut data = {props.data}/>
+            <LoanDetailsDonut data = {props.data}/>
           </Col>
         </Row>
       </div>
