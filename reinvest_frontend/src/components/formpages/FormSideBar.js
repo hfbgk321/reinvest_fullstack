@@ -15,46 +15,6 @@ import {
   } from "react-bootstrap";
 
 
-const FormImage = () => {
-    const [image,setImage] = useState({});
-    const [file,setFile] = useState(null);
-  
-    const handleClick = (e) => {
-      document.getElementById("selectImage").click();
-    }
-  
-    const fileOnChange = (event) =>{
-      setImage(event.target.files[0]);
-      setFile(URL.createObjectURL(event.target.files[0]))
-    }
-  
-    /*const sendImage = async (event) =>{
-      let formData = new FormData();
-      formData.append("image",image);
-  
-      let response = await fetch('http://localhost:4000/img_fetch',{
-        method:"post",
-        body: formData
-      })
-  
-        let data = await response.json();
-        console.log(data);
-      
-    }*/
-  
-  
-    return (
-      <div>
-        <img src ={file} width="100%" height="100%"/>
-        <br/>
-        <button onClick={handleClick} className="buttonForUploadImage">Upload Image</button>
-        <input id='selectImage' type="file" onChange = {fileOnChange} accept = "image/png,image/jpg,image/jpeg" style={{display:'none'}}/>
-        {/*<button onClick ={sendImage}>Upload</button>*/}
-      </div>
-    );
-}
-
-
 
 const FormNav = () => {
     const handleClickPropertyInformation = (e) => {
@@ -96,7 +56,6 @@ function FormSideBar() {
             <StickyBox offsetTop={100} offsetBottom={20}>
             <div class = "form-sidebar-nav">
             
-                <FormImage/>
                 <FormNav/>
             
             </div>

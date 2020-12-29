@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from "react";
 import ReactDOM from "react-dom";
-import "./formpages.css";
+//import "./formpages.css";
 import Navb from "../Signedout/Navbar"; //importing from navbar.js?
 import {
   Container,
@@ -14,10 +14,14 @@ import './FinalAnalytics.css';
 import {Line} from "react-chartjs-2";
 import Chart from "./LineChart";
 import MonthlyExpensesPie from "./PieChart";
-import DonutChart from "./DonutChart";
+import RentalIncomeDonut from "./RentalIncomeDonut";
+import MonthlyExpensesDonut from "./MonthlyExpensesDonut";
+import LoanDetailsDonut from "./LoanDetailsDonut";
 import axios from 'axios';
 import Cookies, { set } from 'js-cookie';
 
+import {loadingPage} from '../../loading';
+import StockHouseImage from '../../images/stockHouse.jpg';
 
 
 
@@ -59,6 +63,45 @@ const buttonGroup = (props) => {
 
   const Slide1 = (props) => {
     //const [address,imageSrc,title,value] = props;
+    if (props.data.img == undefined){
+      return (
+        <Col>
+        {/* <h1>{address}</h1> */}
+        <br></br>
+        <br></br>
+        <h1 class="heading">{props.data.streetAddress}</h1>
+        <Row>
+          <Col>
+            {/* <img src={imageSrc} alt={address}></img> */}
+            <img
+              class="center"
+              // src={unknown}
+              src={StockHouseImage}
+              width="20%"
+              margin="auto"
+              alt="975 SPONGEBOB AVENUE"
+            ></img>
+          </Col>
+        </Row>
+        <div class="center">
+        <Row>
+          {/* <Col sm={4}>{buttonGroup(title, value)};</Col>
+          <Col sm={4}>{buttonGroup(title, value)};</Col>
+          <Col sm={4}>{buttonGroup(title, value)}</Col>
+          <Col sm={4}>{buttonGroup(title, value)}</Col> */}
+          <Col>{buttonGroup({ title: "CASH NEEDED", value:"$"+ (props.data.purchasePrice - props.data.loanAmount)})}</Col>
+          <Col>{buttonGroup({ title: "CASH FLOW", value: "$"+(props.data.monthlyCashFlow)+"/ mo" })}</Col>
+          <Col>{buttonGroup({ title: "CAP RATE", value: props.data.capitalizationRate +" %" })}</Col>
+          <Col>{buttonGroup({ title: "COC", value: props.data.cashOnCash+" %" })}</Col>
+        </Row>
+        </div>
+      </Col>
+    );
+  } else {
+
+    const buffer = props.data.img.data.data;
+    const b64 = new Buffer.from(buffer).toString('base64');
+    const mimeType = props.data.img.contentType;
     return (
       <Col>
         {/* <h1>{address}</h1> */}
@@ -71,13 +114,14 @@ const buttonGroup = (props) => {
             <img
               class="center"
               // src={unknown}
-              src="https://ca-times.brightspotcdn.com/dims4/default/4687cfb/2147483647/strip/true/crop/2000x1125+0+0/resize/1486x836!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F4d%2Ff8%2F0a8a32e3c033cc1bec95dce5ca7b%2Fla-fi-hp-hotprop-pictures-20190119-001"
+              src={`data:${mimeType};base64,${b64}`}
               width="70%"
               margin="auto"
               alt="975 SPONGEBOB AVENUE"
             ></img>
           </Col>
         </Row>
+        <div class="center">
         <Row>
           {/* <Col sm={4}>{buttonGroup(title, value)};</Col>
           <Col sm={4}>{buttonGroup(title, value)};</Col>
@@ -86,32 +130,34 @@ const buttonGroup = (props) => {
           <Col>{buttonGroup({ title: "CASH NEEDED", value:"$"+ (props.data.purchasePrice - props.data.loanAmount)})}</Col>
           <Col>{buttonGroup({ title: "CASH FLOW", value: "$"+(props.data.monthlyCashFlow)+"/ mo" })}</Col>
           <Col>{buttonGroup({ title: "CAP RATE", value: props.data.capitalizationRate +" %" })}</Col>
-          <Col>{buttonGroup({ title: "COC", value: props.data.capitalizationRate+" %" })}</Col>
+          <Col>{buttonGroup({ title: "COC", value: props.data.cashOnCash+" %" })}</Col>
         </Row>
+        </div>
       </Col>
     );
   }
+}
 
   const Slide2 = (props) => {
     //const [address,imageSrc,title,value] = props;
     return (
-      <div>
+      <div class="center">
         <Row>
           <Col sm={1}></Col>
           <h1>Purchase and Rehab</h1>
         </Row>
         <Row>
           <Col sm={4}>
-            <h1>Rental Income</h1>
-            <DonutChart/>
+            <h3>Rental Income</h3>
+            <RentalIncomeDonut data = {props.data} />
           </Col>
           <Col sm={4}>
-            <h1>Expenses</h1>
-            <DonutChart/>
+            <h3>Expenses</h3>
+            <MonthlyExpensesDonut data = {props.data}/>
           </Col>
           <Col sm={4}>
-            <h1>Loan details</h1>
-            <DonutChart/>
+            <h3>Loan details</h3>
+            <LoanDetailsDonut data = {props.data}/>
           </Col>
         </Row>
       </div>
@@ -132,7 +178,7 @@ const buttonGroup = (props) => {
   const Slide3 = (props) => {
     //const [address,imageSrc,title,value] = props;
     return (
-      <div>
+      <div class="center">
         <Row>
           <Col sm={1}></Col>
           <h1>Cash Flow</h1>
@@ -143,11 +189,14 @@ const buttonGroup = (props) => {
           </Col>
 
           <Col>
-            <Row><Col sm={1}></Col>Monthly Cash Flow: $500</Row>
             <Row>
-              <Col sm={4}>Income: <br></br> $1000</Col>
-              <Col sm={4}>Expenses: <br></br> $500</Col>
-              <Col sm={4}>CoC Roi: <br></br> 5.05%</Col>
+              <div class="Col box">Cash Flow: ${props.data.monthlyCashFlow} /Month</div>
+            
+              <div class="Col box">CoC Roi: <br></br> {props.data.cashOnCash}%</div>
+            </Row>
+            <Row>
+              <div class="Col box">Monthly Income: <br></br> ${props.data.monthlyIncome}/Month</div>
+              <div class="Col box">Expenses: <br></br> ${props.data.totalExpenses}/Month</div>
             </Row>
           </Col>
         </Row>
@@ -155,8 +204,8 @@ const buttonGroup = (props) => {
         <br></br>
         <Row>
           <Col sm={3}></Col>
-          <Col sm={3}>5 Year Annualized Return <br></br> 9.58%</Col>
-          <Col sm={3}>Mortgage Payment <br></br> $1028 /mo</Col>
+          <div class="Col box">5 Year Annualized Return <br></br> 9.58%</div>
+          <div class="Col box">Mortgage Payment <br></br> ${props.data.monthlyFixedMorgage} /mo</div>
           <Col sm={3}></Col>
         </Row>
       </div>
@@ -180,15 +229,29 @@ const buttonGroup = (props) => {
   }
   const Slide4 = (props) => {
     //const [address,imageSrc,title,value] = props;
+    const variableExpense = () => {
+      let result = ((props.data.grossMonthlyIncome*(props.data.managementFees/100)) +
+      (props.data.grossMonthlyIncome*(props.data.repairsAndMaintenence/100)) +
+      (props.data.grossMonthlyIncome*(props.data.capitalExpenditures/100)) + 
+      (props.data.grossMonthlyIncome*(props.data.vacancy/100)) );  //unsure about the calculation of vacancy
+      return result;
+    }
+    const fixedExpense = () => {
+      let result = (props.data.electricity +
+        props.data.gas +
+        props.data.garbage +
+        props.data.waterAndSewer+ props.data.hoaFees);  //unsure about the calculation of vacancy
+      return result;
+    }
     return (
-      <>
+      <div class="center">
+        <Container>
         <Row>
-          <Col sm={1}></Col>
-          <h1>Monthly Expenses Breakdown</h1>
+          <h1>Monthly Expenses</h1>
         </Row>
         <Row>
           <Col md="auto">
-            <MonthlyExpensesPie/>
+            <MonthlyExpensesPie  data = {props.data} />
           </Col>
 
             {/* <Col xs={5} class="box">
@@ -221,29 +284,32 @@ const buttonGroup = (props) => {
 
 
           <Container fluid>
-          <Row>
-              <Col>
-              <Row>
+            <Row>
+              <div class="Col box1">
+                <Row>
                 <Col md = 'auto'>
                   <Row>Total Expense </Row>
                   <Row>Mortgage</Row> 
                   <Row>Taxes</Row>
                   <Row>Insurance</Row>
-                  <Row>Variable expenses</Row>
                   <Row>Fixed expenses</Row>
+                  <Row>Variable expenses</Row>
                 </Col>
                 <Col>
-                  <Row>$2239 </Row>
-                  <Row>$1,540</Row>
-                  <Row>$329</Row>
-                  <Row>$75</Row>
-                  <Row>$295</Row>
-                  <Row>$0</Row>
+                  <Row> ${props.data.totalExpenses} </Row>
+                  <Row> ${props.data.monthlyFixedMorgage}</Row>
+                  <Row> ${parseFloat((props.data.propertyTaxes / 12).toFixed(2))}</Row>
+                  <Row> ${parseFloat((props.data.insurance / 12).toFixed(2))}</Row>
+                  <Row> ${fixedExpense()}</Row>
+                  <Row> ${(props.data.grossMonthlyIncome*(props.data.managementFees/100)) +
+                          (props.data.grossMonthlyIncome*(props.data.repairsAndMaintenence/100)) +
+                          (props.data.grossMonthlyIncome*(props.data.capitalExpenditures/100)) + 
+                          (props.data.grossMonthlyIncome*(props.data.vacancy/100))} </Row>
                 </Col>
                 </Row>
-              </Col>
+              </div>
 
-              <Col>
+              <div class="Col box1">
                 <Row>
                 <Col md="auto">
                 <Row>Fixed Expense </Row>
@@ -254,49 +320,52 @@ const buttonGroup = (props) => {
                 <Row>Garbage</Row>
                 </Col>
                 <Col>
-                  <Row>$0</Row>
-                  <Row>$0</Row>
-                  <Row>$0</Row>
-                  <Row>$0</Row>
-                  <Row>$0</Row>
-                  <Row>$0</Row>
+                  <Row> ${fixedExpense()}</Row>
+                  <Row> ${props.data.electricity}</Row>
+                  <Row> ${props.data.gas}</Row>
+                  <Row> ${props.data.waterAndSewer}</Row>
+                  <Row> ${props.data.hoaFees}</Row>
+                  <Row> ${props.data.garbage}</Row>
                 </Col>
                 </Row>
-              </Col>
+              </div>
 
-              <Col>
+              <div class="Col box1">
                 <Row>
-                <Col md="auto">
+                <Col md="auto" >
                   <Row>Variable Expense </Row>
-                  <Row>vacancy</Row>
+                  <Row>Vacancy</Row>
                   <Row>Maintenance</Row>
                   <Row>CapEx</Row>
                   <Row>Management fee</Row>
                 </Col>
                 <Col>
-                  <Row>$295 </Row>
-                  <Row>$55</Row>
-                  <Row>$55</Row>
-                  <Row>$0</Row>
-                  <Row>$184</Row>
+                  <Row> ${variableExpense()} </Row>
+                  <Row> ${(props.data.grossMonthlyIncome*(props.data.vacancy/100))}</Row>
+                  <Row> ${(props.data.grossMonthlyIncome*(props.data.repairsAndMaintenence/100))}</Row>
+                  <Row> ${(props.data.grossMonthlyIncome*(props.data.capitalExpenditures/100))}</Row>
+                  <Row> ${(props.data.grossMonthlyIncome*(props.data.managementFees/100))}</Row>
                 </Col>
                 </Row>
-              </Col>
+              </div>
+
               </Row>
-              </Container>
+            </Container>
         </Row>
         <Row>
           <Col sm={3}></Col>
-          <Col sm={3}>5 Year Annualized Return <br></br> 9.58%</Col>
-          <Col sm={3}>Mortgage Payment <br></br> $1028 /mo</Col>
+          <div class="Col box">5 Year Annualized Return <br></br> 9.58%</div>
+          <div class="Col box">Mortgage Payment <br></br> ${props.data.monthlyFixedMorgage} /mo</div>
           <Col sm={3}></Col>
         </Row>
-      </>
+        </Container>
+      </div>
     );
   }
   
 function FinalAnalytics(props) {
   const [data, setData] = useState({});
+  const [isLoaded,setIsLoaded] = useState(false);
   const getJSONStuff = () => {
     let propertyInfoId = localStorage.getItem('propertyInfoId');
     console.log(propertyInfoId);
@@ -311,11 +380,18 @@ function FinalAnalytics(props) {
   useEffect(async()=>{
     let hello = await getJSONStuff();
     console.log(data);
+    setTimeout(()=>{
+      setIsLoaded(true);
+    },2000);
+    
   },data)
 
   console.log(data);
+  
 
-
+  if(!isLoaded){
+     return <loadingPage/>
+  }
   return (
     <>
     <div>
@@ -352,58 +428,6 @@ function FinalAnalytics(props) {
         <Row>
           <Slide4 data = {data}/>
         </Row>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
 
         <br></br>
         <hr/>

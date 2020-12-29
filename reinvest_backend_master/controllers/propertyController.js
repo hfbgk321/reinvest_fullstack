@@ -20,11 +20,22 @@ export const getProperties = async (req,res) =>{
   })
 }
 
+export const getPropertiesByQuery = async (req,res) =>{
+  verifyToken (req,res,(data) =>{
+    Property.find({ownerID: data.ownerID,streetAddress: {$regex: req.body.query, $options :"i"}},(err,properties)=>{
+      if(err){
+        return res.status(400).json({message: err});
+      }
+      return res.json(properties);
+    })
+  })
+}
+
 export const registerProperty = (req,res) =>{
   verifyToken(req,res, (data) => {
     console.log(req.file == undefined);
     if(req.file == undefined) {
-      console.log('cREATING..');
+      console.log('cREATING.. undefined');
       Property.create({
         ownerID: data.ownerID,
         ...req.body
