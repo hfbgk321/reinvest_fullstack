@@ -36,3 +36,12 @@ body{
     font-size: 0.75rem;
     margin-top: 0.25rem;
 }
+.centerSearchBar{
+    margin: auto;
+}
+.barStyling{
+    width:"20rem";
+    background:"#F2F1F9";
+    border:"none";
+    padding:"0.5rem";
+}
