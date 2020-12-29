@@ -5,11 +5,8 @@ import Property from "./Property";
 import "./signedIn.css";
 import { Link } from "react-router-dom";
 import Navb from "../Signedout/Navbar"; //importing from navbar.js?
-<<<<<<< HEAD
-=======
 import axios from "axios";
 import Cookies from 'js-cookie';
->>>>>>> c1e62394e3639cbf58ab65d9764d913b676bc5cc
 
 function PropertyList(props) {
   const [keyword, setKeyword] = useState("");
