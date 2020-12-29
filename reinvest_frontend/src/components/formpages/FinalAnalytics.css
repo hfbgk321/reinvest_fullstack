@@ -16,6 +16,7 @@
   margin: auto;
   display: block;
   text-align: center;
+  min-width: 500px;
 }
 .box {
   padding: 3%;
@@ -23,6 +24,15 @@
   border-radius: 2.5%;
   background-color: #fff;
   margin-top: 10%;
+}
+.box1 {
+  padding: 5%;
+  border: 1px solid #bfbfbf;
+  border-radius: 2.5%;
+  background-color: #fff;
+  margin-top: 5%;
+  margin: 1%;
+  min-width: 200px;
 }
 .heading {
   text-align: center;
