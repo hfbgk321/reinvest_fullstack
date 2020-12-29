@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from "react";
 import ReactDOM from "react-dom";
-import "./formpages.css";
+//import "./formpages.css";
 import Navb from "../Signedout/Navbar"; //importing from navbar.js?
 import {
   Container,
@@ -85,6 +85,7 @@ const buttonGroup = (props) => {
             ></img>
           </Col>
         </Row>
+        <div class="center">
         <Row>
           {/* <Col sm={4}>{buttonGroup(title, value)};</Col>
           <Col sm={4}>{buttonGroup(title, value)};</Col>
@@ -95,6 +96,7 @@ const buttonGroup = (props) => {
           <Col>{buttonGroup({ title: "CAP RATE", value: props.data.capitalizationRate +" %" })}</Col>
           <Col>{buttonGroup({ title: "COC", value: props.data.cashOnCash+" %" })}</Col>
         </Row>
+        </div>
       </Col>
     );
   }
@@ -102,7 +104,7 @@ const buttonGroup = (props) => {
   const Slide2 = (props) => {
     //const [address,imageSrc,title,value] = props;
     return (
-      <div>
+      <div class="center">
         <Row>
           <Col sm={1}></Col>
           <h1>Purchase and Rehab</h1>
@@ -139,7 +141,7 @@ const buttonGroup = (props) => {
   const Slide3 = (props) => {
     //const [address,imageSrc,title,value] = props;
     return (
-      <div>
+      <div class="center">
         <Row>
           <Col sm={1}></Col>
           <h1>Cash Flow</h1>
@@ -150,11 +152,14 @@ const buttonGroup = (props) => {
           </Col>
 
           <Col>
-            <Row><Col sm={1}></Col>Monthly Cash Flow: {props.data.monthlyCashFlow}</Row>
             <Row>
-              <Col sm={4}>Income: <br></br> {props.data.netOperatingIncome}</Col>
-              <Col sm={4}>Expenses: <br></br> {props.data.totalExpenses}</Col>
-              <Col sm={4}>CoC Roi: <br></br> {props.data.cashOnCash}%</Col>
+              <div class="Col box">Cash Flow: ${props.data.monthlyCashFlow} /Month</div>
+            
+              <div class="Col box">CoC Roi: <br></br> {props.data.cashOnCash}%</div>
+            </Row>
+            <Row>
+              <div class="Col box">Monthly Income: <br></br> ${props.data.monthlyIncome}/Month</div>
+              <div class="Col box">Expenses: <br></br> ${props.data.totalExpenses}/Month</div>
             </Row>
           </Col>
         </Row>
@@ -162,8 +167,8 @@ const buttonGroup = (props) => {
         <br></br>
         <Row>
           <Col sm={3}></Col>
-          <Col sm={3}>5 Year Annualized Return <br></br> 9.58%</Col>
-          <Col sm={3}>Mortgage Payment <br></br> $${props.data.monthlyFixedMorgage} /mo</Col>
+          <div class="Col box">5 Year Annualized Return <br></br> 9.58%</div>
+          <div class="Col box">Mortgage Payment <br></br> ${props.data.monthlyFixedMorgage} /mo</div>
           <Col sm={3}></Col>
         </Row>
       </div>
@@ -203,11 +208,12 @@ const buttonGroup = (props) => {
     }
     return (
       <div class="center">
+        <Container>
         <Row>
           <h1>Monthly Expenses</h1>
         </Row>
         <Row>
-          <Col md="auto" class="center">
+          <Col md="auto">
             <MonthlyExpensesPie  data = {props.data} />
           </Col>
 
@@ -241,9 +247,9 @@ const buttonGroup = (props) => {
 
 
           <Container fluid>
-          <Row>
-              <Col class='box1'>
-              <Row>
+            <Row>
+              <div class="Col box1">
+                <Row>
                 <Col md = 'auto'>
                   <Row>Total Expense </Row>
                   <Row>Mortgage</Row> 
@@ -264,9 +270,9 @@ const buttonGroup = (props) => {
                           (props.data.grossMonthlyIncome*(props.data.vacancy/100))} </Row>
                 </Col>
                 </Row>
-              </Col>
+              </div>
 
-              <Col class='box1'>
+              <div class="Col box1">
                 <Row>
                 <Col md="auto">
                 <Row>Fixed Expense </Row>
@@ -285,9 +291,9 @@ const buttonGroup = (props) => {
                   <Row> ${props.data.garbage}</Row>
                 </Col>
                 </Row>
-              </Col>
+              </div>
 
-              <Col class='box1'>
+              <div class="Col box1">
                 <Row>
                 <Col md="auto" >
                   <Row>Variable Expense </Row>
@@ -304,17 +310,18 @@ const buttonGroup = (props) => {
                   <Row> ${(props.data.grossMonthlyIncome*(props.data.managementFees/100))}</Row>
                 </Col>
                 </Row>
-              </Col>
+              </div>
 
               </Row>
-              </Container>
+            </Container>
         </Row>
         <Row>
           <Col sm={3}></Col>
-          <Col sm={3}>5 Year Annualized Return <br></br> 9.58%</Col>
-          <Col sm={3}>Mortgage Payment <br></br> ${props.data.monthlyFixedMorgage} /mo</Col>
+          <div class="Col box">5 Year Annualized Return <br></br> 9.58%</div>
+          <div class="Col box">Mortgage Payment <br></br> ${props.data.monthlyFixedMorgage} /mo</div>
           <Col sm={3}></Col>
         </Row>
+        </Container>
       </div>
     );
   }
