@@ -28,7 +28,7 @@ var uploads = multer({
 });
 
 export const Routes = (app) => {
-  app.route('/properties').post(getProperties);
+  app.route('/properties/all').post(getProperties);
   app.route('/properties/query').post(getPropertiesByQuery);
 
   app.route('/properties/:id').post(getPropertyById);
