@@ -1,9 +1,11 @@
 * {
-  background-color: #fdf8ff;
+  
+
   font-family: "Merriweather";
 }
 
 body {
+ 
   height: 100vh;
   margin: 0;
   padding: 0;
@@ -15,7 +17,7 @@ body {
 .center {
   padding-top: 50px;
   width: 50%;
-  padding: 0;
+  
   margin: auto;
 }
 .center h2 {
@@ -27,6 +29,7 @@ body {
   padding: 0 40px;
   box-sizing: border-box;
   overflow: auto;
+
 }
 form .text_field {
   position: relative;
@@ -67,7 +70,7 @@ input[type="submit"]:hover {
 }
 .register {
   font-size: 25px;
-  background: #ca2b69;
+  background: #343a40;
   color: white;
   border-radius: 10px;
   width: 100%;
