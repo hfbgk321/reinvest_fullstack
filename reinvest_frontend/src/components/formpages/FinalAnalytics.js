@@ -74,7 +74,7 @@ const buttonGroup = (props) => {
           <Col>
             {/* <img src={imageSrc} alt={address}></img> */}
             <img
-              class="center"
+              class="center_default"
               // src={unknown}
               src={StockHouseImage}
               width="20%"
@@ -192,23 +192,18 @@ const buttonGroup = (props) => {
           <div class="Col center">
             <Row>
               <div class="Col box3">Cash Flow: <br></br> ${props.data.monthlyCashFlow} /Month</div>
-            
               <div class="Col box3">CoC Roi: <br></br> {props.data.cashOnCash}%</div>
+              <div class="Col box3">Monthly Income: <br></br> ${props.data.monthlyIncome}/Month</div>
             </Row>
             <Row>
-              <div class="Col box3">Monthly Income: <br></br> ${props.data.monthlyIncome}/Month</div>
               <div class="Col box3">Expenses: <br></br> ${props.data.totalExpenses}/Month</div>
+              <div class="Col box3">5 Year Annualized Return <br></br> 9.58%</div>
+              <div class="Col box3">Mortgage Payment <br></br> ${props.data.monthlyFixedMorgage} /mo</div>
             </Row>
           </div>
         </Row>
         <br></br>
         <br></br>
-        <Row>
-          <Col sm={3}></Col>
-          <div class="Col box">5 Year Annualized Return <br></br> 9.58%</div>
-          <div class="Col box">Mortgage Payment <br></br> ${props.data.monthlyFixedMorgage} /mo</div>
-          <Col sm={3}></Col>
-        </Row>
       </div>
     );
   }

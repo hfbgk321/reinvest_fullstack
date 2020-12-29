@@ -60,3 +60,11 @@
   margin: auto;
   padding-right: 5%;
 }
+.center_default {
+  padding: 0;
+  margin: auto;
+  display: block;
+  text-align: center;
+  min-width: 500px;
+  height: 400px;
+}
