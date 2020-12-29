@@ -5,6 +5,7 @@ import Property from "./Property";
 import "./signedIn.css";
 import { Link } from "react-router-dom";
 import Navb from "../Signedout/Navbar"; //importing from navbar.js?
+import SearchBar from "./SearchBar"
 
 function PropertyList(props) {
   return (
@@ -14,6 +15,7 @@ function PropertyList(props) {
         {properties.map((property) => {
           return <Property key={property.id} {...property}></Property>;
         })}
+        <SearchBar></SearchBar>
         <Link to="/propertyinfo">Add New Property</Link>
       </section>
     </>
