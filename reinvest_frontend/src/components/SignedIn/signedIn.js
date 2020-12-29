@@ -5,7 +5,6 @@ import Property from "./Property";
 import "./signedIn.css";
 import { Link } from "react-router-dom";
 import Navb from "../Signedout/Navbar"; //importing from navbar.js?
-import SearchBar from "./SearchBar"
 
 function PropertyList(props) {
   const [keyword, setKeyword] = useState();
