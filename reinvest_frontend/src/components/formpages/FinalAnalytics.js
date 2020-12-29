@@ -16,6 +16,7 @@ import Chart from "./LineChart";
 import MonthlyExpensesPie from "./PieChart";
 import RentalIncomeDonut from "./RentalIncomeDonut";
 import MonthlyExpensesDonut from "./MonthlyExpensesDonut";
+import LoanDetailsDonut from "./LoanDetailsDonut";
 import axios from 'axios';
 import Cookies, { set } from 'js-cookie';
 
@@ -108,16 +109,16 @@ const buttonGroup = (props) => {
         </Row>
         <Row>
           <Col sm={4}>
-            <h1>Rental Income</h1>
+            <h3>Rental Income</h3>
             <RentalIncomeDonut data = {props.data} />
           </Col>
           <Col sm={4}>
-            <h1>Expenses</h1>
+            <h3>Expenses</h3>
             <MonthlyExpensesDonut data = {props.data}/>
           </Col>
           <Col sm={4}>
-            <h1>Loan details</h1>
-            <MonthlyExpensesDonut data = {props.data}/>
+            <h3>Loan details</h3>
+            <LoanDetailsDonut data = {props.data}/>
           </Col>
         </Row>
       </div>
@@ -153,7 +154,7 @@ const buttonGroup = (props) => {
             <Row>
               <Col sm={4}>Income: <br></br> {props.data.netOperatingIncome}</Col>
               <Col sm={4}>Expenses: <br></br> {props.data.totalExpenses}</Col>
-              <Col sm={4}>CoC Roi: <br></br> 5.05%</Col>
+              <Col sm={4}>CoC Roi: <br></br> {props.data.cashOnCash}%</Col>
             </Row>
           </Col>
         </Row>
@@ -162,7 +163,7 @@ const buttonGroup = (props) => {
         <Row>
           <Col sm={3}></Col>
           <Col sm={3}>5 Year Annualized Return <br></br> 9.58%</Col>
-          <Col sm={3}>Mortgage Payment <br></br> $1028 /mo</Col>
+          <Col sm={3}>Mortgage Payment <br></br> $${props.data.monthlyFixedMorgage} /mo</Col>
           <Col sm={3}></Col>
         </Row>
       </div>
@@ -186,15 +187,28 @@ const buttonGroup = (props) => {
   }
   const Slide4 = (props) => {
     //const [address,imageSrc,title,value] = props;
+    const variableExpense = () => {
+      let result = ((props.data.grossMonthlyIncome*(props.data.managementFees/100)) +
+      (props.data.grossMonthlyIncome*(props.data.repairsAndMaintenence/100)) +
+      (props.data.grossMonthlyIncome*(props.data.capitalExpenditures/100)) + 
+      (props.data.grossMonthlyIncome*(props.data.vacancy/100)) );  //unsure about the calculation of vacancy
+      return result;
+    }
+    const fixedExpense = () => {
+      let result = (props.data.electricity +
+        props.data.gas +
+        props.data.garbage +
+        props.data.waterAndSewer+ props.data.hoaFees);  //unsure about the calculation of vacancy
+      return result;
+    }
     return (
-      <>
+      <div class="center">
         <Row>
-          <Col sm={1}></Col>
-          <h1>Monthly Expenses Breakdown</h1>
+          <h1>Monthly Expenses</h1>
         </Row>
         <Row>
-          <Col md="auto">
-            <MonthlyExpensesPie/>
+          <Col md="auto" class="center">
+            <MonthlyExpensesPie  data = {props.data} />
           </Col>
 
             {/* <Col xs={5} class="box">
@@ -228,28 +242,31 @@ const buttonGroup = (props) => {
 
           <Container fluid>
           <Row>
-              <Col>
+              <Col class='box1'>
               <Row>
                 <Col md = 'auto'>
                   <Row>Total Expense </Row>
                   <Row>Mortgage</Row> 
                   <Row>Taxes</Row>
                   <Row>Insurance</Row>
-                  <Row>Variable expenses</Row>
                   <Row>Fixed expenses</Row>
+                  <Row>Variable expenses</Row>
                 </Col>
                 <Col>
-                  <Row>$2239 </Row>
-                  <Row>$1,540</Row>
-                  <Row>$329</Row>
-                  <Row>$75</Row>
-                  <Row>$295</Row>
-                  <Row>$0</Row>
+                  <Row> ${props.data.totalExpenses} </Row>
+                  <Row> ${props.data.monthlyFixedMorgage}</Row>
+                  <Row> ${parseFloat((props.data.propertyTaxes / 12).toFixed(2))}</Row>
+                  <Row> ${parseFloat((props.data.insurance / 12).toFixed(2))}</Row>
+                  <Row> ${fixedExpense()}</Row>
+                  <Row> ${(props.data.grossMonthlyIncome*(props.data.managementFees/100)) +
+                          (props.data.grossMonthlyIncome*(props.data.repairsAndMaintenence/100)) +
+                          (props.data.grossMonthlyIncome*(props.data.capitalExpenditures/100)) + 
+                          (props.data.grossMonthlyIncome*(props.data.vacancy/100))} </Row>
                 </Col>
                 </Row>
               </Col>
 
-              <Col>
+              <Col class='box1'>
                 <Row>
                 <Col md="auto">
                 <Row>Fixed Expense </Row>
@@ -260,44 +277,45 @@ const buttonGroup = (props) => {
                 <Row>Garbage</Row>
                 </Col>
                 <Col>
-                  <Row>$0</Row>
-                  <Row>$0</Row>
-                  <Row>$0</Row>
-                  <Row>$0</Row>
-                  <Row>$0</Row>
-                  <Row>$0</Row>
+                  <Row> ${fixedExpense()}</Row>
+                  <Row> ${props.data.electricity}</Row>
+                  <Row> ${props.data.gas}</Row>
+                  <Row> ${props.data.waterAndSewer}</Row>
+                  <Row> ${props.data.hoaFees}</Row>
+                  <Row> ${props.data.garbage}</Row>
                 </Col>
                 </Row>
               </Col>
 
-              <Col>
+              <Col class='box1'>
                 <Row>
-                <Col md="auto">
+                <Col md="auto" >
                   <Row>Variable Expense </Row>
-                  <Row>vacancy</Row>
+                  <Row>Vacancy</Row>
                   <Row>Maintenance</Row>
                   <Row>CapEx</Row>
                   <Row>Management fee</Row>
                 </Col>
                 <Col>
-                  <Row>$295 </Row>
-                  <Row>$55</Row>
-                  <Row>$55</Row>
-                  <Row>$0</Row>
-                  <Row>$184</Row>
+                  <Row> ${variableExpense()} </Row>
+                  <Row> ${(props.data.grossMonthlyIncome*(props.data.vacancy/100))}</Row>
+                  <Row> ${(props.data.grossMonthlyIncome*(props.data.repairsAndMaintenence/100))}</Row>
+                  <Row> ${(props.data.grossMonthlyIncome*(props.data.capitalExpenditures/100))}</Row>
+                  <Row> ${(props.data.grossMonthlyIncome*(props.data.managementFees/100))}</Row>
                 </Col>
                 </Row>
               </Col>
+
               </Row>
               </Container>
         </Row>
         <Row>
           <Col sm={3}></Col>
           <Col sm={3}>5 Year Annualized Return <br></br> 9.58%</Col>
-          <Col sm={3}>Mortgage Payment <br></br> $1028 /mo</Col>
+          <Col sm={3}>Mortgage Payment <br></br> ${props.data.monthlyFixedMorgage} /mo</Col>
           <Col sm={3}></Col>
         </Row>
-      </>
+      </div>
     );
   }
   
@@ -366,58 +384,6 @@ function FinalAnalytics(props) {
         <Row>
           <Slide4 data = {data}/>
         </Row>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
-
-        <br></br>
-        <hr/>
-        <br></br>
 
         <br></br>
         <hr/>
