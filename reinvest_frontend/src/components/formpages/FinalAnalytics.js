@@ -18,6 +18,7 @@ import DonutChart from "./DonutChart";
 import axios from 'axios';
 import Cookies, { set } from 'js-cookie';
 
+import {loadingPage} from '../../loading';
 
 
 
@@ -301,6 +302,7 @@ const buttonGroup = (props) => {
   
 function FinalAnalytics(props) {
   const [data, setData] = useState({});
+  const [isLoaded,setIsLoaded] = useState(false);
   const getJSONStuff = () => {
     let propertyInfoId = localStorage.getItem('propertyInfoId');
     console.log(propertyInfoId);
@@ -315,11 +317,18 @@ function FinalAnalytics(props) {
   useEffect(async()=>{
     let hello = await getJSONStuff();
     console.log(data);
+    setTimeout(()=>{
+      setIsLoaded(true);
+    },2000);
+    
   },data)
 
   console.log(data);
+  
 
-
+  if(!isLoaded){
+     return <loadingPage/>
+  }
   return (
     <>
     <div>
