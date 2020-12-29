@@ -39,7 +39,7 @@ function DonutChartdata(props) {
     }
 }
 const options = {
-    cutoutPercentage: 75,
+    cutoutPercentage: 60,
 }
 
 const styles = {

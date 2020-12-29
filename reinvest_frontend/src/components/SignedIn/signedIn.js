@@ -11,10 +11,11 @@ import Cookies from 'js-cookie';
 function PropertyList(props) {
   const [keyword, setKeyword] = useState("");
   const [yourProperties, setYourProperties] = useState([]);
+  const [propertyId,setPropertyId] = useState();
 
   useEffect(()=>{
     if(keyword.length === 0){
-      axios.post('http://localhost:4000/properties',{auth:Cookies.get('auth')}).then((res) =>{
+      axios.post('http://localhost:4000/properties/all',{auth:Cookies.get('auth')}).then((res) =>{
           setYourProperties(res.data);
           console.log(res.data);
       }).catch((err) => console.log('err when length is 0'))
@@ -48,6 +49,12 @@ function PropertyList(props) {
               <h2>{property.city}</h2>
               <h2>{property.state}</h2>
               <h2>{property.zipCode}</h2>
+              <button style = {{width:"200px",height:"50px",backgroundColor:"black",color:"white"}} onClick ={()=>{
+                localStorage.setItem('propertyInfoId',property._id);
+                console.log(localStorage.getItem('propertyInfoId'));
+                window.location = "http://localhost:3000/finalanalytics";
+              }}>Click Me</button>
+
             </div>
           )
         })}
