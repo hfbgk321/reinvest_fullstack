@@ -26,23 +26,23 @@ import Cookies from 'js-cookie';
     return (
         <>
       <div>
-            <Navbar collapseOnSelect expand="lg"  bg="clear" variant="light">
-            <Navbar.Brand href="/" style={{color: "#CA2B69"}}>FLOW</Navbar.Brand>
+            <Navbar collapseOnSelect expand="lg"  bg="dark" variant="dark">
+            <Navbar.Brand href="/" style={{color: "#fff",fontWeight:"bold"}}>REInvest</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav style={{background:"none"}} className="mr-auto" style={{bg:"none"}}>
+            <Navbar.Collapse id="responsive-navbar-nav" style={{backgroundColor: "#343a40"}}>
+            <Nav  className="mr-auto" style={{bg:"none"}}>
             </Nav>
             <Nav style={{background:"none"}}>
-            <Nav.Link eventKey={2} href="/" style={{color: "#CA2B69"}}>Home</Nav.Link>
-            <Nav.Link eventKey={2} href="/login" style={{color: "#CA2B69",display: showPropertiesAndSignOut}}>
+            <Nav.Link eventKey={2} href="/" style={{color: "#fff",fontWeight:"bold"}}>Home</Nav.Link>
+            <Nav.Link eventKey={2} href="/login" style={{color: "#fff",display: showPropertiesAndSignOut}}>
                       Properties
             </Nav.Link>
         
-            <Nav.Link style={{background:"none"}} eventKey={2} href="/login" style={{color: "#CA2B69",display:showLogin}}>
+            <Nav.Link style={{background:"none"}} eventKey={2} href="/login" style={{color: "#fff",fontWeight:"bold",display:showLogin}}>
                  Login In
             </Nav.Link>
 
-            <Nav.Link  onClick={handleClick} style={{background:"none"}} eventKey={2}  style={{color: "#CA2B69",display: showPropertiesAndSignOut}}>
+            <Nav.Link  onClick={handleClick}  eventKey={2}  style={{color: "#fff",fontWeight:"bold",display: showPropertiesAndSignOut}}>
                  Sign Out
             </Nav.Link>
                     

@@ -71,7 +71,7 @@ const ControlledInputs = () => {
   return (
     <>
       <Navb />
-      <Container fluid style={{ marginTop: "10%" }}>
+      <Container fluid style={{backgroundColor:"#f1f8e8" , padding:"13%" }}>
         <div className="center">
           <Form class="centeredform">
             <Form.Group controlId="formFirstName">
