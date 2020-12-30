@@ -69,7 +69,9 @@ body {
 }
 .property_card {
   margin: 2%;
-  box-shadow: 1.5px 1.5px #888888;
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+  -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+  filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
   width: 25%;
   height: 35%;
   text-align: center;
