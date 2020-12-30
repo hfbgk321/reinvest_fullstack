@@ -51,8 +51,6 @@ const buttonGroup = (props) => {
             <img
               class="center_default"
               src={StockHouseImage}
-              width="20%"
-              margin="auto"
               alt="975 SPONGEBOB AVENUE"
             ></img>
           </Col>
@@ -82,14 +80,14 @@ const buttonGroup = (props) => {
         </Col>
         <Row>
           <Col sm>
-            <img
-              class="center"
-              // src={unknown}
-              src={`data:${mimeType};base64,${b64}`}
-              width="70%"
-              margin="auto"
-              alt="975 SPONGEBOB AVENUE"
-            ></img>
+            <div class="imgdiv">
+              <img
+                class="center_default"
+                // src={unknown}
+                src={`data:${mimeType};base64,${b64}`}
+                alt="975 SPONGEBOB AVENUE"
+              ></img>
+            </div>
           </Col>
         </Row>
         <br/>

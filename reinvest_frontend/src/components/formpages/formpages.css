@@ -1,47 +1,47 @@
-
-body{
+body {
   background: #f1f5f8;
 }
 
-  .form-sidebar-nav {
-    float: right;
-    border-style: solid;
-    border-color: thistle;
-    top:0.25rem;
-  }
+.form-sidebar-nav {
+  float: right;
+  border-style: solid;
+  border-color: thistle;
+  width: 300px;
+  height: fit-content;
+  padding: 20px;
+}
+.formNavButton {
+  text-align: left;
+  width: 100%;
+  height: 30px;
+}
 
-  .formpage-sidebar-container {
-    overflow: unset;
-    position: -webkit-sticky;
-    
-    
-    float: left;
-    width: 35%;
-  }
+.formpage-sidebar-container {
+  overflow: unset;
+  position: -webkit-sticky;
 
-  .formpage-form-container {
-    float: right;
-    width: 65%;
-  }
+  float: left;
+  width: 35%;
+}
 
-  .buttonForUploadImage {
-    font-size: 100%;
-    background: gray;
-    color: white;
-    border-radius: 10%;
-    width: 100%;
-  }
+.formpage-form-container {
+  float: right;
+  width: 65%;
+}
 
-  .formNavButton {
-    text-align: left;
-    width: 100%;
-  }
+.buttonForUploadImage {
+  font-size: 100%;
+  background: gray;
+  color: white;
+  border-radius: 10%;
+  width: 100%;
+}
 
-  .formNextLinks {
-    background-color: gray !important;
-    color: white;
-    padding: 1em 1.5em;
-    text-decoration: none;
-    text-transform: uppercase;
-    float: right;
-  }
+.formNextLinks {
+  background-color: gray !important;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+  float: right;
+}

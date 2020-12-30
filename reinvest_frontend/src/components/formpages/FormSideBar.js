@@ -35,15 +35,15 @@ const FormNav = () => {
 
     return(
         <div class="form-sidebar-navigation">
-            <button onClick={handleClickPropertyInformation} className="formNavButton">Property Information</button>
+            <button onClick={handleClickPropertyInformation} class="formNavButton">Property Information</button>
             <a id='propInfoButton' href="#Property Information" style={{display:'none'}}>Property Information</a> <br/>
-            <button onClick={handleClickPurchases} className="formNavButton">Purchases</button>
+            <button onClick={handleClickPurchases} class="formNavButton">Purchases</button>
             <a id='purchasesButton' href="#purchase" style={{display:'none'}}>Purchases</a> <br/>
-            <button onClick={handleClickLoan} className="formNavButton">Loan</button>
+            <button onClick={handleClickLoan} class="formNavButton">Loan</button>
             <a id='loanButton' href="#Loan" style={{display:'none'}}>Loan</a> <br/>
-            <button onClick={handleClickRentalIncome} className="formNavButton">Rental Income</button>
+            <button onClick={handleClickRentalIncome} class="formNavButton">Rental Income</button>
             <a id='rentalIncomeButton' href="#RentalIncome" style={{display:'none'}}>Rental Income</a> <br/>
-            <button onClick={handleClickExpenses} className="formNavButton">Expense</button>
+            <button onClick={handleClickExpenses} class="formNavButton">Expense</button>
             <a id='expensesButton' href="#Expense" style={{display:'none'}}>Expense</a> <br/>
         </div>
     )
