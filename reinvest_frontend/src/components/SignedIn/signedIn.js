@@ -60,7 +60,7 @@ function PropertyList(props) {
         onChange={(e) => setKeyword(e.target.value)}
         />
       </Row>
-      <Row className = "flex_center">
+      <Row className = "flex_center" sm>
         <ul class = "flex_container wrap">
           {yourProperties.map((property,i) => {
             if (property.img == undefined){
