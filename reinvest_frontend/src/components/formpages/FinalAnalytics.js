@@ -23,40 +23,14 @@ import Cookies, { set } from 'js-cookie';
 import {loadingPage} from '../../loading';
 import StockHouseImage from '../../images/stockHouse.jpg';
 
-
-
-// const Analysis = () => {
-//     return(
-//         <div>
-//             <h1>3809 Hilton Dr, Indianapolis, Indiana, 46237</h1>
-//             <img src="" height = "500" width ="500"></img>
-//             <h3>Cashflow:</h3>
-//             <h3>Cap rate:</h3>
-//             <h3>CoC:</h3>
-//             <hr></hr>
-//             <h4>Rental Income: </h4>
-//             <h4>Expenses: </h4>
-//             <h4>Loan Details: </h4>
-
-//         </div>
-//     )
-// }
-
-//CHarts
-
-
-
 const buttonGroup = (props) => {
       const {title,value} = props;
       return (
         <>
           <div className="box">
-            
             <h1 className='buttonHeader'>{title}</h1>
             <h1 className='buttonValue'>{value}</h1>
           </div>
-          
-          
         </>
       );
   }
@@ -65,17 +39,17 @@ const buttonGroup = (props) => {
     //const [address,imageSrc,title,value] = props;
     if (props.data.img == undefined){
       return (
-        <Col>
-        {/* <h1>{address}</h1> */}
-        <br></br>
-        <br></br>
-        <h1 class="heading">{props.data.streetAddress}</h1>
+        <Container fluid>
+        <br/>
+        <br/>
+        <br/>
+        <Col sm>
+          <h1 class="heading">{props.data.streetAddress}</h1>
+        </Col>
         <Row>
-          <Col>
-            {/* <img src={imageSrc} alt={address}></img> */}
+          <Col sm>
             <img
               class="center_default"
-              // src={unknown}
               src={StockHouseImage}
               width="20%"
               margin="auto"
@@ -84,33 +58,29 @@ const buttonGroup = (props) => {
           </Col>
         </Row>
         <div class="center">
-        <Row>
-          {/* <Col sm={4}>{buttonGroup(title, value)};</Col>
-          <Col sm={4}>{buttonGroup(title, value)};</Col>
-          <Col sm={4}>{buttonGroup(title, value)}</Col>
-          <Col sm={4}>{buttonGroup(title, value)}</Col> */}
+        <Row sm>
           <Col>{buttonGroup({ title: "CASH NEEDED", value:"$"+ (props.data.purchasePrice - props.data.loanAmount)})}</Col>
           <Col>{buttonGroup({ title: "CASH FLOW", value: "$"+(props.data.monthlyCashFlow)+"/ mo" })}</Col>
           <Col>{buttonGroup({ title: "CAP RATE", value: props.data.capitalizationRate +" %" })}</Col>
           <Col>{buttonGroup({ title: "COC", value: props.data.cashOnCash+" %" })}</Col>
         </Row>
         </div>
-      </Col>
+      </Container>
     );
   } else {
-
     const buffer = props.data.img.data.data;
     const b64 = new Buffer.from(buffer).toString('base64');
     const mimeType = props.data.img.contentType;
     return (
-      <Col>
-        {/* <h1>{address}</h1> */}
-        <br></br>
-        <br></br>
-        <h1 class="heading">{props.data.streetAddress}</h1>
+      <Container fluid>
+        <br/>
+        <br/>
+        <br/>
+        <Col sm>
+          <h1 class="heading">{props.data.streetAddress}</h1>
+        </Col>
         <Row>
-          <Col>
-            {/* <img src={imageSrc} alt={address}></img> */}
+          <Col sm>
             <img
               class="center"
               // src={unknown}
@@ -121,19 +91,13 @@ const buttonGroup = (props) => {
             ></img>
           </Col>
         </Row>
-        <div class="center">
-        <Row>
-          {/* <Col sm={4}>{buttonGroup(title, value)};</Col>
-          <Col sm={4}>{buttonGroup(title, value)};</Col>
-          <Col sm={4}>{buttonGroup(title, value)}</Col>
-          <Col sm={4}>{buttonGroup(title, value)}</Col> */}
+        <Row sm>
           <Col>{buttonGroup({ title: "CASH NEEDED", value:"$"+ (props.data.purchasePrice - props.data.loanAmount)})}</Col>
           <Col>{buttonGroup({ title: "CASH FLOW", value: "$"+(props.data.monthlyCashFlow)+"/ mo" })}</Col>
           <Col>{buttonGroup({ title: "CAP RATE", value: props.data.capitalizationRate +" %" })}</Col>
           <Col>{buttonGroup({ title: "COC", value: props.data.cashOnCash+" %" })}</Col>
         </Row>
-        </div>
-      </Col>
+      </Container>
     );
   }
 }
@@ -142,21 +106,21 @@ const buttonGroup = (props) => {
     //const [address,imageSrc,title,value] = props;
     return (
       <div class="center">
-        <Row>
-          <Col sm={1}></Col>
-          <h1>Purchase and Rehab</h1>
-        </Row>
+        <Col sm>
+          <h2>Purchase and Rehab</h2>
+        </Col>
+        <br/>
         <Row>
           <Col sm={4}>
-            <h3>Rental Income</h3>
+            <h4>Rental Income</h4>
             <RentalIncomeDonut data = {props.data} />
           </Col>
           <Col sm={4}>
-            <h3>Expenses</h3>
+            <h4>Expenses</h4>
             <MonthlyExpensesDonut data = {props.data}/>
           </Col>
           <Col sm={4}>
-            <h3>Loan details</h3>
+            <h4>Loan details</h4>
             <LoanDetailsDonut data = {props.data}/>
           </Col>
         </Row>
@@ -164,47 +128,45 @@ const buttonGroup = (props) => {
     );
   }
 
-  // const Slide2 = (props) => {
-  //     return ( 
-  //       <> 
-  //      <Container fluid className="containerRehab">
-  //           <h1>Test</h1>
-  //      </Container>
-
-  //      </>
-  //     )
-  // }
-
   const Slide3 = (props) => {
     //const [address,imageSrc,title,value] = props;
     return (
       <div class="center">
         <Row>
-          <Col sm={1}></Col>
-          <h1>Cash Flow</h1>
-        </Row>
-        <Row>
-          
-          <Col>
-            <Chart/>
+          <Col sm>
+          <h2>Cash Flow</h2>
           </Col>
-
-          <div class="Col center">
-            <Row>
-              <div class="Col box3">Cash Flow: <br></br> ${props.data.monthlyCashFlow} /Month</div>
-              <div class="Col box3">CoC Roi: <br></br> {props.data.cashOnCash}%</div>
-              <div class="Col box3">Monthly Income: <br></br> ${props.data.monthlyIncome}/Month</div>
-            </Row>
-            <Row>
-              <div class="Col box3">Expenses: <br></br> ${props.data.totalExpenses}/Month</div>
-              <div class="Col box3">5 Year Annualized Return <br></br> 9.58%</div>
-              <div class="Col box3">Mortgage Payment <br></br> ${props.data.monthlyFixedMorgage} /mo</div>
-            </Row>
-          </div>
         </Row>
-        <br></br>
-        <br></br>
-      </div>
+        <br/>
+        <Row sm>
+          <Chart/>
+        </Row>
+        <br/>
+        <Row>
+          <Col sm>
+            <div class="Col box3">Cash Flow: <br></br> ${props.data.monthlyCashFlow} /Month</div>
+          </Col>
+          <Col sm>
+            <div class="Col box3">CoC Roi: <br></br> {props.data.cashOnCash}%</div>
+          </Col>
+          <Col sm>
+            <div class="Col box3">Monthly Income: <br></br> ${props.data.monthlyIncome}/Month</div>
+          </Col>
+        </Row>
+        <br/>
+        <Row>
+          <Col sm>
+            <div class="Col box3">Expenses: <br></br> ${props.data.totalExpenses}/Month</div>
+          </Col>
+          <Col sm>
+            <div class="Col box3">5 Year Annualized Return <br></br> 9.58%</div>
+          </Col>
+          <Col sm>
+            <div class="Col box3">Mortgage Payment <br></br> ${props.data.monthlyFixedMorgage} /mo</div>
+          </Col>
+        </Row>
+      <br></br>
+    </div>
     );
   }
 
@@ -241,123 +203,106 @@ const buttonGroup = (props) => {
     }
     return (
       <div class="center">
-        <Container>
         <Row>
-          <h1>Monthly Expenses</h1>
-        </Row>
-        <Row>
-          <Col md="auto">
-            <MonthlyExpensesPie  data = {props.data} />
+          <Col sm={12}>
+            <h2>Monthly Expenses</h2>
           </Col>
-
-            {/* <Col xs={5} class="box">
-              {line({ title: "Total Expense", value: "$2239" })}
-              {line({ title: "Mortgage", value: "$1,540" })}
-              {line({ title: "Taxes", value: "$329" })}
-              {line({ title: "Insurance", value: "$75" })}
-              {line({ title: "Variable expenses", value: "$295" })}
-              {line({ title: "Fixed expenses", value: "$0" })}
-            </Col>
-
-            <Col xs={5} class="box">
-              {line({ title: "Total Expense", value: "$2239" })}
-              {line({ title: "Mortgage", value: "$1,540" })}
-              {line({ title: "Taxes", value: "$329" })}
-              {line({ title: "Insurance", value: "$75" })}
-              {line({ title: "Variable expenses", value: "$295" })}
-              {line({ title: "Fixed expenses", value: "$0" })}
-            </Col>
-
-            <Col xs={5} class="box">
-              {line({ title: "Total Expense", value: "$2239" })}
-              {line({ title: "Mortgage", value: "$1,540" })}
-              {line({ title: "Taxes", value: "$329" })}
-              {line({ title: "Insurance", value: "$75" })}
-              {line({ title: "Variable expenses", value: "$295" })}
-              {line({ title: "Fixed expenses", value: "$0" })}
-            </Col> */}
-
-
-
-          <Container fluid>
-            <Row>
-              <div class="Col box1">
-                <Row>
-                <div class="column">
-                  <Row>Total Expense </Row>
-                  <Row>Mortgage</Row> 
-                  <Row>Taxes</Row>
-                  <Row>Insurance</Row>
-                  <Row>Fixed expenses</Row>
-                  <Row>Variable expenses</Row>
-                </div>
-                <div class="column">
-                  <Row> ${props.data.totalExpenses} </Row>
-                  <Row> ${props.data.monthlyFixedMorgage}</Row>
-                  <Row> ${parseFloat((props.data.propertyTaxes / 12).toFixed(2))}</Row>
-                  <Row> ${parseFloat((props.data.insurance / 12).toFixed(2))}</Row>
-                  <Row> ${fixedExpense()}</Row>
-                  <Row> ${(props.data.grossMonthlyIncome*(props.data.managementFees/100)) +
-                          (props.data.grossMonthlyIncome*(props.data.repairsAndMaintenence/100)) +
-                          (props.data.grossMonthlyIncome*(props.data.capitalExpenditures/100)) + 
-                          (props.data.grossMonthlyIncome*(props.data.vacancy/100))} </Row>
-                </div>
-                </Row>
-              </div>
-
-              <div class="Col box1">
-                <Row>
-                <div class="column">
-                <Row>Fixed Expense </Row>
-                <Row>Electricity</Row>
-                <Row>Gas</Row>
-                <Row>Water & Sewer</Row>
-                <Row>HOA fees</Row>
-                <Row>Garbage</Row>
-                </div>
-                <div class="column">
-                  <Row> ${fixedExpense()}</Row>
-                  <Row> ${props.data.electricity}</Row>
-                  <Row> ${props.data.gas}</Row>
-                  <Row> ${props.data.waterAndSewer}</Row>
-                  <Row> ${props.data.hoaFees}</Row>
-                  <Row> ${props.data.garbage}</Row>
-                </div>
-                </Row>
-              </div>
-
-              <div class="Col box1">
-                <Row>
-                <div class="column">
-                  <Row>Variable Expense </Row>
-                  <Row>Vacancy</Row>
-                  <Row>Maintenance</Row>
-                  <Row>CapEx</Row>
-                  <Row>Management fee</Row>
-                </div>
-                <div class="column">
-                  <Row> ${variableExpense()} </Row>
-                  <Row> ${(props.data.grossMonthlyIncome*(props.data.vacancy/100))}</Row>
-                  <Row> ${(props.data.grossMonthlyIncome*(props.data.repairsAndMaintenence/100))}</Row>
-                  <Row> ${(props.data.grossMonthlyIncome*(props.data.capitalExpenditures/100))}</Row>
-                  <Row> ${(props.data.grossMonthlyIncome*(props.data.managementFees/100))}</Row>
-                </div>
-                </Row>
-              </div>
-
-              </Row>
-            </Container>
         </Row>
+        <br/>
         <Row>
-          <Col sm={3}></Col>
-          <div class="Col box">5 Year Annualized Return <br></br> 9.58%</div>
-          <div class="Col box">Mortgage Payment <br></br> ${props.data.monthlyFixedMorgage} /mo</div>
-          <Col sm={3}></Col>
+          <Col sm>
+            <MonthlyExpensesPie data = {props.data} />
+          </Col>
         </Row>
-        </Container>
-      </div>
+        <br/>
+        <Row sm>
+          <Col className="Col box1">
+            <Row>
+              <div class="column">
+                <Row>Total Expense </Row>
+                <Row>Mortgage</Row> 
+                <Row>Taxes</Row>
+                <Row>Insurance</Row>
+                <Row>Fixed expenses</Row>
+                <Row>Variable expenses</Row>
+              </div>
+              <div class="column">
+                <Row> ${props.data.totalExpenses} </Row>
+                <Row> ${props.data.monthlyFixedMorgage}</Row>
+                <Row> ${parseFloat((props.data.propertyTaxes / 12).toFixed(2))}</Row>
+                <Row> ${parseFloat((props.data.insurance / 12).toFixed(2))}</Row>
+                <Row> ${fixedExpense()}</Row>
+                <Row> ${(props.data.grossMonthlyIncome*(props.data.managementFees/100)) +
+                        (props.data.grossMonthlyIncome*(props.data.repairsAndMaintenence/100)) +
+                        (props.data.grossMonthlyIncome*(props.data.capitalExpenditures/100)) + 
+                        (props.data.grossMonthlyIncome*(props.data.vacancy/100))} </Row>
+              </div>
+              </Row>
+            </Col>
+
+            <Col className="Col box1">
+              <Row>
+              <div class="column">
+              <Row>Fixed Expense </Row>
+              <Row>Electricity</Row>
+              <Row>Gas</Row>
+              <Row>Water & Sewer</Row>
+              <Row>HOA fees</Row>
+              <Row>Garbage</Row>
+              </div>
+              <div class="column">
+                <Row> ${fixedExpense()}</Row>
+                <Row> ${props.data.electricity}</Row>
+                <Row> ${props.data.gas}</Row>
+                <Row> ${props.data.waterAndSewer}</Row>
+                <Row> ${props.data.hoaFees}</Row>
+                <Row> ${props.data.garbage}</Row>
+              </div>
+              </Row>
+            </Col>
+
+            <Col className="Col box1">
+              <Row>
+              <div class="column">
+                <Row>Variable Expense </Row>
+                <Row>Vacancy</Row>
+                <Row>Maintenance</Row>
+                <Row>CapEx</Row>
+                <Row>Management fee</Row>
+              </div>
+              <div class="column">
+                <Row> ${variableExpense()} </Row>
+                <Row> ${(props.data.grossMonthlyIncome*(props.data.vacancy/100))}</Row>
+                <Row> ${(props.data.grossMonthlyIncome*(props.data.repairsAndMaintenence/100))}</Row>
+                <Row> ${(props.data.grossMonthlyIncome*(props.data.capitalExpenditures/100))}</Row>
+                <Row> ${(props.data.grossMonthlyIncome*(props.data.managementFees/100))}</Row>
+              </div>
+              </Row>
+            </Col>
+        </Row>
+        <Row sm>
+          <Col sm>
+            <div class="Col box">5 Year Annualized Return <br></br> 9.58%</div>
+          </Col>
+          <Col sm>
+            <div class="Col box">Mortgage Payment <br></br> ${props.data.monthlyFixedMorgage} /mo</div>
+          </Col>
+        </Row>
+        </div>
+      
     );
   }
+
+const ReturnToPropertiesButton = () => {
+  return (
+    <div class="center">
+      <Row sm>
+        <Button onClick={()=>{window.location = "http://localhost:3000/signedIn"}} variant="dark">Back to Properties</Button>
+      </Row>
+    </div>
+
+  );
+}
   
 function FinalAnalytics(props) {
   const [data, setData] = useState({});
@@ -395,43 +340,51 @@ function FinalAnalytics(props) {
         <Navb auth = {props.auth}/>
       </div>
     </div>
-    <div>
       <Container fluid>
         <Row>
           <Slide1 data = {data}/>
         </Row>
 
-        <br></br>
-        <hr/>
-        <br></br>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
 
         <Row>
           <Slide2 data = {data}/>
         </Row>
 
-        <br></br>
-        <hr/>
-        <br></br>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
           
         <Row>
           <Slide3 data = {data}/>
         </Row>
 
-        <br></br>
-        <hr/>
-        <br></br>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
 
         <Row>
           <Slide4 data = {data}/>
         </Row>
 
-        <br></br>
-        <hr/>
-        <br></br>
+        <br/>
+        <br/>
+        <br/>
 
+        <Row sm>
+          <ReturnToPropertiesButton/> 
+        </Row>
+
+        <br/>
+        <br/>
+        <br/>
+          
       </Container>
-      </div>
-      <Button onClick={()=>{window.location = "http://localhost:3000/signedIn"}}>Back to Properties</Button>
     </>
   );
 }
