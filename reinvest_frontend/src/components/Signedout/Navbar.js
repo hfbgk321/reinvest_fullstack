@@ -34,9 +34,9 @@ import Cookies from 'js-cookie';
             </Nav>
             <Nav style={{background:"none"}}>
             <Nav.Link eventKey={2} href="/" style={{color: "#fff",fontWeight:"bold"}}>Home</Nav.Link>
-            <Nav.Link eventKey={2} href="/login" style={{color: "#fff",display: showPropertiesAndSignOut}}>
+            <Nav.Link eventKey={2} href="/login" style={{color: "#fff",fontWeight:"bold",display: showPropertiesAndSignOut}}>
                       Properties
-            </Nav.Link>
+            </Nav.Link> 
         
             <Nav.Link style={{background:"none"}} eventKey={2} href="/login" style={{color: "#fff",fontWeight:"bold",display:showLogin}}>
                  Login In

@@ -109,7 +109,7 @@ export const getPropertyById = async (req,res) =>{
 
 export const deleteProperty = async (req,res) =>{
   verifyToken(req,res, (data) =>{
-    Property.findOneAndDelete(req.params.id,{useFindAndModify:false} ,(err,property) =>{
+    Property.findOneAndDelete({ownerID:data.ownerID, _id : req.params.id},{useFindAndModify:false} ,(err,property) =>{
       if(err){
         console.log('here');
         return res.send({message: err});
