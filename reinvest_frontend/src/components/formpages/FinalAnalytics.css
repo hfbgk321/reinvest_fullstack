@@ -68,3 +68,11 @@
   min-width: 500px;
   height: 400px;
 }
+.auto {
+  padding: 0;
+  margin: auto;
+}
+.centerTheButton {
+  margin: auto;
+  padding: 0%;
+}
