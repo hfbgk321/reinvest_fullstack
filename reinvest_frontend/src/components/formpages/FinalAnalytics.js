@@ -39,7 +39,7 @@ const buttonGroup = (props) => {
     //const [address,imageSrc,title,value] = props;
     if (props.data.img == undefined){
       return (
-        <Container fluid>
+        <div class="center">
         <br/>
         <br/>
         <br/>
@@ -51,7 +51,7 @@ const buttonGroup = (props) => {
             <img
               class="center_default"
               src={StockHouseImage}
-              width="20%"
+              width="70%"
               margin="auto"
               alt="975 SPONGEBOB AVENUE"
             ></img>
@@ -66,14 +66,14 @@ const buttonGroup = (props) => {
           <Col>{buttonGroup({ title: "COC", value: props.data.cashOnCash+" %" })}</Col>
         </Row>
         </div>
-      </Container>
+      </div>
     );
   } else {
     const buffer = props.data.img.data.data;
     const b64 = new Buffer.from(buffer).toString('base64');
     const mimeType = props.data.img.contentType;
     return (
-      <Container fluid>
+      <div class="center">
         <br/>
         <br/>
         <br/>
@@ -99,7 +99,7 @@ const buttonGroup = (props) => {
           <Col>{buttonGroup({ title: "CAP RATE", value: props.data.capitalizationRate +" %" })}</Col>
           <Col>{buttonGroup({ title: "COC", value: props.data.cashOnCash+" %" })}</Col>
         </Row>
-      </Container>
+      </div>
     );
   }
 }
@@ -297,10 +297,18 @@ const buttonGroup = (props) => {
 
 const ReturnToPropertiesButton = () => {
   return (
-    <div class="center">
+    <div class="center fixed-bottom">
       <Row sm>
+       <Col sm>
         <Button onClick={()=>{window.location = "http://localhost:3000/signedIn"}} variant="dark">Back to Properties</Button>
+        </Col>
+        <Col></Col>
+        <Col></Col>
+        <Col sm>
+        <Button variant="dark">Update</Button>
+        </Col>
       </Row>
+      <br/>
     </div>
 
   );
@@ -374,7 +382,6 @@ function FinalAnalytics(props) {
           <Slide4 data = {data}/>
         </Row>
 
-        <br/>
         <br/>
         <br/>
 
