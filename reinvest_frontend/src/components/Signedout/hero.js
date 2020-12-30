@@ -7,11 +7,15 @@ const Hero = () => {
   return (
   
         <div className="headingRow">
+         
         <Row className='heroStyles'>
+
           <Col className="titleText" sm={12}>
+            
                 {" "}
                 "REINVEST WITH US"{" "}
               </Col>
+              
               <Col className="descText" sm={12}>
                 Reinvest is a calculator designed to help evaluate investment
                 properties.
