@@ -8,6 +8,15 @@ import Navb from "../Signedout/Navbar"; //importing from navbar.js?
 import axios from "axios";
 import Cookies from 'js-cookie';
 import StockHouseImage from '../../images/stockHouse.jpg';
+import {
+  Container,
+  Row,
+  Col,
+  FormControl,
+  Form,
+  FormGroup,
+  Button,
+} from "react-bootstrap";
 
 function PropertyList(props) {
   const [keyword, setKeyword] = useState("");
@@ -47,76 +56,80 @@ function PropertyList(props) {
         type = "text"
         class="barStyling"
         value={keyword}
-        placeholder="Type in your address"
+        placeholder="Search"
         onChange={(e) => setKeyword(e.target.value)}
         />
       </div>
-      <section className="booklist">
-        {yourProperties.map((property,i) => {
-          if (property.img == undefined){
+      <div class = "flex_center">
+        <ul class = "flex_container wrap">
+          {yourProperties.map((property,i) => {
+            if (property.img == undefined){
+              return (
+                <div class="property_card">
+                  <div className = "property" key ={i}>
+                    <img
+                    // src={unknown}
+                    src={StockHouseImage}
+                    // width="50%"
+                    // margin="auto"
+                    alt="975 SPONGEBOB AVENUE"
+                    ></img>
+                    <div class="proptext_styling">
+                      <span>{property.streetAddress} <br></br></span>
+                      <span >{property.city}, {property.state}  {property.zipCode}</span>
+                    </div>
+                    <div class="wrapper">
+                        <button class="property_button" onClick ={()=>{
+                          localStorage.setItem('propertyInfoId',property._id);
+                          console.log(localStorage.getItem('propertyInfoId'));
+                          window.location = "http://localhost:3000/finalanalytics";
+                        }}>View</button>
+                        <button class="property_button" >Edit</button>
+                        <button class="property_button" onClick ={(e) => {
+                          e.preventDefault();
+                          handleDelete(property._id);
+                        }}>Delete</button>
+                    </div>
+                  </div>
+                </div>
+            )} else {
+            const buffer = property.img.data.data;
+            const b64 = new Buffer.from(buffer).toString('base64');
+            const mimeType = property.img.contentType;
             return (
-              <>
-            <div className = "property" key ={i}>
-              <img
-              class="center"
-              // src={unknown}
-              src={StockHouseImage}
-              width="20%"
-              margin="auto"
-              alt="975 SPONGEBOB AVENUE"
-            ></img>
-              <h1>{property.streetAddress}</h1>
-              <h2>{property.city}</h2>
-              <h2>{property.state}</h2>
-              <h2>{property.zipCode}</h2>
-              <button style = {{width:"200px",height:"50px",backgroundColor:"black",color:"white"}} onClick ={()=>{
-                localStorage.setItem('propertyInfoId',property._id);
-                console.log(localStorage.getItem('propertyInfoId'));
-                window.location = "http://localhost:3000/finalanalytics";
-              }}>View Property</button>
-              <button style = {{width:"200px",height:"50px",backgroundColor:"black",color:"white"}} >Edit Property</button>
-              <button style = {{width:"200px",height:"50px",backgroundColor:"black",color:"white"}} onClick ={(e) => {
-                e.preventDefault();
-                handleDelete(property._id);
-              }}>Delete Property</button>
-
+              <div class="property_card">
+                <div className = "property" key ={i}>
+                  <img
+                  // src={unknown}
+                  src={`data:${mimeType};base64,${b64}`}
+                  // width="70%"
+                  // margin="auto"
+                  alt="975 SPONGEBOB AVENUE"
+                  ></img>
+                  <div class="proptext_styling">
+                    <span>{property.streetAddress} <br></br></span>
+                    <span >{property.city}, {property.state}  {property.zipCode}</span>
+                  </div>
+                  <div class="wrapper">
+                    <button class="property_button" onClick ={()=>{
+                      localStorage.setItem('propertyInfoId',property._id);
+                      console.log(localStorage.getItem('propertyInfoId'));
+                      window.location = "http://localhost:3000/finalanalytics";
+                    }}>View</button>
+                    <button class="property_button" >Edit</button>
+                    <button class="property_button" onClick ={(e) => {
+                      e.preventDefault();
+                      handleDelete(property._id);
+                    }}>Delete</button>
+                  </div> 
+                </div>
+              </div>
+            )}})}
+            <div class="button_wrapper">
+              <button class="button_styling" onClick={() => {window.location = "/propertyinfo"}}>Add New Property</button>
             </div>
-            </>
-          )} else {
-          const buffer = property.img.data.data;
-          const b64 = new Buffer.from(buffer).toString('base64');
-          const mimeType = property.img.contentType;
-          return (
-            <>
-            <div className = "property" key ={i}>
-              <img
-              class="center"
-              // src={unknown}
-              src={`data:${mimeType};base64,${b64}`}
-              width="70%"
-              margin="auto"
-              alt="975 SPONGEBOB AVENUE"
-            ></img>
-              <h1>{property.streetAddress}</h1>
-              <h2>{property.city}</h2>
-              <h2>{property.state}</h2>
-              <h2>{property.zipCode}</h2>
-              <button style = {{width:"200px",height:"50px",backgroundColor:"black",color:"white"}} onClick ={()=>{
-                localStorage.setItem('propertyInfoId',property._id);
-                console.log(localStorage.getItem('propertyInfoId'));
-                window.location = "http://localhost:3000/finalanalytics";
-              }}>View Property</button>
-              <button style = {{width:"200px",height:"50px",backgroundColor:"black",color:"white"}} >Edit Property</button>
-              <button style = {{width:"200px",height:"50px",backgroundColor:"black",color:"white"}} onClick ={(e) => {
-                e.preventDefault();
-                handleDelete(property._id);
-              }}>Delete Property</button>
-
-            </div>
-            </>
-          )}})}
-          <Link to="/propertyinfo">Add New Property</Link>
-      </section>
+        </ul>
+      </div>
     </>
   );
 }
