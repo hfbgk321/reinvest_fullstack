@@ -82,8 +82,8 @@ function PropertyList(props) {
           {yourProperties.map((property,i) => {
             if (property.img == undefined){
               return (
-                <div class="property_card">
-                  <div className = "property" key ={i}>
+                <div class="property_card" key ={i}>
+                  <div className = "property" >
                     <img
                     // src={unknown}
                     src={StockHouseImage}
@@ -117,8 +117,8 @@ function PropertyList(props) {
             const b64 = new Buffer.from(buffer).toString('base64');
             const mimeType = property.img.contentType;
             return (
-              <div class="property_card">
-                <div className = "property" key ={i}>
+              <div class="property_card" key ={i}>
+                <div className = "property" >
                   <img
                   // src={unknown}
                   src={`data:${mimeType};base64,${b64}`}
@@ -136,7 +136,10 @@ function PropertyList(props) {
                       console.log(localStorage.getItem('propertyInfoId'));
                       window.location = "http://localhost:3000/finalanalytics";
                     }}>View</button>
-                    <button class="property_button" >Edit</button>
+                    <button class="property_button" onClick = {(e) =>{
+                      e.preventDefault();
+                      handleEdit(property._id);
+                    }}>Edit</button>
                     <button class="property_button" onClick ={(e) => {
                       e.preventDefault();
                       handleDelete(property._id);

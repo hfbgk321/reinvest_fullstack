@@ -263,34 +263,35 @@ const PropertyForm = (props) => {
       console.log('hello');
       setImage(event.target.files[0]);
       setFile(URL.createObjectURL(event.target.files[0]));
-      setRetrievedImage(URL.createObjectURL(event.target.files[0]));
-      console.log(event.target.files[0] instanceof Blob);
-      
-      var reader = new FileReader();
-      var fileByteArray = [];
-      reader.readAsArrayBuffer(event.target.files[0]);
-      reader.onloadend = function (evt) {
-          if (evt.target.readyState == FileReader.DONE) {
-            var arrayBuffer = evt.target.result,
-                array = new Uint8Array(arrayBuffer);
-            for (var i = 0; i < array.length; i++) {
-                fileByteArray.push(array[i]);
-              }
-          }
-      }
-      console.log(fileByteArray);
-        propInfo.img = {
-          data:{
-            type: "Buffer",
-            data: fileByteArray
-          },
-          contentType: event.target.files[0].type,
-        }
-      
 
-      console.log(propInfo.img);
-      // isUpdateForm(false);
-      // isUpdateForm(true);
+      if(isUpdateForm){
+        setRetrievedImage(URL.createObjectURL(event.target.files[0]));
+        console.log(event.target.files[0] instanceof Blob);
+        
+        var reader = new FileReader();
+        var fileByteArray = [];
+        reader.readAsArrayBuffer(event.target.files[0]);
+        reader.onloadend = function (evt) {
+            if (evt.target.readyState == FileReader.DONE) {
+              var arrayBuffer = evt.target.result,
+                  array = new Uint8Array(arrayBuffer);
+              for (var i = 0; i < array.length; i++) {
+                  fileByteArray.push(array[i]);
+                }
+            }
+        }
+        console.log(fileByteArray);
+          propInfo.img = {
+            data:{
+              type: "Buffer",
+              data: fileByteArray
+            },
+            contentType: event.target.files[0].type,
+          }
+        
+  
+        console.log(propInfo.img);
+      }
     } 
 
   /*const sendImage = async (event) =>{
