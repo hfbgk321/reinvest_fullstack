@@ -234,10 +234,10 @@ const buttonGroup = (props) => {
                 <Row> ${parseFloat((props.data.propertyTaxes / 12).toFixed(2))}</Row>
                 <Row> ${parseFloat((props.data.insurance / 12).toFixed(2))}</Row>
                 <Row> ${fixedExpense()}</Row>
-                <Row> ${(props.data.grossMonthlyIncome*(props.data.managementFees/100)) +
+                <Row> ${parseFloat(((props.data.grossMonthlyIncome*(props.data.managementFees/100)) +
                         (props.data.grossMonthlyIncome*(props.data.repairsAndMaintenence/100)) +
                         (props.data.grossMonthlyIncome*(props.data.capitalExpenditures/100)) + 
-                        (props.data.grossMonthlyIncome*(props.data.vacancy/100))} </Row>
+                        (props.data.grossMonthlyIncome*(props.data.vacancy/100)))).toFixed(2)} </Row>
               </div>
               </Row>
             </Col>
@@ -273,11 +273,11 @@ const buttonGroup = (props) => {
                 <Row>Management fee</Row>
               </div>
               <div class="column">
-                <Row> ${variableExpense()} </Row>
-                <Row> ${(props.data.grossMonthlyIncome*(props.data.vacancy/100))}</Row>
-                <Row> ${(props.data.grossMonthlyIncome*(props.data.repairsAndMaintenence/100))}</Row>
-                <Row> ${(props.data.grossMonthlyIncome*(props.data.capitalExpenditures/100))}</Row>
-                <Row> ${(props.data.grossMonthlyIncome*(props.data.managementFees/100))}</Row>
+                <Row> ${parseFloat(variableExpense().toFixed(2))} </Row>
+                <Row> ${parseFloat((props.data.grossMonthlyIncome*(props.data.vacancy/100)).toFixed(2))}</Row>
+                <Row> ${parseFloat((props.data.grossMonthlyIncome*(props.data.repairsAndMaintenence/100)).toFixed(2))}</Row>
+                <Row> ${parseFloat((props.data.grossMonthlyIncome*(props.data.capitalExpenditures/100)).toFixed(2))}</Row>
+                <Row> ${parseFloat((props.data.grossMonthlyIncome*(props.data.managementFees/100)).toFixed(2))}</Row>
               </div>
               </Row>
             </Col>

@@ -18,10 +18,17 @@ import {
   Button,
 } from "react-bootstrap";
 
+
 function PropertyList(props) {
   const [keyword, setKeyword] = useState("");
   const [yourProperties, setYourProperties] = useState([]);
   const [propertyId,setPropertyId] = useState();
+
+  useEffect(()=>{
+    if(Cookies.get('property_id') !== undefined){
+      Cookies.remove('property_id');
+    }
+  },[])
 
   useEffect(()=>{
     if(keyword.length === 0){
@@ -45,6 +52,16 @@ function PropertyList(props) {
     }).catch(err=>{
       console.log(err);
     })
+  }
+
+
+  const handleEdit = (property_id) =>{
+    Cookies.set('property_id',property_id);
+    Cookies.set('redirect_link','/signedin');
+    setTimeout(()=>{
+      window.location = 'http://localhost:3000/propertyinfo'
+    },1000)
+    
   }
 
 
@@ -84,7 +101,10 @@ function PropertyList(props) {
                           console.log(localStorage.getItem('propertyInfoId'));
                           window.location = "http://localhost:3000/finalanalytics";
                         }}>View</button>
-                        <button class="property_button" >Edit</button>
+                        <button class="property_button" onClick = {(e) =>{
+                          e.preventDefault();
+                          handleEdit(property._id);
+                        }} >Edit</button>
                         <button class="property_button" onClick ={(e) => {
                           e.preventDefault();
                           handleDelete(property._id);
