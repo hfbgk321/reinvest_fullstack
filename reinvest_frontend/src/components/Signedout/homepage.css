@@ -1,5 +1,4 @@
 * {
- 
   font-family: "Merriweather";
 }
 
@@ -19,7 +18,6 @@
 }
 
 .buttonStart {
- 
   font-size: 25px;
   background: #ca2b69;
   color: white;
@@ -35,22 +33,18 @@
   color: #fff !important;
 }
 
-.headingRow 
-{
-
-background-image: url('./images/backgroundTest.jpg');
-padding:10%;
-opacity: 5;
-z-index:1;
-height: 50%;
-width: 100%
-
-
+.headingRow {
+  background-image: url("./images/backgroundTest.jpg");
+  padding: 10%;
+  opacity: 5;
+  z-index: 1;
+  height: 50%;
+  width: 100%;
 }
-.heroStyles{
+.heroStyles {
   background: transparent;
   font-weight: bold;
 }
-.cardDiv{
+.cardDiv {
   background-color: #fff;
 }
