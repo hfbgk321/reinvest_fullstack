@@ -431,6 +431,7 @@ function FinalAnalytics(props) {
 
       </Container>
       </div>
+      <Button onClick={()=>{window.location = "http://localhost:3000/signedIn"}}>Back to Properties</Button>
     </>
   );
 }
