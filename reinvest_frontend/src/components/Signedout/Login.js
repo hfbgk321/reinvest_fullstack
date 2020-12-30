@@ -55,7 +55,7 @@ const ControlledInputslogin = () => {
     <>
       <Navb />
 
-      <Container fluid style={{ marginTop: "10%" }}>
+      <Container fluid style={{backgroundColor:"#f1f8e8" , padding:"20%" }}>
         <div className="center">
           <Form class="centeredform">
             <Form.Group controlId="formEmail">
