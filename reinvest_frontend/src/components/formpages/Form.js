@@ -979,6 +979,15 @@ const PropertyForm = () => {
               class="register"
               variant="primary"
               type="submit"
+              onClick={}
+            >
+              Update
+            </button>
+
+            <button
+              class="register"
+              variant="primary"
+              type="submit"
               onClick={handleSubmit}
             >
               Submit

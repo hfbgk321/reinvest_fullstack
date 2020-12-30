@@ -53,7 +53,9 @@ function PropertyList(props) {
                 localStorage.setItem('propertyInfoId',property._id);
                 console.log(localStorage.getItem('propertyInfoId'));
                 window.location = "http://localhost:3000/finalanalytics";
-              }}>Click Me</button>
+              }}>View Property</button>
+              <button style = {{width:"200px",height:"50px",backgroundColor:"black",color:"white"}} >Edit Property</button>
+              <button style = {{width:"200px",height:"50px",backgroundColor:"black",color:"white"}} >Delete Property</button>
 
             </div>
           )
