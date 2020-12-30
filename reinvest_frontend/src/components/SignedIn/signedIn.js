@@ -38,6 +38,15 @@ function PropertyList(props) {
   }
 
 
+  const handleEdit = (property_id) =>{
+    Cookies.set('property_id',property_id);
+    setTimeout(()=>{
+      window.location = 'http://localhost:3000/propertyinfo'
+    },1000)
+    
+  }
+
+
   return (
     <>
       <Navb auth ={props.auth}/>
@@ -74,7 +83,10 @@ function PropertyList(props) {
                 console.log(localStorage.getItem('propertyInfoId'));
                 window.location = "http://localhost:3000/finalanalytics";
               }}>View Property</button>
-              <button style = {{width:"200px",height:"50px",backgroundColor:"black",color:"white"}} >Edit Property</button>
+              <button style = {{width:"200px",height:"50px",backgroundColor:"black",color:"white"}} onClick = {(e) =>{
+                e.preventDefault();
+                handleEdit(property._id);
+              }}>Edit Property</button>
               <button style = {{width:"200px",height:"50px",backgroundColor:"black",color:"white"}} onClick ={(e) => {
                 e.preventDefault();
                 handleDelete(property._id);

@@ -1,4 +1,4 @@
-import React, { Component, useState,useEffect } from "react";
+import React, { Component, useState,useEffect, useDebugValue } from "react";
 // import { useWindowScroll} from "react-use";
 import Cookies from 'js-cookie';
 import {
@@ -16,9 +16,12 @@ import axios from 'axios';
 
 import FinalAnalytics from './FinalAnalytics';
 
-const PropertyForm = () => {
+const PropertyForm = (props) => {
   const [image,setImage] = useState({});
   const [file,setFile] = useState(null);
+  const [isUpdateForm, setUpdateForm] = useState(false);
+  const [retrievedImage, setRetrievedImage] = useState('');
+  const [newImageUploaded, setNewImageUploaded] = useState(false);
   const [propInfo, setPropInfo] = useState({
     auth: Cookies.get('auth'),
     streetAddress: "",
@@ -68,6 +71,32 @@ const PropertyForm = () => {
     netIncomeAfterFinancing: 0,
     roi: 0,
   });
+
+
+  useEffect(() =>{
+
+    if(Cookies.get('property_id')!= undefined){
+      axios.post(`http://localhost:4000/properties/${Cookies.get('property_id')}`,{auth: Cookies.get('auth')}).then(property =>{
+        console.log(property.data);
+        setPropInfo(property.data);
+        setUpdateForm(true); 
+        if(propInfo.img == undefined){
+          setRetrievedImage(file);
+        }else{
+          const buffer = propInfo.img.data.data;
+          const b64 = new Buffer.from(buffer).toString('base64');
+          const mimeType = propInfo.img.contentType;
+          setRetrievedImage(`data:${mimeType};base64,${b64}`);
+          console.log(retrievedImage);
+           
+        }
+        //window.location = '/propertyinfo'
+        
+      }).catch(err =>{
+        console.log('Form err: '+err);
+      })
+    }
+  },[isUpdateForm]);
 
   const handleStreetAddressChange = (e) => {
     const name = e.target.name;
@@ -228,12 +257,15 @@ const PropertyForm = () => {
 
   const handleImageClick = (e) => {
     document.getElementById("selectImage").click();
-  }
+  };
 
   const fileOnChange = (event) =>{
-    setImage(event.target.files[0]);
-    setFile(URL.createObjectURL(event.target.files[0]));
-  }
+      setImage(event.target.files[0]);
+      setFile(URL.createObjectURL(event.target.files[0]));
+      setRetrievedImage(URL.createObjectURL(event.target.files[0]));
+      setNewImageUploaded(true);
+    } 
+
   /*const sendImage = async (event) =>{
       let formData = new FormData();
       formData.append("image",image);
@@ -247,6 +279,8 @@ const PropertyForm = () => {
         console.log(data);
       
     }*/
+
+    
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -492,6 +526,22 @@ const PropertyForm = () => {
     })
   }
 
+  const handleUpdate = (e) =>{
+    e.preventDefault();
+
+    if(isUpdateForm){
+      propInfo.img = retrievedImage;
+      axios.put(`http://localhost:4000/properties/${Cookies.get('property_id')}`,{auth : Cookies.get('auth'),...propInfo}).then(res =>{
+      console.log(res);
+      window.location = '/propertyinfo';
+    }).catch(err=>{
+      console.log(err);
+    })
+  }
+}
+
+
+
 
 
   return (
@@ -501,7 +551,7 @@ const PropertyForm = () => {
           <Form>
             <Form.Group controlId="">
             <div>
-        <img src ={file} width="100%" height="100%"/>
+        <img src ={isUpdateForm ? retrievedImage : file} width="100%" height="100%"/>
         <br/>
         <button onClick={handleImageClick} className="buttonForUploadImage">Upload Image</button>
         <input id='selectImage' type="file" onChange = {fileOnChange} accept = "image/png,image/jpg,image/jpeg" style={{display:'none'}}/>
@@ -979,6 +1029,7 @@ const PropertyForm = () => {
               class="register"
               variant="primary"
               type="submit"
+              onClick ={handleUpdate}
             >
               Update
             </button>
@@ -998,6 +1049,7 @@ const PropertyForm = () => {
       </Container>
     </>
   );
+  
 };
 
 export default PropertyForm;
