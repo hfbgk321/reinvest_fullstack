@@ -979,7 +979,6 @@ const PropertyForm = () => {
               class="register"
               variant="primary"
               type="submit"
-              onClick={}
             >
               Update
             </button>

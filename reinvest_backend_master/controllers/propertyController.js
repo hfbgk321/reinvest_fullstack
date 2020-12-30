@@ -111,9 +111,10 @@ export const deleteProperty = async (req,res) =>{
   verifyToken(req,res, (data) =>{
     Property.findOneAndDelete(req.params.id,{useFindAndModify:false} ,(err,property) =>{
       if(err){
-        res.send({message: err});
+        console.log('here');
+        return res.send({message: err});
       }
-      res.json({message: 'Successfully deleted property at '+property.streetAddress});
+      return res.json({message: 'Successfully deleted property at '+property.streetAddress});
     })
   })
   

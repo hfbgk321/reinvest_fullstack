@@ -26,7 +26,16 @@ function PropertyList(props) {
         console.log(res.data);
       }).catch(err => console.log('err when searching'));
     }
-  },[keyword])
+  },[keyword]);
+
+  const handleDelete=(property_id) =>{
+    axios.delete(`http://localhost:4000/properties/${property_id}`,{data:{auth:Cookies.get('auth')}}).then(res =>{
+      console.log(res);
+      setYourProperties(yourProperties.filter(property => property._id !== property_id));
+    }).catch(err=>{
+      console.log(err);
+    })
+  }
 
 
   return (
@@ -43,8 +52,19 @@ function PropertyList(props) {
       </div>
       <section className="booklist">
         {yourProperties.map((property,i) => {
+          const buffer = property.img.data.data;
+          const b64 = new Buffer.from(buffer).toString('base64');
+          const mimeType = property.img.contentType;
           return (
             <div className = "property" key ={i}>
+              <img
+              class="center"
+              // src={unknown}
+              src={`data:${mimeType};base64,${b64}`}
+              width="70%"
+              margin="auto"
+              alt="975 SPONGEBOB AVENUE"
+            ></img>
               <h1>{property.streetAddress}</h1>
               <h2>{property.city}</h2>
               <h2>{property.state}</h2>
@@ -55,7 +75,10 @@ function PropertyList(props) {
                 window.location = "http://localhost:3000/finalanalytics";
               }}>View Property</button>
               <button style = {{width:"200px",height:"50px",backgroundColor:"black",color:"white"}} >Edit Property</button>
-              <button style = {{width:"200px",height:"50px",backgroundColor:"black",color:"white"}} >Delete Property</button>
+              <button style = {{width:"200px",height:"50px",backgroundColor:"black",color:"white"}} onClick ={(e) => {
+                e.preventDefault();
+                handleDelete(property._id);
+              }}>Delete Property</button>
 
             </div>
           )
