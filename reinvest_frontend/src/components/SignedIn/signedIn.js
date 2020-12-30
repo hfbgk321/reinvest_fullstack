@@ -51,7 +51,7 @@ function PropertyList(props) {
   return (
     <>
       <Navb auth ={props.auth}/>
-      <div class="centerSearchBar">
+      <Row className="centerSearchBar">
         <input 
         type = "text"
         class="barStyling"
@@ -59,8 +59,8 @@ function PropertyList(props) {
         placeholder="Search"
         onChange={(e) => setKeyword(e.target.value)}
         />
-      </div>
-      <div class = "flex_center">
+      </Row>
+      <Row className = "flex_center">
         <ul class = "flex_container wrap">
           {yourProperties.map((property,i) => {
             if (property.img == undefined){
@@ -129,7 +129,7 @@ function PropertyList(props) {
               <button class="button_styling" onClick={() => {window.location = "/propertyinfo"}}>Add New Property</button>
             </div>
         </ul>
-      </div>
+      </Row>
     </>
   );
 }

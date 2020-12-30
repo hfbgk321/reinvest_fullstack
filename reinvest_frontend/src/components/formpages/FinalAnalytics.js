@@ -57,6 +57,7 @@ const buttonGroup = (props) => {
             ></img>
           </Col>
         </Row>
+        <br/>
         <div class="center">
         <Row sm>
           <Col>{buttonGroup({ title: "CASH NEEDED", value:"$"+ (props.data.purchasePrice - props.data.loanAmount)})}</Col>
@@ -91,6 +92,7 @@ const buttonGroup = (props) => {
             ></img>
           </Col>
         </Row>
+        <br/>
         <Row sm>
           <Col>{buttonGroup({ title: "CASH NEEDED", value:"$"+ (props.data.purchasePrice - props.data.loanAmount)})}</Col>
           <Col>{buttonGroup({ title: "CASH FLOW", value: "$"+(props.data.monthlyCashFlow)+"/ mo" })}</Col>
