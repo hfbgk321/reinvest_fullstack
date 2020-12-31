@@ -10,4 +10,28 @@ If you want to check it out http://reinvest.life/
 ![unknown-2](https://user-images.githubusercontent.com/64310147/103423764-67862200-4b76-11eb-84cd-81a8823c678f.png)
 
 
+Technologies Used: ReactJS, Node, Express, mongoose, MongoDB, Git, Heroku, Netlify, JS, HTML, CSS, JSX, Boostrap, Axios, Babel, JSON web token, JS-Cookie, Cors, Nodemon, Charts.js, API's, DOM
+
+Problems we Faced: handling https request while using authorization, using multer and blobs to process and send in recieve images to server
+
+How we solved the problems: We solved the routing problems by first debugging and testing the routes on Postma, once confirmed we went and debugged the front end to also work
+
+
+Things we learned: MERN, image processing, cookies, autho, backend, encrypt and decrypt, resposive design 
+
+
 How to Run this on your local server: clone the project, and npm install the dependencies, npm run
+
+Linkedn: 
+Jacky: https://www.linkedin.com/in/jacky-chen-sbu/
+Horace: https://www.linkedin.com/in/horaceliu/
+Thomas: https://www.linkedin.com/in/thomas-yeung-517507200/
+Nikhil: nbodduluri
+
+Github:
+Nikhil: https://github.com/nbodduluri
+Jacky: https://github.com/hfbgk321
+Horace:https://www.linkedin.com/in/horaceliu/
+Thomas:https://github.com/thomasyeung687
+
+
