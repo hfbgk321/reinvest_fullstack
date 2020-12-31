@@ -1,7 +1,7 @@
 import React from 'react';
 import {Line as LineChart} from 'react-chartjs-2';
 
-function chartData() {
+function chartData(props) {
   return {
     labels: ['1', '2', '3', '4', '5', '10', '15', '20', '25', '30'],
     datasets: [ {
@@ -52,16 +52,16 @@ const styles = {
   }
 }
 
-class LineChartExample extends React.Component {
+function LineChartExample(props) {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      data: chartData()
-    }
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     data: chartData()
+  //   }
+  // }
 
-  render() {
+  // render() {
     return (
       <div style={styles.graphContainer}>
         <LineChart data={this.state.data}
@@ -69,7 +69,7 @@ class LineChartExample extends React.Component {
           width="600" height="250"/>
       </div>
     )
-  }
+  // }
 }
 
 export default LineChartExample;
