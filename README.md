@@ -14,7 +14,7 @@ Technologies Used: ReactJS, Node, Express, mongoose, MongoDB, Git, Heroku, Netli
 
 Problems we Faced: handling https request while using authorization, using multer and blobs to process and send in recieve images to server
 
-How we solved the problems: We solved the routing problems by first debugging and testing the routes on Postma, once confirmed we went and debugged the front end to also work
+How we solved the problems: We solved the routing problems by first debugging and testing the routes on Postman, once confirmed we went and debugged the front end to also work
 
 
 Things we learned: MERN, image processing, cookies, autho, backend, encrypt and decrypt, resposive design 
