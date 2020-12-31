@@ -19,6 +19,7 @@ import MonthlyExpensesDonut from "./MonthlyExpensesDonut";
 import LoanDetailsDonut from "./LoanDetailsDonut";
 import axios from 'axios';
 import Cookies, { set } from 'js-cookie';
+import {Ring} from 'react-awesome-spinners';
 
 import {loadingPage} from '../../loading';
 import StockHouseImage from '../../images/stockHouse.jpg';
@@ -344,7 +345,14 @@ function FinalAnalytics(props) {
   
 
   if(!isLoaded){
-     return <loadingPage/>
+    return (
+      <div style={{
+        position: 'absolute', left: '50%', top: '50%',
+        transform: 'translate(-50%, -50%)'
+    }}>
+        <Ring size = {120}/>
+      </div>
+    )
   }
   return (
     <>
