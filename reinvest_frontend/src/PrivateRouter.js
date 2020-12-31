@@ -25,7 +25,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
     console.log(isLog);
     setTimeout(()=>{
       setRoute(<Redirect to = '/login'/>);
-    },1000);
+    },2000);
   },isLog)
 
   return (
