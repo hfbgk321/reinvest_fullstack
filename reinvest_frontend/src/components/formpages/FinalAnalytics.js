@@ -43,7 +43,7 @@ const buttonGroup = (props) => {
           <h1 class="heading">{props.data.streetAddress}</h1>
         </Col>
         <Row>
-          <Col sm>
+          <Col>
             <img
               class="center_default"
               src={StockHouseImage}
@@ -77,7 +77,7 @@ const buttonGroup = (props) => {
           <h1 class="heading">{props.data.streetAddress}</h1>
         </Col>
         <Row>
-          <Col sm>
+          <Col>
             <div class="imgdiv">
               <img
                 class="center_default"
@@ -209,7 +209,9 @@ const buttonGroup = (props) => {
         <br/>
         <Row>
           <Col sm>
+            <div class="chardiv">
             <MonthlyExpensesPie data = {props.data} />
+            </div>
           </Col>
         </Row>
         <br/>

@@ -13,28 +13,30 @@ function PieChartdata(props) {
     }
 }
 const options = {
+    maintainAspectRatio: true,
     cutoutPercentage: 75,
+
 }
 
 const styles = {
     graphContainer: {
       border: '1px solid #bfbfbf',
       padding: '15px',
-      width: '100%',
+      width: '300px',
     }
   }
 
 function expensesBreakdownPie(props) {
         return(
-            <div style={styles.graphContainer}>
-                
-                <Pie data={PieChartdata(props)}
-                 options={options}
-                width="600" height="250"/>
-                <div>
-                    ${props.data.monthlyFixedMorgage} / Month
-                </div>
-            </div>  
+        <>
+        <Pie data={PieChartdata(props)}
+            options={options}
+        width="70%" height="70%"/>
+        <div>
+            ${props.data.monthlyFixedMorgage} / Month
+        </div>
+        </>
+            
         )
 }
 export default expensesBreakdownPie

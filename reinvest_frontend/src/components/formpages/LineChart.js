@@ -151,6 +151,7 @@ function chartData(props) {
 }
 
 const options = {
+  maintainAspectRatio: false,
   scaleShowGridLines: true,
   // scaleGridLineColor: 'rgba(0,0,0,.05)',
   scaleGridLineWidth: 1,
@@ -172,7 +173,8 @@ const styles = {
   graphContainer: {
     border: '1px solid #bfbfbf',
     padding: '15px',
-    width: '100%'
+    width: '100%',
+    height: '100%'
   }
 }
 
@@ -187,11 +189,11 @@ function LineChartExample(props) {
 
   // render() {s
     return (
-      <div style={styles.graphContainer}>
+      // <div style={styles.graphContainer}>
         <LineChart data={chartData(props)}
           options={options}
           width="600" height="250"/>
-      </div>
+      // </div>
     )
   // }
 }
