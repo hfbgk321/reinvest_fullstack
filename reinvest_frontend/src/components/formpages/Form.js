@@ -13,7 +13,7 @@ import {
 import "./Form.css";
 import { Route, Link, BrowserRouter, Redirect } from "react-router-dom";
 import axios from 'axios';
-
+import {Ring} from 'react-awesome-spinners';
 import FinalAnalytics from './FinalAnalytics';
 
 const PropertyForm = (props) => {
@@ -24,6 +24,7 @@ const PropertyForm = (props) => {
   const [newImageUploaded, setNewImageUploaded] = useState(false);
   const [imageData,setImageData] = useState({});
   const [propInfo, setPropInfo] = useState({});
+  const [isLoading,setIsLoading] = useState(true);
 
 
   useEffect(() =>{
@@ -41,6 +42,7 @@ const PropertyForm = (props) => {
           setRetrievedImage(`data:${mimeType};base64,${b64}`);
           // console.log(retrievedImage);     
         }
+        setIsLoading(false);
       }).catch(err =>{
         console.log('Form err: '+err);
       })
@@ -94,6 +96,7 @@ const PropertyForm = (props) => {
         netIncomeAfterFinancing: 0,
         roi: 0,
       });
+      setIsLoading(false);
     }
   },[isUpdateForm]);
 
@@ -568,6 +571,17 @@ const PropertyForm = (props) => {
     })
   }
 }
+
+  if(isLoading){
+    return (
+      <div style={{
+        position: 'absolute', left: '50%', top: '50%',
+        transform: 'translate(-50%, -50%)'
+    }}>
+        <Ring size = {120}/>
+      </div>
+    )
+  }
 
   return (
     <>
