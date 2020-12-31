@@ -17,12 +17,14 @@ import {
   FormGroup,
   Button,
 } from "react-bootstrap";
+import {Ring} from 'react-awesome-spinners';
 
 
 function PropertyList(props) {
   const [keyword, setKeyword] = useState("");
   const [yourProperties, setYourProperties] = useState([]);
   const [propertyId,setPropertyId] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(()=>{
     if(Cookies.get('property_id') !== undefined){
@@ -35,12 +37,14 @@ function PropertyList(props) {
       axios.post('http://localhost:4000/properties/all',{auth:Cookies.get('auth')}).then((res) =>{
           setYourProperties(res.data);
           console.log(res.data);
+          setIsLoading(false);
       }).catch((err) => console.log('err when length is 0'))
     }
     else{
       axios.post('http://localhost:4000/properties/query',{query: keyword,auth:Cookies.get('auth')}).then(res =>{
         setYourProperties(res.data);
         console.log(res.data);
+        setIsLoading(false);
       }).catch(err => console.log('err when searching'));
     }
   },[keyword]);
@@ -63,8 +67,16 @@ function PropertyList(props) {
     },1000)
     
   }
-
-
+  if(isLoading){
+    return (
+      <div style={{
+        position: 'absolute', left: '50%', top: '50%',
+        transform: 'translate(-50%, -50%)'
+    }}>
+        <Ring size = {120}/>
+      </div>
+    )
+  }
   return (
     <>
       <Navb auth ={props.auth}/>
