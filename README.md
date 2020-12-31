@@ -75,11 +75,6 @@ Linkedin:
 * Nikhil: nbodduluri
 
 
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
 ## Acknowledgments
 
 Problems we Faced: handling https request while using authorization, using multer and blobs to process and send in receive images to server
