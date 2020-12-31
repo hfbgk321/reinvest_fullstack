@@ -11,7 +11,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
     let cookieTester = Cookie.get('auth');
     if(cookieTester == null) return false;
     axios.post('http://localhost:4000/api/user/checkLoggedIn',{auth: cookieTester},{withCredentials:true}).then(res =>{
-      if(res.status == 200){
+      if(res.status === 200){
         setLog(true);
       }else{
         setLog(false);
@@ -30,7 +30,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
 
   return (
     <Route {...rest} render={(props) => (
-      isLog == true ? <Component {...props} auth = {isLog}/>
+      isLog === true ? <Component {...props} auth = {isLog}/>
             : route
         )} 
     />

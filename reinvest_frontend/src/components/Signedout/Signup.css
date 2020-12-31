@@ -1,7 +1,9 @@
 * {
   
-
   font-family: "Merriweather";
+}
+.makeBackgroundGreen{
+  background-color: #f1f8e8;
 }
 
 body {
@@ -16,7 +18,6 @@ body {
 }
 .center {
   padding-top: 50px;
-  width: 50%;
   
   margin: auto;
 }
@@ -37,8 +38,8 @@ form .text_field {
   margin: 30px 0;
 }
 .text_field {
-  width: 100%;
-  height: 20px;
+  width: 50%;
+  height: 100%;
   font-size: 16px;
   border: none;
   background: none;
@@ -89,4 +90,8 @@ input[type="submit"]:hover {
   width: 50%;
   padding-left: 20px;
   margin: auto;
+}
+.formatSignUpForm{
+  margin: auto;
+  width: 100%
 }

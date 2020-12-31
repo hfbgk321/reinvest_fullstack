@@ -1,6 +1,6 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { Route, Link, BrowserRouter as Router } from "react-router-dom";
+import { Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import './hero.css'
 
 const Hero = () => {

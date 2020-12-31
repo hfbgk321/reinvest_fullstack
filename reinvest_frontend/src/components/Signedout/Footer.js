@@ -1,6 +1,5 @@
 import React from "react";
 import "./Footer.css";
-import { Link } from "react-router-dom";
 import {
   Container,
   Row,
@@ -23,7 +22,6 @@ function Footer() {
         <Col sm={4} className="footer">
             <i class='fab fa-facebook-f labelFoot' />
             <i class='fab fa-instagram labelFoot' />
-            <i class='fab fa-youtube labelFoot' />
             <i class='fab fa-twitter labelFoot' />  
             <i class='fab fa-linkedin labelFoot' />
         </Col>

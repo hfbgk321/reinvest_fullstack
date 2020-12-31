@@ -2,6 +2,10 @@
   font-family: "Merriweather";
 }
 
+.dontAllowHorizontalScrolling{
+  overflow-x: hidden;
+}
+
 .titleText {
   font-size: 70px;
   color: #fff;
@@ -44,7 +48,4 @@
 .heroStyles {
   background: transparent;
   font-weight: bold;
-}
-.cardDiv {
-  background-color: #fff;
 }

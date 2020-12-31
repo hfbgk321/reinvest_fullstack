@@ -1,25 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Signup.css";
 import "./homepage.css";
-import { Nav, Navbar } from "react-bootstrap";
 import {
   Container,
-  Row,
-  Col,
-  FormControl,
   Form,
-  FormGroup,
-  Button,
 } from "react-bootstrap";
 import Navb from "./Navbar.js";
 import axios from "axios";
-import { Route, Link, BrowserRouter, Redirect } from "react-router-dom";
 
-// JS
-// const input = document.getElementById('myText');
-// const inputValue = input.value
-// React
-// value, onChange
 
 const ControlledInputs = () => {
   const [person, setPerson] = useState({
@@ -30,25 +18,21 @@ const ControlledInputs = () => {
   });
 
   const handleFirstNameChange = (e) => {
-    const name = e.target.name;
     const value = e.target.value;
     setPerson({ ...person, firstName: value });
   };
 
   const handleLastNameChange = (e) => {
-    const name = e.target.name;
     const value = e.target.value;
     setPerson({ ...person, lastName: value });
   };
 
   const handleEmailChange = (e) => {
-    const name = e.target.value;
     const value = e.target.value;
     setPerson({ ...person, email: value });
   };
 
   const handlePasswordChange = (e) => {
-    const name = e.target.name;
     const value = e.target.value;
     setPerson({ ...person, password: value });
   };
@@ -70,15 +54,14 @@ const ControlledInputs = () => {
   
   return (
     <>
-      <Navb />
-      <Container fluid style={{backgroundColor:"#f1f8e8" , padding:"13%" }}>
-        <div className="center">
-          <Form class="centeredform">
+    <div className="makeBackgroundGreen">
+    <Navb />
+      <Container fluid style={{padding:"13%", maxWidth:"70%", }}>
+          <Form className="formatSignUpForm">
             <Form.Group controlId="formFirstName">
               <Form.Label>First Name</Form.Label>
               <Form.Control
                 name="firstName"
-                class="text_field"
                 type="string"
                 placeholder="Enter your first name"
                 value={person.firstName}
@@ -90,7 +73,6 @@ const ControlledInputs = () => {
               <Form.Label>Last Name</Form.Label>
               <Form.Control
                 name="lastName"
-                class="text_field"
                 type="string"
                 placeholder="Enter your last lame"
                 value={person.lastName}
@@ -102,7 +84,6 @@ const ControlledInputs = () => {
               <Form.Label>Email</Form.Label>
               <Form.Control
                 name="email"
-                class="text_field"
                 type="email"
                 placeholder="Enter your email"
                 value={person.email}
@@ -114,7 +95,6 @@ const ControlledInputs = () => {
               <Form.Label>Password</Form.Label>
               <Form.Control
                 name="password"
-                class="text_field"
                 type="password"
                 placeholder="Enter your password"
                 value={person.password}
@@ -124,7 +104,7 @@ const ControlledInputs = () => {
             </Form.Group>
 
             <button
-              class="register"
+              className="register"
               variant="primary"
               type="submit"
               onClick={handleSubmit}
@@ -133,8 +113,8 @@ const ControlledInputs = () => {
               Submit{" "}
             </button>
           </Form>
-        </div>
       </Container>
+      </div>
     </>
   );
 };

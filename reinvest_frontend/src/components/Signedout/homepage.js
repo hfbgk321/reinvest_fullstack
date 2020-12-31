@@ -1,7 +1,5 @@
 import React from "react";
-import { Nav, Navbar } from "react-bootstrap";
-import { Container, Row, Col, Image } from "react-bootstrap";
-import { Route, Link, BrowserRouter as Router } from "react-router-dom";
+import { Container, Row, Col } from "react-bootstrap";
 import Navb from "./Navbar.js"; //importing from navbar.js?
 import Footer from './Footer';
 import Hero from "./hero";
@@ -9,11 +7,10 @@ import Cards from './Cards'
 import './homepage.css'
 
 
-
-
 function Homepage(props) {
   return (
     <>
+    <div className="dontAllowHorizontalScrolling">
       <Navb auth={props.auth} />
 
       <Container fluid >
@@ -22,7 +19,7 @@ function Homepage(props) {
         </Row>
         <br></br>
         <br></br>
-            <Row class="cardDiv">
+            <Row>
           <Col>
           <Cards />
           </Col>
@@ -32,12 +29,13 @@ function Homepage(props) {
       </Container>
       <br></br>
       <br></br>
-      <Row class="fixed-bottom">
+      <Row>
         <Col sm={12}>
            <Footer />
         </Col>
        
       </Row>
+      </div>
     </>
   );
 }

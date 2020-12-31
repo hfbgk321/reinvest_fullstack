@@ -1,39 +1,32 @@
-import React, { Component, useState,useEffect, useDebugValue } from "react";
+import React, {useState,useEffect } from "react";
 // import { useWindowScroll} from "react-use";
-import Cookies, { set } from 'js-cookie';
+import Cookies from 'js-cookie';
 import {
   Container,
   Row,
   Col,
-  FormControl,
   Form,
-  FormGroup,
-  Button,
 } from "react-bootstrap";
 import "./Form.css";
-import { Route, Link, BrowserRouter, Redirect } from "react-router-dom";
 import axios from 'axios';
 import {Ring} from 'react-awesome-spinners';
-import FinalAnalytics from './FinalAnalytics';
 
 const PropertyForm = (props) => {
   const [image,setImage] = useState({});
   const [file,setFile] = useState(null);
   const [isUpdateForm, setUpdateForm] = useState(false);
   const [retrievedImage, setRetrievedImage] = useState('');
-  const [newImageUploaded, setNewImageUploaded] = useState(false);
-  const [imageData,setImageData] = useState({});
   const [propInfo, setPropInfo] = useState({});
   const [isLoading,setIsLoading] = useState(true);
 
 
   useEffect(() =>{
-    if(Cookies.get('property_id')!= undefined){
+    if(Cookies.get('property_id')!== undefined){
       axios.post(`http://localhost:4000/properties/${Cookies.get('property_id')}`,{auth: Cookies.get('auth')}).then(property =>{
         //console.log(property.data);
         setPropInfo(property.data);
         setUpdateForm(true); 
-        if(propInfo.img == undefined){
+        if(propInfo.img === undefined){
           setRetrievedImage(file);
         }else{
           const buffer = propInfo.img.data.data;
@@ -275,7 +268,7 @@ const PropertyForm = (props) => {
         var fileByteArray = [];
         reader.readAsArrayBuffer(event.target.files[0]);
         reader.onloadend = function (evt) {
-            if (evt.target.readyState == FileReader.DONE) {
+            if (evt.target.readyState === FileReader.DONE) {
               var arrayBuffer = evt.target.result,
                   array = new Uint8Array(arrayBuffer);
               for (var i = 0; i < array.length; i++) {
@@ -296,22 +289,6 @@ const PropertyForm = (props) => {
         console.log(propInfo.img);
       }
     } 
-
-  /*const sendImage = async (event) =>{
-      let formData = new FormData();
-      formData.append("image",image);
-  
-      let response = await fetch('http://localhost:4000/img_fetch',{
-        method:"post",
-        body: formData
-      })
-  
-        let data = await response.json();
-        console.log(data);
-      
-    }*/
-
-    
 
   const handleSubmit = (e) => {
     e.preventDefault();

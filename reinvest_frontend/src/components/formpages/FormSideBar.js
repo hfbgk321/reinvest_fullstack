@@ -1,20 +1,6 @@
-import React, {useState} from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import './formpages.css';
 import StickyBox from "react-sticky-box"
-
-
-import {
-    Container,
-    Row,
-    Col,
-    FormControl,
-    Form,
-    FormGroup,
-    Button,
-  } from "react-bootstrap";
-
-
 
 const FormNav = () => {
     const handleClickPropertyInformation = (e) => {
