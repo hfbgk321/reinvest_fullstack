@@ -32,6 +32,9 @@ End with an example of getting some data out of the system or using it for a lit
 
 We deployed the backend on heroku and the frontend onn Netlify
 
+If you want to check it out http://reinvest.life/
+
+
 ## Built With
 
 
@@ -85,4 +88,3 @@ Things we learned: MERN, image processing, cookies, autho, backend, encrypt and 
 
 ![unknown-2](https://user-images.githubusercontent.com/64310147/103423764-67862200-4b76-11eb-84cd-81a8823c678f.png)
 
-If you want to check it out http://reinvest.life/
