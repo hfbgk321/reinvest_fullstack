@@ -1,5 +1,9 @@
 # Reinvest 
- ![unknown-3](https://user-images.githubusercontent.com/64310147/103424902-fac25600-4b7c-11eb-906c-e27375a5bad1.pngstyle=centerme)
+ ![unknown-3](https://user-images.githubusercontent.com/64310147/103424902-fac25600-4b7c-11eb-906c-e27375a5bad1.png?style=centerme)
+  img[src$="centerme"] {
+  display:block;
+  margin: 0 auto;
+}
 
 
  
