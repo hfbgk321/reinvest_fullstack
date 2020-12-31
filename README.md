@@ -27,7 +27,7 @@ git clone , open in ide, There's a backend file, which you can run on port 4000 
 
 There's also a front end file that you can run on port 3000 by npm install and to start use npm start.
 
-Look at .env.example for connecting to MongoDB
+Look at .env.example for connecting to MongoDB and Token Secret
 ```
 
 
@@ -78,8 +78,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-Technologies Used: ReactJS, Node, Express, mongoose, MongoDB, Git, Heroku, Netlify, JS, HTML, CSS, JSX, Bootstrap, Axios, Babel, JSON web token, JS-Cookie, Cors, Nodemon, Charts.js, API's, DOM
-
 Problems we Faced: handling https request while using authorization, using multer and blobs to process and send in receive images to server
 
 How we solved the problems: We solved the routing problems by first debugging and testing the routes on Postma, once confirmed we went and debugged the front end to also work
@@ -88,7 +86,6 @@ How we solved the problems: We solved the routing problems by first debugging an
 Things we learned: MERN, image processing, cookies, autho, backend, encrypt and decrypt, responsive design 
 
 ## Overview
-
 
 
 ![unknown-1](https://user-images.githubusercontent.com/64310147/103423729-3a397400-4b76-11eb-96d5-b9b3f86df3e3.png)
