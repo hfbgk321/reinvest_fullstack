@@ -24,38 +24,13 @@ Say what the step will be
 git clone , open in ide, There's a backend file, which you can run on port 4000, There's also a front end file that you can run on port 3000.
 ```
 
-There's a backend file, which you can run on port 4000.
-There's also a front end file that you can run on port 3000.
-
-```
-until finished
-```
 
 End with an example of getting some data out of the system or using it for a little demo
 
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+We deployed the backend on heroku and the frontend onn Netlify
 
 ## Built With
 
@@ -75,9 +50,7 @@ Thomas:https://github.com/thomasyeung687
 
 
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+ 
 
 ## Authors
 
@@ -104,3 +77,12 @@ How we solved the problems: We solved the routing problems by first debugging an
 
 Things we learned: MERN, image processing, cookies, autho, backend, encrypt and decrypt, responsive design 
 
+## Overview
+
+![unknown-3](https://user-images.githubusercontent.com/64310147/103424902-fac25600-4b7c-11eb-906c-e27375a5bad1.png)
+
+![unknown-1](https://user-images.githubusercontent.com/64310147/103423729-3a397400-4b76-11eb-96d5-b9b3f86df3e3.png)
+
+![unknown-2](https://user-images.githubusercontent.com/64310147/103423764-67862200-4b76-11eb-84cd-81a8823c678f.png)
+
+If you want to check it out http://reinvest.life/
