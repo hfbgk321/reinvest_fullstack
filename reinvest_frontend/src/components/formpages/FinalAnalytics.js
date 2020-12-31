@@ -142,7 +142,7 @@ const buttonGroup = (props) => {
         </Row>
         <br/>
         <Row sm>
-          <Chart/>
+          <Chart data = {props.data}/>
         </Row>
         <br/>
         <Row>
@@ -153,7 +153,7 @@ const buttonGroup = (props) => {
             <div class="Col box3">CoC Roi: <br></br> {props.data.cashOnCash}%</div>
           </Col>
           <Col sm>
-            <div class="Col box3">Monthly Income: <br></br> ${props.data.monthlyIncome}/Month</div>
+            <div class="Col box3">Monthly Income: <br></br> ${props.data.grossMonthlyIncome}/Month</div>
           </Col>
         </Row>
         <br/>

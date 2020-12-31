@@ -49,6 +49,7 @@ body {
   margin-top: 10px;
   border-radius: 5px;
   color: white;
+  background-color: rgb(255, 0, 0);
 }
 
 /* Property card styling */
@@ -106,6 +107,7 @@ img {
 }
 .button_styling {
   background-color: rgb(52, 58, 64) !important;
+  background-color: rgb(46, 97, 46) !important;
   color: white;
   box-shadow: 1.5px 1.5px #888888;
   padding: 2%;
