@@ -52,10 +52,10 @@ Technologies Used: ReactJS, Node, Express, mongoose, MongoDB, Git, Heroku, Netli
 
 
 Github:
-*Nikhil: https://github.com/nbodduluri
-*Jacky: https://github.com/hfbgk321
-*Horace:https://www.linkedin.com/in/horaceliu/
-*Thomas:https://github.com/thomasyeung687
+* Nikhil: https://github.com/nbodduluri
+* Jacky: https://github.com/hfbgk321
+* Horace:https://www.linkedin.com/in/horaceliu/
+* Thomas:https://github.com/thomasyeung687
 
 
 
@@ -65,10 +65,10 @@ Github:
 ## Authors
 
 Linkedin: 
-*Jacky: https://www.linkedin.com/in/jacky-chen-sbu/
-*Horace: https://www.linkedin.com/in/horaceliu/
-*Thomas: https://www.linkedin.com/in/thomas-yeung-517507200/
-*Nikhil: nbodduluri
+* Jacky: https://www.linkedin.com/in/jacky-chen-sbu/
+* Horace: https://www.linkedin.com/in/horaceliu/
+* Thomas: https://www.linkedin.com/in/thomas-yeung-517507200/
+* Nikhil: nbodduluri
 
 
 
