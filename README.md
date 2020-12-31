@@ -21,7 +21,7 @@ A step by step series of examples that tell you how to get a development env run
 Say what the step will be
 
 ```
-Give the example
+git clone , open in ide, There's a backend file, which you can run on port 4000, There's also a front end file that you can run on port 3000.
 ```
 
 There's a backend file, which you can run on port 4000.
