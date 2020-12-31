@@ -2,14 +2,11 @@ body {
   background: #f1f5f8;
 }
 
-.form-sidebar-nav {
-  float: right;
-  border-style: solid;
-  border-color: thistle;
-  width: 300px;
+.form-sidebar-navigation {
+  width: 200px;
   height: fit-content;
-  padding: 20px;
 }
+
 .formNavButton {
   text-align: left;
   width: 100%;
@@ -44,4 +41,14 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   float: right;
+}
+
+.button_styling {
+  background-color: rgb(52, 58, 64) !important;
+  color: white;
+  box-shadow: 2px 2px #888888;
+  padding: 2%;
+  border-radius: 3px;
+  margin: 3%;
+  width: 75%;
 }
