@@ -90,10 +90,14 @@ How we solved the problems: We solved the routing problems by first debugging an
 Things we learned: MERN, image processing, cookies, autho, backend, encrypt and decrypt, responsive design 
 
 ## Overview
-
+![unknown-1](https://user-images.githubusercontent.com/64310147/103430574-8a72ff00-4b93-11eb-8a58-10fbdf27783a.png)
 
 
 <p float="left">
   <img src="https://user-images.githubusercontent.com/64310147/103423729-3a397400-4b76-11eb-96d5-b9b3f86df3e3.png" style="width:100%">
+  <img src="https://user-images.githubusercontent.com/64310147/103423764-67862200-4b76-11eb-84cd-81a8823c678f.png" style="width:100%">
+</p>
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/64310147/103430574-8a72ff00-4b93-11eb-8a58-10fbdf27783a.png" style="width:100%">
   <img src="https://user-images.githubusercontent.com/64310147/103423764-67862200-4b76-11eb-84cd-81a8823c678f.png" style="width:100%">
 </p>
