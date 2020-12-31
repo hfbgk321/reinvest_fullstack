@@ -51,11 +51,6 @@ const buttonGroup = (props) => {
             <img
               class="center_default"
               src={StockHouseImage}
-<<<<<<< HEAD
-=======
-              width="20%"
-              margin="auto"
->>>>>>> 46c8da7de431a3b49659f0d517e6ea0e7043fae8
               alt="975 SPONGEBOB AVENUE"
             ></img>
           </Col>
