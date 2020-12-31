@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "./formpages.css";
 import Form from "./Form";
 import Navb from "../Signedout/Navbar"; //importing from navbar.js?
@@ -8,9 +7,6 @@ import {
   Container,
   Row,
   Col,
-  FormControl,
-  FormGroup,
-  Button,
 } from "react-bootstrap";
 
 function Formpage(props) {

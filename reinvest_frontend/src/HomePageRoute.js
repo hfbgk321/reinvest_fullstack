@@ -1,11 +1,9 @@
 import {useState,useEffect} from 'react';
-import {Route, Redirect} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import axios from 'axios';
 import Cookie from 'js-cookie';
 import {loadingPage} from './loading';
 
-import signup from "./components/Signedout/Signup";
-import HomePage from "./components/Signedout/homepage";
 import Homepage from './components/Signedout/homepage';
 
 export const HomePageRoute = ({ component: Component, ...rest }) => {
@@ -14,7 +12,7 @@ export const HomePageRoute = ({ component: Component, ...rest }) => {
     let cookieTester = Cookie.get('auth');
     if(cookieTester == null) return false;
     axios.post('http://localhost:4000/api/user/checkLoggedIn',{auth: cookieTester},{withCredentials:true}).then(res =>{
-      if(res.status == 200){
+      if(res.status === 200){
         setLog(true);
       }else{
         setLog(false);
@@ -33,7 +31,7 @@ export const HomePageRoute = ({ component: Component, ...rest }) => {
 
   return (
     <Route {...rest} render={(props) => (
-      isLog == true ? <Route path="/" exact render={(props) => <Homepage {...props} auth={isLog} />} />
+      isLog === true ? <Route path="/" exact render={(props) => <Homepage {...props} auth={isLog} />} />
             : route
         )} 
     />

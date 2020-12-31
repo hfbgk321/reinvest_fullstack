@@ -4,7 +4,7 @@ import CardItem from './CardItem';
 import img1 from './images/img-9.jpg'
 import img2 from './images/img-8.jpg'
 import img3 from './images/img-4.jpg'
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col} from "react-bootstrap";
 
 
 function Cards() {

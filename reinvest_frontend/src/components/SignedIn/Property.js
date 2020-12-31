@@ -6,9 +6,6 @@ const Property = (props) => {
     console.log('clicked');
 
   }
-  const complexExample = (address) =>{
-    console.log(address);
-  }
 
 return (
     <article className="book" onMouseOver={()=> {

@@ -1,27 +1,22 @@
 import React, { useEffect,useState } from "react";
-import ReactDOM from "react-dom";
 //import "./formpages.css";
 import Navb from "../Signedout/Navbar"; //importing from navbar.js?
 import {
   Container,
   Row,
   Col,
-  FormControl,
-  FormGroup,
   Button,
 } from "react-bootstrap";
 import './FinalAnalytics.css';
-import {Line} from "react-chartjs-2";
 import Chart from "./LineChart";
 import MonthlyExpensesPie from "./PieChart";
 import RentalIncomeDonut from "./RentalIncomeDonut";
 import MonthlyExpensesDonut from "./MonthlyExpensesDonut";
 import LoanDetailsDonut from "./LoanDetailsDonut";
 import axios from 'axios';
-import Cookies, { set } from 'js-cookie';
+import Cookies from 'js-cookie';
 import {Ring} from 'react-awesome-spinners';
 
-import {loadingPage} from '../../loading';
 import StockHouseImage from '../../images/stockHouse.jpg';
 
 const buttonGroup = (props) => {
@@ -38,7 +33,7 @@ const buttonGroup = (props) => {
 
   const Slide1 = (props) => {
     //const [address,imageSrc,title,value] = props;
-    if (props.data.img == undefined){
+    if (props.data.img === undefined){
       return (
         <div class="center">
         <br/>

@@ -1,21 +1,11 @@
 import React, {useEffect, useState} from "react";
-import ReactDOM from "react-dom";
-import { properties } from "./properties";
-import Property from "./Property";
 import "./signedIn.css";
-import { Link } from "react-router-dom";
 import Navb from "../Signedout/Navbar"; //importing from navbar.js?
 import axios from "axios";
 import Cookies from 'js-cookie';
 import StockHouseImage from '../../images/stockHouse.jpg';
 import {
-  Container,
   Row,
-  Col,
-  FormControl,
-  Form,
-  FormGroup,
-  Button,
 } from "react-bootstrap";
 import {Ring} from 'react-awesome-spinners';
 
@@ -23,7 +13,6 @@ import {Ring} from 'react-awesome-spinners';
 function PropertyList(props) {
   const [keyword, setKeyword] = useState("");
   const [yourProperties, setYourProperties] = useState([]);
-  const [propertyId,setPropertyId] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(()=>{
@@ -79,22 +68,24 @@ function PropertyList(props) {
   }
   return (
     <>
+    <div className="disableHorizontalScrollBar">
       <Navb auth ={props.auth}/>
       <Row className="centerSearchBar">
         <input 
         type = "text"
-        class="barStyling"
+        className="barStyling"
         value={keyword}
         placeholder="Search"
         onChange={(e) => setKeyword(e.target.value)}
         />
       </Row>
+      <br/>
       <Row className = "flex_center" sm>
         <ul class = "flex_container wrap">
           {yourProperties.map((property,i) => {
-            if (property.img == undefined){
+            if (property.img === undefined){
               return (
-                <div class="property_card" key ={i}>
+                <div className="property_card" key ={i}>
                   <div className = "property" >
                     <img
                     // src={unknown}
@@ -103,21 +94,21 @@ function PropertyList(props) {
                     // margin="auto"
                     alt="975 SPONGEBOB AVENUE"
                     ></img>
-                    <div class="proptext_styling">
+                    <div className="proptext_styling">
                       <span>{property.streetAddress} <br></br></span>
                       <span >{property.city}, {property.state}  {property.zipCode}</span>
                     </div>
-                    <div class="wrapper">
-                        <button class="property_button" onClick ={()=>{
+                    <div className="wrapper">
+                        <button className="property_button" onClick ={()=>{
                           localStorage.setItem('propertyInfoId',property._id);
                           console.log(localStorage.getItem('propertyInfoId'));
                           window.location = "http://localhost:3000/finalanalytics";
                         }}>View</button>
-                        <button class="property_button" onClick = {(e) =>{
+                        <button className="property_button" onClick = {(e) =>{
                           e.preventDefault();
                           handleEdit(property._id);
                         }} >Edit</button>
-                        <button class="property_button" onClick ={(e) => {
+                        <button className="property_button" onClick ={(e) => {
                           e.preventDefault();
                           handleDelete(property._id);
                         }}>Delete</button>
@@ -129,7 +120,7 @@ function PropertyList(props) {
             const b64 = new Buffer.from(buffer).toString('base64');
             const mimeType = property.img.contentType;
             return (
-              <div class="property_card" key ={i}>
+              <div className="property_card" key ={i}>
                 <div className = "property" >
                   <img
                   // src={unknown}
@@ -138,21 +129,21 @@ function PropertyList(props) {
                   // margin="auto"
                   alt="975 SPONGEBOB AVENUE"
                   ></img>
-                  <div class="proptext_styling">
+                  <div className="proptext_styling">
                     <span>{property.streetAddress} <br></br></span>
                     <span >{property.city}, {property.state}  {property.zipCode}</span>
                   </div>
-                  <div class="wrapper">
-                    <button class="property_button" onClick ={()=>{
+                  <div className="wrapper">
+                    <button className="property_button" onClick ={()=>{
                       localStorage.setItem('propertyInfoId',property._id);
                       console.log(localStorage.getItem('propertyInfoId'));
                       window.location = "http://localhost:3000/finalanalytics";
                     }}>View</button>
-                    <button class="property_button" onClick = {(e) =>{
+                    <button className="property_button" onClick = {(e) =>{
                       e.preventDefault();
                       handleEdit(property._id);
                     }}>Edit</button>
-                    <button class="property_button" onClick ={(e) => {
+                    <button className="property_button" onClick ={(e) => {
                       e.preventDefault();
                       handleDelete(property._id);
                     }}>Delete</button>
@@ -160,11 +151,13 @@ function PropertyList(props) {
                 </div>
               </div>
             )}})}
-            <div class="button_wrapper">
-              <button class="button_styling" onClick={() => {window.location = "/propertyinfo"}}>Add New Property</button>
+            <div className="button_wrapper">
+              <button className="button_styling" onClick={() => {window.location = "/propertyinfo"}}>Add New Property</button>
             </div>
         </ul>
       </Row>
+      <br/>
+    </div>
     </>
   );
 }

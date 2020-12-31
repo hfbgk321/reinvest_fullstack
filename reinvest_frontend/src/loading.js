@@ -1,4 +1,3 @@
-import react from 'react';
 import {Ring} from 'react-awesome-spinners';
 
 export const loadingPage = () =>{
