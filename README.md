@@ -17,7 +17,7 @@ Problems we Faced: handling https request while using authorization, using multe
 How we solved the problems: We solved the routing problems by first debugging and testing the routes on Postman, once confirmed we went and debugged the front end to also work
 
 
-Things we learned: MERN, image processing, cookies, autho, backend, encrypt and decrypt, resposive design 
+Things we learned: MERN stack, image processing, cookies, authorization, backend, encrypt and decrypt, responsive design 
 
 
 How to Run this on your local server: clone the project, and npm install the dependencies, npm run
