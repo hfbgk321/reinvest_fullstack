@@ -1,17 +1,17 @@
-# Project Title
+# Reinvest
 
-One Paragraph of project description goes here
+Have you wondered if a house is a good buy for your real estate portfolio? Our free software will give any user important details to help make the decision a lot easier for you. Important attributes that are considered are Cash on Cash return, ROI, Net Operating Income, Fixed Monthly Morgage, Monthly Cash Flow, and much more valuable details to come to a decision. The software also allows you to save your previous houses, allowing you to come back and check them whenever you want. 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+How to Run this on your local server: clone the project, and npm install the dependencies, npm run
 
 ### Prerequisites
 
 What things you need to install the software and how to install them
 
 ```
-Give examples
+You need node and vscode to install dependencies
 ```
 
 ### Installing
@@ -24,7 +24,8 @@ Say what the step will be
 Give the example
 ```
 
-And repeat
+There's a backend file, which you can run on port 4000.
+There's also a front end file that you can run on port 3000.
 
 ```
 until finished
@@ -64,7 +65,15 @@ Add additional notes about how to deploy this on a live system
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Linkedn: 
+Github:
+Nikhil: https://github.com/nbodduluri
+Jacky: https://github.com/hfbgk321
+Horace:https://www.linkedin.com/in/horaceliu/
+Thomas:https://github.com/thomasyeung687
+
+
+
 
 ## Versioning
 
@@ -72,9 +81,13 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+Linkedin: 
+Jacky: https://www.linkedin.com/in/jacky-chen-sbu/
+Horace: https://www.linkedin.com/in/horaceliu/
+Thomas: https://www.linkedin.com/in/thomas-yeung-517507200/
+Nikhil: nbodduluri
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
 
 ## License
 
@@ -82,7 +95,12 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+Technologies Used: ReactJS, Node, Express, mongoose, MongoDB, Git, Heroku, Netlify, JS, HTML, CSS, JSX, Bootstrap, Axios, Babel, JSON web token, JS-Cookie, Cors, Nodemon, Charts.js, API's, DOM
+
+Problems we Faced: handling https request while using authorization, using multer and blobs to process and send in receive images to server
+
+How we solved the problems: We solved the routing problems by first debugging and testing the routes on Postma, once confirmed we went and debugged the front end to also work
+
+
+Things we learned: MERN, image processing, cookies, autho, backend, encrypt and decrypt, responsive design 
 
