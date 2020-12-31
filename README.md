@@ -23,7 +23,9 @@ A step by step series of examples that tell you how to get a development env run
 Say what the step will be
 
 ```
-git clone , open in ide, There's a backend file, which you can run on port 4000 by npm install and to start use npm run dev, There's also a front end file that you can run on port 3000 by npm install and to start use npm run.
+git clone , open in ide, There's a backend file, which you can run on port 4000 by npm install and to start use npm run dev.
+
+There's also a front end file that you can run on port 3000 by npm install and to start use npm run.
 
 Look at .env.example for connecting to MongoDB
 ```
