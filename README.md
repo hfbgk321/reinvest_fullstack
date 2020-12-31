@@ -25,7 +25,7 @@ Say what the step will be
 ```
 git clone , open in ide, There's a backend file, which you can run on port 4000 by npm install and to start use npm run dev.
 
-There's also a front end file that you can run on port 3000 by npm install and to start use npm run.
+There's also a front end file that you can run on port 3000 by npm install and to start use npm start.
 
 Look at .env.example for connecting to MongoDB
 ```
