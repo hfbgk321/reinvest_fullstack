@@ -1,37 +1,88 @@
-![unknown-3](https://user-images.githubusercontent.com/64310147/103424902-fac25600-4b7c-11eb-906c-e27375a5bad1.png)
+# Project Title
 
+One Paragraph of project description goes here
 
-Have you wondered if a house is a good buy for your real estate portfolio? Our free software will give any user important details to help make the decision a lot easier for you. Important attributes that are considered are Cash on Cash return, ROI, Net Operating Income, Fixed Monthly Morgage, Monthly Cash Flow, and much more valuable details to come to a decision. The software also allows you to save your previous houses, allowing you to come back and check them whenever you want. 
+## Getting Started
 
-If you want to check it out http://reinvest.life/
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-![unknown-1](https://user-images.githubusercontent.com/64310147/103423729-3a397400-4b76-11eb-96d5-b9b3f86df3e3.png)
+### Prerequisites
 
-![unknown-2](https://user-images.githubusercontent.com/64310147/103423764-67862200-4b76-11eb-84cd-81a8823c678f.png)
+What things you need to install the software and how to install them
 
+```
+Give examples
+```
 
-Technologies Used: ReactJS, Node, Express, mongoose, MongoDB, Git, Heroku, Netlify, JS, HTML, CSS, JSX, Boostrap, Axios, Babel, JSON web token, JS-Cookie, Cors, Nodemon, Charts.js, API's, DOM
+### Installing
 
-Problems we Faced: handling https request while using authorization, using multer and blobs to process and send in recieve images to server
+A step by step series of examples that tell you how to get a development env running
 
-How we solved the problems: We solved the routing problems by first debugging and testing the routes on Postman, once confirmed we went and debugged the front end to also work
+Say what the step will be
 
+```
+Give the example
+```
 
-Things we learned: MERN stack, image processing, cookies, authorization, backend, encrypt and decrypt, responsive design 
+And repeat
 
+```
+until finished
+```
 
-How to Run this on your local server: clone the project, and npm install the dependencies, npm run
+End with an example of getting some data out of the system or using it for a little demo
 
-Linkedn: 
-Jacky: https://www.linkedin.com/in/jacky-chen-sbu/
-Horace: https://www.linkedin.com/in/horaceliu/
-Thomas: https://www.linkedin.com/in/thomas-yeung-517507200/
-Nikhil: nbodduluri
+## Running the tests
 
-Github:
-Nikhil: https://github.com/nbodduluri
-Jacky: https://github.com/hfbgk321
-Horace:https://www.linkedin.com/in/horaceliu/
-Thomas:https://github.com/thomasyeung687
+Explain how to run the automated tests for this system
 
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Built With
+
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
 
