@@ -9,8 +9,6 @@ const User = mongoose.model('User',userSchema);
 export const verifyToken = (req,res,next) =>{
   
   let token = req.body.auth;
-  //console.log(req.body);
-  //console.log(token);
     User.findByToken(token,(err,user)=>{
         if(err) throw err;
         if(!user) return res.status(400).json({
@@ -23,7 +21,6 @@ export const verifyToken = (req,res,next) =>{
             ownerID: jwt.decode(req.token),
             token: token
         }
-        console.log(data);
         next(data);
     })
 }

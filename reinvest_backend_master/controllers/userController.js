@@ -3,7 +3,6 @@ import {propertySchema} from '../models/property'
 import {registerValidation,loginValidation} from '../validation';
 import mongoose from 'mongoose';
 
-import jwt, { verify } from 'jsonwebtoken';
 import { verifyToken } from '../validate-token';
 
 require('dotenv').config();
@@ -38,7 +37,6 @@ export const userSignUp = async (req,res) =>{
 
 export const userLogIn = async (req, res) =>{
   
-  //res.setHeader('Access-Control-Allow-Credentials', true);
   if(req.cookies.auth != null) 
     return res.send({message: 'You are already logged in. Please Log out before signing in again.'})
   const {error} = loginValidation(req.body);
@@ -104,12 +102,10 @@ export const deleteUser = (req,res) =>{
 
 export const checkLoggedIn = (req,res) =>{
   verifyToken(req,res,(data) =>{
-    //console.log(Token);
     if(data.token == req.body.auth){
       console.log('Howdy');
       return res.status(200).json({message: 'Token is valid'});
     }
-    console.log('no');
     return res.status(401).json({message: 'Token is not valid'});
   })
 }

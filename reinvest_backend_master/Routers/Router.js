@@ -18,16 +18,12 @@ const storage = multer.diskStorage({
 
 var uploads = multer({
   storage:storage,
-  // fileFilter: (req, file, cb) =>{
-  //   if(file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg"){
-  //     cb(null,true);
-  //   }else
-  //     cb(null,false);
-  //     return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
-  //   }
 });
 
 export const Routes = (app) => {
+  app.route('/').get((req,res) =>{
+    res.send('Hello to reinvest API');
+  })
   app.route('/properties/all').post(getProperties);
   app.route('/properties/query').post(getPropertiesByQuery);
 
@@ -40,7 +36,6 @@ export const Routes = (app) => {
   app.route('/properties/:id').put(updatePropertyInformation);
   
   app.post('/api/user/signup',uploads.none(),userSignUp);
-  //app.route('/api/user/signup').post(userSignUp);
   app.post('/api/user/signin',uploads.none(),userLogIn);
 
   app.route('/api/user/signout').post(userLogOut);

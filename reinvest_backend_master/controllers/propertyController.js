@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 
 import fs from 'fs';
 import path from 'path';
-import { Console } from 'console';
+
 
 
 const Property = mongoose.model("Property",propertySchema);
@@ -35,7 +35,6 @@ export const registerProperty = (req,res) =>{
   verifyToken(req,res, (data) => {
     console.log(req.file == undefined);
     if(req.file == undefined) {
-      console.log('cREATING.. undefined');
       Property.create({
         ownerID: data.ownerID,
         ...req.body
@@ -44,7 +43,6 @@ export const registerProperty = (req,res) =>{
           console.log(err);
           return res.json({message: err})
         }
-        console.log('Success creation');
         return res.json(property);
       })
     }
@@ -97,10 +95,8 @@ export const getPropertyById = async (req,res) =>{
     console.log(req.params.id);
     Property.findById(req.params.id,(err, property) =>{
       if(err){
-        console.log(err);
         return res.status(400).json({message: err});
       }
-      console.log('good')
       return res.json(property);
     })
   })
@@ -111,7 +107,6 @@ export const deleteProperty = async (req,res) =>{
   verifyToken(req,res, (data) =>{
     Property.findOneAndDelete({ownerID:data.ownerID, _id : req.params.id},{useFindAndModify:false} ,(err,property) =>{
       if(err){
-        console.log('here');
         return res.send({message: err});
       }
       return res.json({message: 'Successfully deleted property at '+property.streetAddress});
@@ -124,9 +119,9 @@ export const updatePropertyInformation = async (req, res) =>{
   verifyToken(req,res, (data) =>{
     Property.findByIdAndUpdate(req.params.id,{$set: req.body},{new: true,useFindAndModify:false},(err,property) =>{
       if(err){
-        res.send('Error: '+err);
+        return res.send('Error: '+err);
       }
-      res.json(property);
+      return res.json(property);
     })
   })
 }
