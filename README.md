@@ -1,6 +1,6 @@
-# Reinvest ![unknown-3]
+# Reinvest 
 
-(https://user-images.githubusercontent.com/64310147/103424902-fac25600-4b7c-11eb-906c-e27375a5bad1.png)
+![unknown-3](https://user-images.githubusercontent.com/64310147/103424902-fac25600-4b7c-11eb-906c-e27375a5bad1.png)
 
 Have you wondered if a house is a good buy for your real estate portfolio? Our free software will give any user important details to help make the decision a lot easier for you. Important attributes that are considered are Cash on Cash return, ROI, Net Operating Income, Fixed Monthly Morgage, Monthly Cash Flow, and much more valuable details to come to a decision. The software also allows you to save your previous houses, allowing you to come back and check them whenever you want. 
 
@@ -23,8 +23,11 @@ A step by step series of examples that tell you how to get a development env run
 Say what the step will be
 
 ```
-git clone , open in ide, There's a backend file, which you can run on port 4000, There's also a front end file that you can run on port 3000.
+git clone , open in ide, There's a backend file, which you can run on port 4000 by npm install and to start use npm run dev, There's also a front end file that you can run on port 3000 by npm install and to start use npm run.
+
+Look at .env.example for connecting to MongoDB
 ```
+
 
 
 End with an example of getting some data out of the system or using it for a little demo
@@ -45,12 +48,12 @@ Technologies Used: ReactJS, Node, Express, mongoose, MongoDB, Git, Heroku, Netli
 
 ## Contributing
 
-Linkedn: 
+
 Github:
-Nikhil: https://github.com/nbodduluri
-Jacky: https://github.com/hfbgk321
-Horace:https://www.linkedin.com/in/horaceliu/
-Thomas:https://github.com/thomasyeung687
+*Nikhil: https://github.com/nbodduluri
+*Jacky: https://github.com/hfbgk321
+*Horace:https://www.linkedin.com/in/horaceliu/
+*Thomas:https://github.com/thomasyeung687
 
 
 
@@ -60,10 +63,10 @@ Thomas:https://github.com/thomasyeung687
 ## Authors
 
 Linkedin: 
-Jacky: https://www.linkedin.com/in/jacky-chen-sbu/
-Horace: https://www.linkedin.com/in/horaceliu/
-Thomas: https://www.linkedin.com/in/thomas-yeung-517507200/
-Nikhil: nbodduluri
+*Jacky: https://www.linkedin.com/in/jacky-chen-sbu/
+*Horace: https://www.linkedin.com/in/horaceliu/
+*Thomas: https://www.linkedin.com/in/thomas-yeung-517507200/
+*Nikhil: nbodduluri
 
 
 
