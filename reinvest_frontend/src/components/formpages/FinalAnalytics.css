@@ -48,7 +48,7 @@
 }
 .heading {
   text-align: center;
-  margin-top: 2%;
+  margin: auto;
   color: purple;
   margin-bottom: 2%;
 }
@@ -65,8 +65,8 @@
   margin: auto;
   display: block;
   text-align: center;
-  min-width: 500px;
-  height: 400px;
+  width: 70%;
+  height: fit-content;
 }
 .auto {
   padding: 0;
@@ -75,4 +75,8 @@
 .centerTheButton {
   margin: auto;
   padding: 0%;
+}
+.imgdiv {
+  overflow: scroll;
+  height: 500px;
 }
