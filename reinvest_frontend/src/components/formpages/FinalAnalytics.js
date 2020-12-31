@@ -39,7 +39,7 @@ const buttonGroup = (props) => {
     //const [address,imageSrc,title,value] = props;
     if (props.data.img == undefined){
       return (
-        <Container fluid>
+        <div class="center">
         <br/>
         <br/>
         <br/>
@@ -51,6 +51,8 @@ const buttonGroup = (props) => {
             <img
               class="center_default"
               src={StockHouseImage}
+              width="70%"
+              margin="auto"
               alt="975 SPONGEBOB AVENUE"
             ></img>
           </Col>
@@ -64,14 +66,14 @@ const buttonGroup = (props) => {
           <Col>{buttonGroup({ title: "COC", value: props.data.cashOnCash+" %" })}</Col>
         </Row>
         </div>
-      </Container>
+      </div>
     );
   } else {
     const buffer = props.data.img.data.data;
     const b64 = new Buffer.from(buffer).toString('base64');
     const mimeType = props.data.img.contentType;
     return (
-      <Container fluid>
+      <div class="center">
         <br/>
         <br/>
         <br/>
@@ -97,7 +99,7 @@ const buttonGroup = (props) => {
           <Col>{buttonGroup({ title: "CAP RATE", value: props.data.capitalizationRate +" %" })}</Col>
           <Col>{buttonGroup({ title: "COC", value: props.data.cashOnCash+" %" })}</Col>
         </Row>
-      </Container>
+      </div>
     );
   }
 }
@@ -293,110 +295,106 @@ const buttonGroup = (props) => {
     );
   }
 
-  const ReturnToPropertiesButton = () => {
-    return (
-      <div class="center fixed-bottom">
-        <Row sm>
-         <Col sm>
-          <Button onClick={()=>{window.location = "http://localhost:3000/signedIn"}} variant="dark">Back to Properties</Button>
-          </Col>
-          <Col></Col>
-          <Col></Col>
-          <Col sm>
-          <Button variant="dark" onClick ={(e)=>{
-              e.preventDefault();
-              Cookies.set('redirect_link','/finalanalytics');
-              window.location = '/propertyinfo'
-          }}>Update</Button>
-          </Col>
-        </Row>
-        <br/>
-      </div>
-    );
+const ReturnToPropertiesButton = () => {
+  return (
+    <div class="center fixed-bottom">
+      <Row sm>
+       <Col sm>
+        <Button onClick={()=>{window.location = "http://localhost:3000/signedIn"}} variant="dark">Back to Properties</Button>
+        </Col>
+        <Col></Col>
+        <Col></Col>
+        <Col sm>
+        <Button variant="dark">Update</Button>
+        </Col>
+      </Row>
+      <br/>
+    </div>
+
+  );
+}
+  
+function FinalAnalytics(props) {
+  const [data, setData] = useState({});
+  const [isLoaded,setIsLoaded] = useState(false);
+  const getJSONStuff = () => {
+    let propertyInfoId = localStorage.getItem('propertyInfoId');
+    console.log(propertyInfoId);
+    axios.post('http://localhost:4000/properties/' + propertyInfoId,{auth: Cookies.get('auth')},
+    {withCredentials:true}).then(res => {
+      setData(res.data);
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
-
-  function FinalAnalytics(props) {
-    const [data, setData] = useState({});
-    const [isLoaded,setIsLoaded] = useState(false);
-    const getJSONStuff = () => {
-      let propertyInfoId = localStorage.getItem('propertyInfoId');
-      console.log(propertyInfoId);
-      axios.post('http://localhost:4000/properties/' + propertyInfoId,{auth: Cookies.get('auth')},
-      {withCredentials:true}).then(res => {
-        setData(res.data);
-      }).catch(err => {
-        console.log(err);
-      });
-    }
-  
-    useEffect(async()=>{
-      let hello = await getJSONStuff();
-      console.log(data);
-      setTimeout(()=>{
-        setIsLoaded(true);
-      },2000);
-  
-    },data)
-  
+  useEffect(async()=>{
+    let hello = await getJSONStuff();
     console.log(data);
+    setTimeout(()=>{
+      setIsLoaded(true);
+    },2000);
+    
+  },data)
+
+  console.log(data);
   
-  
-    if(!isLoaded){
-       return <loadingPage/>
-    }
-    return (
-      <>
-      <div>
-        <div class="fixed-top">
-          <Navb auth = {props.auth}/>
-        </div>
-      </div>
-        <Container fluid>
-          <Row>
-            <Slide1 data = {data}/>
-          </Row>
-  
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-  
-          <Row>
-            <Slide2 data = {data}/>
-          </Row>
-  
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-  
-          <Row>
-            <Slide3 data = {data}/>
-          </Row>
-  
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-  
-          <Row>
-            <Slide4 data = {data}/>
-          </Row>
-  
-          <br/>
-          <br/>
-  
-          <Row sm>
-            <ReturnToPropertiesButton/> 
-          </Row>
-  
-          <br/>
-          <br/>
-  
-        </Container>
-      </>
-    );
+
+  if(!isLoaded){
+     return <loadingPage/>
   }
+  return (
+    <>
+    <div>
+      <div class="fixed-top">
+        <Navb auth = {props.auth}/>
+      </div>
+    </div>
+      <Container fluid>
+        <Row>
+          <Slide1 data = {data}/>
+        </Row>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+        <Row>
+          <Slide2 data = {data}/>
+        </Row>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+          
+        <Row>
+          <Slide3 data = {data}/>
+        </Row>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+        <Row>
+          <Slide4 data = {data}/>
+        </Row>
+
+        <br/>
+        <br/>
+
+        <Row sm>
+          <ReturnToPropertiesButton/> 
+        </Row>
+
+        <br/>
+        <br/>
+          
+      </Container>
+    </>
+  );
+}
 
   export default FinalAnalytics;
