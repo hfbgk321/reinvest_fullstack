@@ -92,7 +92,7 @@ Things we learned: MERN, image processing, cookies, autho, backend, encrypt and 
   <br/>
   <img src="https://user-images.githubusercontent.com/64310147/103430758-4bde4400-4b95-11eb-93fe-0f1e19e4a9e7.png" style="width:100%">
   <br/>
-  <img src="https://user-images.githubusercontent.com/64310147/103430760-4da80780-4b95-11eb-922f-2e2a5c9beb80" style="width:100%">
+  <img src="https://user-images.githubusercontent.com/64310147/103430760-4da80780-4b95-11eb-922f-2e2a5c9beb80.png" style="width:100%">
 </p>
 
 
