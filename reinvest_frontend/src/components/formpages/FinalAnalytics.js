@@ -305,7 +305,10 @@ const ReturnToPropertiesButton = () => {
         <Col></Col>
         <Col></Col>
         <Col sm>
-        <Button variant="dark">Update</Button>
+        <Button variant="dark" onClick ={(e) =>{
+          e.preventDefault();
+          window.location = '/propertyinfo';
+        }}>Update</Button>
         </Col>
       </Row>
       <br/>
