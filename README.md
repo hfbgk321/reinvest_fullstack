@@ -5,7 +5,10 @@
 </p>
 
 <p align ="center">
-  https://img.shields.io/github/languages/top/hfbgk321/reinvest_fullstack?style=flat-square
+  <img src = "https://img.shields.io/github/languages/top/hfbgk321/reinvest_fullstack?style=flat-square">
+  <img src = "https://img.shields.io/github/languages/count/hfbgk321/reinvest_fullstack?color=green">
+  <img src = "https://img.shields.io/badge/dependencies-up to date-brightgreen"
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/hfbgk321/reinvest_fullstack?color=orange">
 </p>
 
  
