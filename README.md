@@ -1,8 +1,4 @@
-# Reinvest 
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/64310147/103424902-fac25600-4b7c-11eb-906c-e27375a5bad1.png">
-</p>
+<h1 align ="center">Reinvest.life</h1> 
 
 <p align ="center">
   <img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/hfbgk321/reinvest_fullstack?color=pink">
@@ -11,6 +7,10 @@
   <img src = "https://img.shields.io/github/languages/top/hfbgk321/reinvest_fullstack?style=flat-square">
   <img src = "https://img.shields.io/github/languages/count/hfbgk321/reinvest_fullstack?color=green">
   <img src = "https://img.shields.io/badge/dependencies-up to date-brightgreen"
+</p>
+  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/64310147/103424902-fac25600-4b7c-11eb-906c-e27375a5bad1.png">
 </p>
 
  
