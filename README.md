@@ -27,16 +27,13 @@ Have you wondered if a house is a good buy for your real estate portfolio? Our f
 - **Add New Property** Clicking the Add New Property button will redirect to a form page, prompting you to fill in some information about your property. Our software will then use that data to calculate different factors of this property using industry formulas.
     <p align ="center"><img src = "https://user-images.githubusercontent.com/40508134/103445451-2bb88e80-4c42-11eb-8bf6-972874361dd2.gif" width = "700" height = "350"></p>
 - **Updating Property** There are two ways that you can edit information about a property. You can either click the edit button in the property page or click the update button in the analysis page.
+    <table>
+      <tr>
+        <td><img src = "https://user-images.githubusercontent.com/40508134/103445526-3d4e6600-4c43-11eb-9448-d9e42606c7f2.gif"></td>
+        <td><img src = "https://user-images.githubusercontent.com/40508134/103445551-bc439e80-4c43-11eb-9323-bf06d1625845.gif"></td>
+       </tr> 
+    </table>
       
-   - **Updating in analysis page**
-      <p align = "center">
-      <img src = "https://user-images.githubusercontent.com/40508134/103445526-3d4e6600-4c43-11eb-9448-d9e42606c7f2.gif" width = "700" height = "350">
-      </p>
-      
-    - **Updating in properties page**
-      <p align ="center">
-        <img src = "https://user-images.githubusercontent.com/40508134/103445551-bc439e80-4c43-11eb-9323-bf06d1625845.gif" width = "700" height = "350">
-      </p>
  - **Viewing existing properties** All your existing properties will populate in your properties page. We incorporated a search for you to search properties based on address. To view data about an existing property, just click the view button
       <p>
         <img src = "">
