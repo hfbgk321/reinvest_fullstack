@@ -5,6 +5,8 @@
 </p>
 
 <p align ="center">
+  <img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/hfbgk321/reinvest_fullstack?color=pink">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/hfbgk321/reinvest_fullstack?color=orange">
   <img src="https://img.shields.io/website?down_message=Offline&up_message=Online&url=https%3A%2F%2Freinvest.life%2F">
   <img src = "https://img.shields.io/github/languages/top/hfbgk321/reinvest_fullstack?style=flat-square">
   <img src = "https://img.shields.io/github/languages/count/hfbgk321/reinvest_fullstack?color=green">
