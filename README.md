@@ -58,7 +58,7 @@ Technologies Used: ReactJS, Node, Express, mongoose, MongoDB, Git, Heroku, Netli
 Github:
 * Nikhil: https://github.com/nbodduluri
 * Jacky: https://github.com/hfbgk321
-* Horace:https://www.linkedin.com/in/horaceliu/
+* Horace:https://github.com/horaceliuHL
 * Thomas:https://github.com/thomasyeung687
 
 
