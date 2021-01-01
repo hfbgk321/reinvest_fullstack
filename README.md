@@ -13,9 +13,35 @@
   <img src="https://user-images.githubusercontent.com/40508134/103444641-3c640700-4c38-11eb-9d08-7a8f74c5f6eb.png" width = "700" height = "350">
 </p>
 
- 
+ <h2 align="center"><a  href="https://solitairevue.firebaseapp.com">Try out the web app</a></h2>
+
+## Description
 
 Have you wondered if a house is a good buy for your real estate portfolio? Our free software will give any user important details to help make the decision a lot easier for you. Important attributes that are considered are Cash on Cash return, ROI, Net Operating Income, Fixed Monthly Morgage, Monthly Cash Flow, and much more valuable details to come to a decision. The software also allows you to save your previous houses, allowing you to come back and check them whenever you want. 
+
+<p align = "center"> <img src = "https://user-images.githubusercontent.com/40508134/103444890-49cec080-4c3b-11eb-939c-65a874d8aa5d.gif" width = "700" height = "350"></p>
+
+## Navigating the UI
+
+- **Homepage** Upon logging in, you will be directed to your properties page, which will allow you to view, edit, or create analysis for a new property.
+- **Add New Property** Clicking the Add New Property button will redirect to a form page, prompting you to fill in some information about your property. Our software will then use that data to calculate different factors of this property using industry formulas.
+    <p align ="center"><img src = "https://user-images.githubusercontent.com/40508134/103445451-2bb88e80-4c42-11eb-8bf6-972874361dd2.gif" width = "700" height = "350"></p>
+- **Updating Property** There are two ways that you can edit information about a property. You can either click the edit button in the property page or click the update button in the analysis page.
+      
+   - **Updating in analysis page**
+      <p align = "center">
+      <img src = "https://user-images.githubusercontent.com/40508134/103445526-3d4e6600-4c43-11eb-9448-d9e42606c7f2.gif" width = "700" height = "350">
+      </p>
+      
+    - **Updating in properties page**
+      <p align ="center">
+        <img src = "https://user-images.githubusercontent.com/40508134/103445551-bc439e80-4c43-11eb-9323-bf06d1625845.gif" width = "700" height = "350">
+      </p>
+ - **Viewing existing properties** All your existing properties will populate in your properties page. We incorporated a search for you to search properties based on address. To view data about an existing property, just click the view button
+      <p>
+        <img src = "">
+      </p>
+  
 
 ## Getting Started
 
