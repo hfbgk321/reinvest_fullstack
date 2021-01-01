@@ -34,9 +34,9 @@ Have you wondered if a house is a good buy for your real estate portfolio? Our f
        </tr> 
     </table>
       
- - **Viewing existing properties** All your existing properties will populate in your properties page. We incorporated a search for you to search properties based on address. To view data about an existing property, just click the view button
-      <p>
-        <img src = "">
+ - **Viewing existing properties** All your existing properties will populate in your properties page. We incorporated a search bar for you to search properties based on address. To view data about an existing property, just click the view button, which will direct you to the analysis page of that property.
+      <p align = "center">
+        <img src = "https://user-images.githubusercontent.com/40508134/103446212-07ad7b00-4c4b-11eb-864f-7645dd8a5142.gif" width = "700" height = "350">
       </p>
   
 
