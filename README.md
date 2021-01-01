@@ -37,8 +37,8 @@ Have you wondered if a house is a good buy for your real estate portfolio? REInv
 - **Updating Property** There are two ways that you can edit information about a property. You can either click the edit button in the property page or click the update button in the analysis page.
     <table>
       <tr>
-        <td><img src = "https://user-images.githubusercontent.com/40508134/103445526-3d4e6600-4c43-11eb-9448-d9e42606c7f2.gif"></td>
-        <td><img src = "https://user-images.githubusercontent.com/40508134/103445551-bc439e80-4c43-11eb-9323-bf06d1625845.gif"></td>
+        <td><img src = "https://user-images.githubusercontent.com/40508134/103447061-56134780-4c54-11eb-96c9-6c2197ae615f.gif"></td>
+        <td><img src = "https://user-images.githubusercontent.com/40508134/103447092-ad191c80-4c54-11eb-9201-29a31aaf43c2.gif"></td>
        </tr> 
     </table>
       
