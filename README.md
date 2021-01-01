@@ -33,7 +33,7 @@ Have you wondered if a house is a good buy for your real estate portfolio? REInv
 
 - **Homepage** Upon logging in, you will be directed to your properties page, which will allow you to view, edit, or create analysis for a new property.
 - **Add New Property** Clicking the Add New Property button will redirect to a form page, prompting you to fill in some information about your property. Our software will then use that data to calculate different factors of this property using industry formulas.
-    <p align ="center"><img src = "https://user-images.githubusercontent.com/40508134/103445451-2bb88e80-4c42-11eb-8bf6-972874361dd2.gif" width = "700" height = "350"></p>
+    <p align ="center"><img src = "https://user-images.githubusercontent.com/40508134/103446823-dedcb400-4c51-11eb-9de6-37d1054806ff.gif" width = "700" height = "350"></p>
 - **Updating Property** There are two ways that you can edit information about a property. You can either click the edit button in the property page or click the update button in the analysis page.
     <table>
       <tr>
