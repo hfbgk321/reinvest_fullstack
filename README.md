@@ -14,14 +14,18 @@
 </p>
 
  <h2 align="center"><a  href="wwww.reinvest.life">Try out the web app</a></h2>
+ 
+ 
 
 ## Description
 
-Have you wondered if a house is a good buy for your real estate portfolio? Our free software will give any user important details to help make the decision a lot easier for you. Important attributes that are considered are Cash on Cash return, ROI, Net Operating Income, Fixed Monthly Morgage, Monthly Cash Flow, and much more valuable details to come to a decision. The software also allows you to save your previous houses, allowing you to come back and check them whenever you want. 
+Have you wondered if a house is a good buy for your real estate portfolio? REInvest's free software will give any user important details to help make the decision a lot easier for you. Important attributes crucial to your investment decisions are considered such as Cash on Cash return, ROI, Net Operating Income, Fixed Monthly Morgage, Monthly Cash Flow, and many more valuable details for you to evaluate the investment upon. This software also allows you to save your previous houses, allowing you to come back and check them whenever you want. 
 
 <p align = "center">
   <img src = "https://user-images.githubusercontent.com/40508134/103444890-49cec080-4c3b-11eb-939c-65a874d8aa5d.gif" >
 </p>
+
+
 
 
 
@@ -43,49 +47,66 @@ Have you wondered if a house is a good buy for your real estate portfolio? Our f
         <img src = "https://user-images.githubusercontent.com/40508134/103446212-07ad7b00-4c4b-11eb-864f-7645dd8a5142.gif" width = "700" height = "350">
       </p>
   
+  
+  
 
 ## Getting Started
 
-How to Run this on your local server: clone the project, and npm install the dependencies, npm run
+How to run this on your local server: 
+1. Clone the project, and run the command 'npm install' in the terminal to install dependencies.
+2. To launch the backend local server, run the commands 'cd <Your backend folder>' and 'npm run dev' 
+3. To launch the frontend local server, run the commands 'cd <Your frontend folder>' and 'npm start'
+Both the backend and frontend server need to be started and running for the software to be operable.
+
+
 
 ### Prerequisites
 
 What things you need to install the software and how to install them
 
 ```
-You need node and vscode to install dependencies
+You will need to install VSCode, as well as Node.js
 ```
+
+
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
 ```
-git clone , open in ide, There's a backend file, which you can run on port 4000 by npm install and to start use npm run dev.
-
-There's also a front end file that you can run on port 3000 by npm install and to start use npm start.
-
-Look at .env.example for connecting to MongoDB and Token Secret
+$ git clone https://github.com/hfbgk321/reinvest_fullstack.git
+$ cd .\reinvest_fullstack\
+$ <Go to .env.example to connect to your own MongoDB database and provide the Token Secret>
+$ cd .\reinvest_backend_master\
+$ npm install
+$ cd ..
+$ cd .\reinvest_frontend\
+$ npm install
+$ cd .. 
+$ cd .\reinvest_backend_master\
+$ npm run dev
+$ <Open up a new Terminal>
+$ cd .\reinvest_fullstack\
+$ cd .\reinvest_frontend\
+$ npm start
 ```
 
+The website should launch automatically in a new window.
 
 
-End with an example of getting some data out of the system or using it for a little demo
 
 
 ## Deployment
 
-We deployed the backend on heroku and the frontend onn Netlify
+REInvest was deployed on Heroku for the backend server and the frontend server on Netlify
 
-If you want to check it out http://reinvest.life/
+Check it out: http://reinvest.life/
+
+
 
 
 ## Built With
 
-
-Technologies Used: ReactJS, Node, Express, mongoose, MongoDB, Git, Heroku, Netlify, JS, HTML, CSS, JSX, Bootstrap, Axios, Babel, JSON web token, JS-Cookie, Cors, Nodemon, Charts.js, API's, DOM
+Technologies Used: React.js, Node.js, Express.js, Mongoose, MongoDB, Git, Heroku, Netlify, JS, HTML, CSS, JSX, Bootstrap, Axios, Babel, JSON Web Token, JS-Cookie, Cors, Nodemon, Charts.js, React Router
 
 
 ## Contributing
@@ -97,13 +118,6 @@ Github:
 * Horace:https://github.com/horaceliuHL
 * Thomas:https://github.com/thomasyeung687
 
-
-
-
- 
-
-## Authors
-
 Linkedin: 
 * Jacky: https://www.linkedin.com/in/jacky-chen-sbu/
 * Horace: https://www.linkedin.com/in/horaceliu/
@@ -111,14 +125,7 @@ Linkedin:
 * Nikhil: nbodduluri
 
 
-## Acknowledgments
-
-Problems we Faced: handling https request while using authorization, using multer and blobs to process and send in receive images to server
-
-How we solved the problems: We solved the routing problems by first debugging and testing the routes on Postma, once confirmed we went and debugged the front end to also work
-
-
-Things we learned: MERN, image processing, cookies, autho, backend, encrypt and decrypt, responsive design 
+ 
 
 ## Overview
 
