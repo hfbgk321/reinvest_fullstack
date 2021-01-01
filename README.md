@@ -44,7 +44,7 @@ Have you wondered if a house is a good buy for your real estate portfolio? REInv
       
  - **Viewing existing properties** All your existing properties will populate in your properties page. We incorporated a search bar for you to search properties based on address. To view data about an existing property, just click the view button, which will direct you to the analysis page of that property.
       <p align = "center">
-        <img src = "https://user-images.githubusercontent.com/40508134/103446212-07ad7b00-4c4b-11eb-864f-7645dd8a5142.gif" width = "700" height = "350">
+        <img src = "https://user-images.githubusercontent.com/40508134/103447126-fe291080-4c54-11eb-870e-0acc3eb51d65.gif" width = "700" height = "350">
       </p>
   
   
