@@ -22,7 +22,7 @@
 Have you wondered if a house is a good buy for your real estate portfolio? REInvest's free software will give any user important details to help make the decision a lot easier for you. Important attributes crucial to your investment decisions are considered such as Cash on Cash return, ROI, Net Operating Income, Fixed Monthly Morgage, Monthly Cash Flow, and many more valuable details for you to evaluate the investment upon. This software also allows you to save your previous houses, allowing you to come back and check them whenever you want. 
 
 <p align = "center">
-  <img src = "https://user-images.githubusercontent.com/40508134/103444890-49cec080-4c3b-11eb-939c-65a874d8aa5d.gif" >
+  <img src = "https://user-images.githubusercontent.com/40508134/103446974-67a81f80-4c53-11eb-961f-1c8cb90b079a.gif" width = "700" height = "350" >
 </p>
 
 
@@ -123,21 +123,5 @@ Linkedin:
 * Horace: https://www.linkedin.com/in/horaceliu/
 * Thomas: https://www.linkedin.com/in/thomas-yeung-517507200/
 * Nikhil: nbodduluri
-
-
- 
-
-## Overview
-
-
-<p float="left">
-  <img src="https://user-images.githubusercontent.com/64310147/103430756-497bea00-4b95-11eb-9bbf-87a127689789.png" style="width:100%">
-  <br></br>
-  <br></br>
-  <img src="https://user-images.githubusercontent.com/64310147/103430758-4bde4400-4b95-11eb-93fe-0f1e19e4a9e7.png" style="width:100%">
-  <br></br>
-  <br></br>
-  <img src="https://user-images.githubusercontent.com/64310147/103430760-4da80780-4b95-11eb-922f-2e2a5c9beb80.png" style="width:100%">
-</p>
 
 
