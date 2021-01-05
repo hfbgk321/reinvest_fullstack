@@ -13,7 +13,7 @@
   <img src="https://user-images.githubusercontent.com/40508134/103444641-3c640700-4c38-11eb-9d08-7a8f74c5f6eb.png" width = "700" height = "350">
 </p>
 
- <h2 align="center"><a  href="wwww.reinvest.life">Try out the web app</a></h2>
+ <h2 align="center"><a  href="https://reinvest.life/">Try out the web app</a></h2>
  
  
 
