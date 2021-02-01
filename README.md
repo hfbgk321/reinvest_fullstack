@@ -122,6 +122,6 @@ Linkedin:
 * Jacky: https://www.linkedin.com/in/jacky-chen-sbu/
 * Horace: https://www.linkedin.com/in/horaceliu/
 * Thomas: https://www.linkedin.com/in/thomas-yeung-517507200/
-* Nikhil: nbodduluri
+* Nikhil: https://www.linkedin.com/in/nikhil-bodduluri-657a69204/
 
 
